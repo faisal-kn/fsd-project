@@ -1,0 +1,22 @@
+.img-container {
+  height: 200px;
+  width: 300px;
+}
+
+.sec-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.ter-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-join {
+  align-items: center;
+}
