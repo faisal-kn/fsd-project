@@ -3,6 +3,7 @@ const express = require("express");
 const cors = require("cors");
 const morgan = require("morgan");
 const viewRouter = require("./Routes/viewRouter");
+const userRouter = require("./Routes/userRouter");
 
 const app = express();
 
@@ -16,5 +17,6 @@ if (process.env.NODE_ENV === "development") app.use(morgan("dev"));
 app.use(cors());
 
 app.use("/", viewRouter);
+app.use("/api/user", userRouter);
 
 module.exports = app;
