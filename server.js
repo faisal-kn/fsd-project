@@ -16,6 +16,6 @@ mongoose
     console.log("database successfully connected");
   });
 
-app.listen(PORT, () => {
+app.listen( PORT, () => {
   console.log(`App running on port ${PORT}`);
 });

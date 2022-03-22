@@ -27,13 +27,13 @@ const signup = async (
   confirmPasswordValue
 ) => {
   try {
-    const res = await fetch("localhost:3000/api/user/signup", {
+    const res = await fetch("http://localhost:3000/api/user/signup", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        userName: userNameValue,
+        username: userNameValue,
         email: emailValue,
         password: passwordValue,
         confirmPassword: confirmPasswordValue,

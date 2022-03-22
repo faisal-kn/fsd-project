@@ -4,6 +4,7 @@ const { promisify } = require("util");
 
 exports.signup = async (req, res, next) => {
   try {
+    console.log(req.body);
     const newUser = await User.create(req.body);
 
     const token = jwt.sign({ id: newUser._id }, process.env.JWT_SECRET, {

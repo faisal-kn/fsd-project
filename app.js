@@ -6,6 +6,7 @@ const viewRouter = require("./Routes/viewRouter");
 const userRouter = require("./Routes/userRouter");
 
 const app = express();
+app.use(express.json());
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
@@ -18,5 +19,11 @@ app.use(cors());
 
 app.use("/", viewRouter);
 app.use("/api/user", userRouter);
+// app.use("/api/user", (req, res, next) => {
+//   res.status(404).json({ message: "float" });
+// });
+app.use("*", (req, res, next) => {
+  res.status(404).json({ message: "ROUTE NOT FOUND" });
+});
 
 module.exports = app;
