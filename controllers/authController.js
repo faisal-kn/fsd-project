@@ -50,7 +50,6 @@ exports.login = async (req, res, next) => {
       expiresIn: process.env.JWT_EXPIRES_IN,
     });
 
-    //To remove the password field from the output
     user = await User.findOne({ email: email });
     res.status(200).json({
       status: "success",
