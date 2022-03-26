@@ -42,7 +42,7 @@
                                                     </select>
                                                 </div>
 
-                                                <button class="btn btn-outline-success mt-4" type="submit">Find</button>
+                                                <button class="btn btn-outline-success mt-4" id="firstButton" type="submit">Find</button>
                                             </div>
                                             <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                                                 <div class="mb-3">
@@ -52,7 +52,7 @@
                                                       <option>BasketBall</option>
                                                     </select>
                                                 </div>
-                                                <button class="btn btn-outline-success mt-4" type="submit">Find</button>
+                                                <button class="btn btn-outline-success mt-4" id="secondButton" type="submit">Find</button>
                                             </div>
                                             <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
                                                 <div class="d-flex align-items-end justify-content-center">
@@ -65,7 +65,7 @@
                                                         <input class="form-control" type="text" id="lon" name="lastname" placeholder="lon" />
                                                     </div>
                                                 </div>
-                                                <button class="btn btn-outline-success mt-4" type="submit">Find</button>
+                                                <button class="btn btn-outline-success mt-4" id="thirdButton" type="submit">Find</button>
                                             </div>
                                         </div>
                                     </p>
@@ -73,14 +73,90 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row second-row"></div>
+                    <div class="text-center " id="add-new-event">
+                        <button type="button" class="btn btn-outline-success mt-4" id="fourthButton">Create Event</button>
+                    </div>
+                    <div class="row second-row mt-2">
+
+                        <div class="col">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title ">CURRENT POPULAR EVENTS</h5>
+                                    <div id = "popular-events"></div>
+                                    <div class="pagination-container">
+                                        <div id="left-btn">
+                                            <i class="fa-solid fa-angle-left"></i>
+                                        </div>
+                                        <span id="page">1</span>/<span id="max-page">2</span>
+                                        <div id="right-btn">
+                                            <i class="fa-solid fa-angle-right"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-lg-8">
-                    <div id="map" class="map-container"></div>
+                <!-- modal should be outside bcoz parent is using position absolute -->
+                <div class="modal fade modal-style" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel">Add a event</h5>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="container">
+                                <div class="row">
+                                <div class="col-lg-12 me-3">
+                                    <label class="form-label" for="lat">Name</label>
+                                    <input class="form-control" type="text" id="lat" name="name" required/>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class=" me-3">
+                                    <label class="form-label" for="lat">Date</label>
+                                    <input class="form-control" type="date" id="lat" name="date" required/>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class=" me-3">
+                                    <label class="form-label" for="lat">Attendes</label>
+                                    <input class="form-control" type="number" id="lat" name="attendes" required/>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="me-3">
+                                    <label class="form-label" for="lat">Host</label>
+                                    <input class="form-control" type="text" id="lat" name="host" required/>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="me-3">
+                                    <label class="form-label" for="lat">Total Spot</label>
+                                    <input class="form-control" type="number" id="lat" name="totalSpot" required/>
+                                </div>
+                            </div>    
+                            </div>
+
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-primary">Save changes</button>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+                <div class=" col-lg-8 ">
+                    <div id="map" class="map-container">
+                        <!-- <div class="leaflet-bottom leaflet-right">
+                            <button type="button" class=" btn btnStyle" id="add-event" data-bs-toggle="modal" data-bs-target="#exampleModal" style="pointer-events: auto;"><i class="fa-solid fa-plus"></i></button>
+                        </div> -->
+                    </div>
                 </div>
             </div>
         </div>
-        <script src="/js/map.js"></script>
+        <script src="/js/map.js "></script>
 </body>
+
 
 </html>
