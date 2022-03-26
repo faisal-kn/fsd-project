@@ -25,7 +25,7 @@ const signup = async (
   confirmPasswordValue
 ) => {
   try {
-    const res = await fetch("http://localhost:3000/api/user/signup", {
+    const res = await fetch("http://localhost:3001/api/user/signup", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -39,6 +39,9 @@ const signup = async (
     });
     const data = await res.json();
     console.log(data);
+    if (data.status === "success") {
+      window.localStorage.setItem("token", JSON.stringify(data.token));
+    }
   } catch (err) {
     console.log(err);
   }

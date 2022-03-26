@@ -37,6 +37,14 @@ const userSchema = new mongoose.Schema({
     default: true,
     select: false,
   },
+  friends: {
+    type: [String],
+    default: [],
+  },
+  hobbies: {
+    type: [String],
+    enum: ["Basketball", "Football", "Music", "Badminton", "Tennis"],
+  },
 });
 
 userSchema.pre("save", async function (next) {

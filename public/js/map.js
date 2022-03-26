@@ -82,6 +82,20 @@ const createEvent = async (
   }
 };
 
+const getHobbies = async () => {
+  try {
+    const res = await fetch("http://localhost:3001/api/user/hobbies", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const data = await res.json();
+  } catch (err) {
+    console.log(err);
+  }
+};
+
 const markerHandler = (e) => {
   const { lat, lng } = e.latlng;
 
@@ -128,8 +142,8 @@ const currentPage = (currentPage) => {
 };
 
 const pagination = () => {
-  const maxElement = 8;
-  const maxPerPage = 3;
+  const maxElement = 7;
+  const maxPerPage = 2;
   if (maxElement > maxPerPage) {
     const totalPage = Math.ceil(maxElement / maxPerPage);
     maxPage.innerHTML = totalPage;
@@ -187,8 +201,6 @@ const renderPopularEvents = (maxElement, currentPage, maxPerPage) => {
     popularEvents.innerHTML += eventMarkup;
   }
 };
-
-
 
 getPosition();
 pagination();

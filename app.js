@@ -21,6 +21,8 @@ app.use(cors());
 app.use("/", viewRouter);
 app.use("/api/user", userRouter);
 app.use("/api/event", eventRouter);
+
+
 // app.use("/api/user", (req, res, next) => {
 //   res.status(404).json({ message: "float" });
 // });
