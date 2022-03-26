@@ -5,24 +5,94 @@ const rightBtn = document.getElementById("right-btn");
 const maxPage = document.getElementById("max-page");
 const page = document.getElementById("page");
 const popularEvents = document.getElementById("popular-events");
-// const addEventBtn = document.getElementById("add-event");
 const addNewEventBtn = document.getElementById("add-new-event");
 const myModal = new bootstrap.Modal(document.getElementById("myModal"));
 const modal = document.getElementById("myModal");
+const eventName = document.getElementById("name");
+const date = document.getElementById("date");
+const attendees = document.getElementById("attendees");
+const host = document.getElementById("host");
+const total = document.getElementById("total");
+const form = document.getElementById("form-event--data");
 
 let map;
 
+const eventRequest = (marker, lat, lng) => {
+  if (form) {
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const eventNameValue = eventName.value.trim();
+      const dateValue = date.value.trim();
+      const attendeesValue = attendees.value.trim();
+      const hostValue = host.value.trim();
+      const totalValue = total.value.trim();
+      console.log(dateValue);
+      createEvent(
+        eventNameValue,
+        dateValue,
+        attendeesValue,
+        hostValue,
+        totalValue,
+        lat,
+        lng,
+        marker
+      );
+    });
+  }
+};
+
+const createEvent = async (
+  eventNameValue,
+  dateValue,
+  attendeesValue,
+  hostValue,
+  totalValue,
+  lat,
+  lng,
+  marker
+) => {
+  try {
+    const res = await fetch("http://localhost:3001/api/event/create-event", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name: eventNameValue,
+        date: dateValue,
+        location: [lat, lng],
+        attendees: attendeesValue,
+        host: hostValue,
+        totalSpot: totalValue,
+      }),
+    });
+    const data = await res.json();
+    if (data.status === "success") {
+      console.log(data);
+      const popup = L.popup().setContent(
+        `<a href="http://www.google.com">${data.data.newEvent.name}</a>`
+      );
+      marker.bindPopup(popup).openPopup();
+      myModal.hide();
+    } else {
+      map.removeLayer(marker);
+    }
+  } catch (err) {
+    console.log(err);
+  }
+};
+
 const markerHandler = (e) => {
   const { lat, lng } = e.latlng;
-  const popup = L.popup().setContent("I am a standalone popup.");
 
   const marker = new L.Marker([lat, lng]).addTo(map);
-  marker.bindPopup(popup).openPopup();
+
+  eventRequest(marker, lat, lng);
   map.off("click", markerHandler);
   myModal.show();
-  modal.addEventListener("hide.bs.modal", (e) => {
-    map.removeLayer(marker);
-  });
+  // modal.addEventListener("hide.bs.modal", (e) => {
+  //   map.removeLayer(marker);
+  // });
 };
 
 addNewEventBtn.addEventListener("click", (e) => {
@@ -117,6 +187,8 @@ const renderPopularEvents = (maxElement, currentPage, maxPerPage) => {
     popularEvents.innerHTML += eventMarkup;
   }
 };
+
+
 
 getPosition();
 pagination();
