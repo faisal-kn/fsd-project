@@ -10,5 +10,6 @@ router.post(
   /*authController.protect,*/ eventController.createEvent
 );
 router.get("/popular-events", eventController.getPopularEvents);
+router.get("/all-events", eventController.getAllEvents);
 
 module.exports = router;

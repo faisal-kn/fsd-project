@@ -10,46 +10,71 @@ const myModal = new bootstrap.Modal(document.getElementById("myModal"));
 const modal = document.getElementById("myModal");
 const eventName = document.getElementById("name");
 const date = document.getElementById("date");
-const attendees = document.getElementById("attendees");
+const hobbies = document.getElementById("attendees");
 const host = document.getElementById("host");
 const total = document.getElementById("total");
 const form = document.getElementById("form-event--data");
 
 let map;
 
-const eventRequest = (marker, lat, lng) => {
+const eventRequest = (lat, lng) => {
   if (form) {
     form.addEventListener("submit", (e) => {
       e.preventDefault();
       const eventNameValue = eventName.value.trim();
       const dateValue = date.value.trim();
-      const attendeesValue = attendees.value.trim();
+      const hobbiesValue = hobbies.value.trim();
       const hostValue = host.value.trim();
       const totalValue = total.value.trim();
-      console.log(dateValue);
       createEvent(
         eventNameValue,
         dateValue,
-        attendeesValue,
+        hobbiesValue,
         hostValue,
         totalValue,
         lat,
-        lng,
-        marker
+        lng
       );
     });
+  }
+};
+
+const createMarker = (ele) => {
+  const marker = new L.Marker([ele.location[0], ele.location[1]]);
+  const popup = L.popup().setContent(
+    `<a href="http://www.google.com">${ele.name}</a>`
+  );
+  marker.bindPopup(popup).openPopup();
+  marker.addTo(map);
+};
+
+const getAllEvents = async () => {
+  try {
+    const res = await fetch("http://localhost:3001/api/event/all-events", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const data = await res.json();
+    if (data.status === "success") {
+      data.data.events.forEach((ele) => {
+        createMarker(ele);
+      });
+    }
+  } catch (err) {
+    console.log(err);
   }
 };
 
 const createEvent = async (
   eventNameValue,
   dateValue,
-  attendeesValue,
+  hobbiesValue,
   hostValue,
   totalValue,
   lat,
-  lng,
-  marker
+  lng
 ) => {
   try {
     const res = await fetch("http://localhost:3001/api/event/create-event", {
@@ -61,21 +86,16 @@ const createEvent = async (
         name: eventNameValue,
         date: dateValue,
         location: [lat, lng],
-        attendees: attendeesValue,
+        hobby: hobbiesValue,
         host: hostValue,
         totalSpot: totalValue,
       }),
     });
     const data = await res.json();
+    console.log(data);
     if (data.status === "success") {
-      console.log(data);
-      const popup = L.popup().setContent(
-        `<a href="http://www.google.com">${data.data.newEvent.name}</a>`
-      );
-      marker.bindPopup(popup).openPopup();
+      createMarker(data.data.newEvent);
       myModal.hide();
-    } else {
-      map.removeLayer(marker);
     }
   } catch (err) {
     console.log(err);
@@ -99,9 +119,7 @@ const getHobbies = async () => {
 const markerHandler = (e) => {
   const { lat, lng } = e.latlng;
 
-  const marker = new L.Marker([lat, lng]).addTo(map);
-
-  eventRequest(marker, lat, lng);
+  eventRequest(lat, lng);
   map.off("click", markerHandler);
   myModal.show();
   // modal.addEventListener("hide.bs.modal", (e) => {
@@ -135,6 +153,7 @@ const loadMap = (position) => {
     attribution:
       '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
   }).addTo(map);
+  getAllEvents();
 };
 
 const currentPage = (currentPage) => {

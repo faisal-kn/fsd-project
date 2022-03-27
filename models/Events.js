@@ -17,6 +17,10 @@ const eventSchema = new mongoose.Schema({
     type: Number,
     default: 0,
   },
+  hobby: {
+    type: String,
+    required: [true, "A hobby is required"],
+  },
   host: {
     type: String,
   },

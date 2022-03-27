@@ -40,7 +40,7 @@ const signup = async (
     const data = await res.json();
     console.log(data);
     if (data.status === "success") {
-      window.localStorage.setItem("token", JSON.stringify(data.token));
+      window.location.pathname = "/events";
     }
   } catch (err) {
     console.log(err);

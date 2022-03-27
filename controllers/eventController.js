@@ -17,3 +17,12 @@ exports.getPopularEvents = async (req, res, next) => {
     res.status(401).json({ status: "failed", error: err });
   }
 };
+
+exports.getAllEvents = async (req, res, next) => {
+  try {
+    const events = await Event.find();
+    res.status(200).json({ status: "success", data: { events } });
+  } catch (err) {
+    res.status(401).json({ status: "failed", error: err });
+  }
+};
