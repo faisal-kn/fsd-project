@@ -13,3 +13,7 @@ exports.getSignup = function (req, res, next) {
 exports.getEvents = function (req, res, next) {
   res.status(200).render("pages/events", { title: "Events" });
 };
+
+exports.getErrors = function (req, res, next) {
+  res.status(200).render("pages/errors", { title: "Errors" });
+};
