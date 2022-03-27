@@ -20,6 +20,7 @@ body {
 
 .box {
   display: flex;
+  /* justify-items: flex-start; */
   /* border: 2px solid white; */
   height: 35rem;
 }
@@ -29,8 +30,10 @@ body {
   height: 100%;
   /* border: 2px solid white; */
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-items: flex-start;
+  /* justify-content: center; */
+  /* align-items: center; */
+  padding-top: 50px;
 }
 
 .box2 {
@@ -39,7 +42,9 @@ body {
   /* border: 2px solid white; */
   display: flex;
   justify-content: center;
-  align-items: center;
+  /* align-items: center; */
+  padding-top: 100px;
+
   /* border: 2px solid white; */
 }
 
@@ -90,9 +95,9 @@ body {
   height: 34%;
   border: none;
   border-radius: 5px;
-  color: rgb(177, 177, 177);
+  color: rgb(114, 114, 114);
   font-weight: 400;
-  background-color: rgb(43, 43, 43);
+  background-color: rgb(26, 24, 24);
 }
 
 .login_button:hover {
@@ -127,6 +132,8 @@ body {
   .box1 {
     width: 100%;
     height: 40%;
+    justify-content: center;
+    align-items: center;
   }
 
   .form {
@@ -136,7 +143,11 @@ body {
   .box2 {
     width: 100%;
     align-items: flex-start;
+    padding-top: 5%;
     height: 30%;
+    justify-content: center;
+    /* align-items: center; */
+    /* border: 2px solid white; */
   }
 
   .details {
@@ -146,7 +157,7 @@ body {
 
   .other_buttons {
     width: 80%;
-    height: 75%;
+    height: 69%;
     justify-content: space-around;
   }
 }

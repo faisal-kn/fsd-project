@@ -7,4 +7,5 @@ router.get("/login", viewController.getLogin);
 router.get("/signup", viewController.getSignup);
 router.get("/", viewController.getHome);
 router.get("/events", authController.protect, viewController.getEvents);
+router.get("/error", viewController.getErrorPage);
 module.exports = router;
