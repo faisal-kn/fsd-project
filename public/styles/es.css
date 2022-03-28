@@ -1,0 +1,130 @@
+body{
+    color: #cccbcb;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 1000'%3E%3Cg %3E%3Ccircle fill='%234D4D4D' cx='50' cy='0' r='50'/%3E%3Cg fill='%23494949' %3E%3Ccircle cx='0' cy='50' r='50'/%3E%3Ccircle cx='100' cy='50' r='50'/%3E%3C/g%3E%3Ccircle fill='%23454545' cx='50' cy='100' r='50'/%3E%3Cg fill='%23424242' %3E%3Ccircle cx='0' cy='150' r='50'/%3E%3Ccircle cx='100' cy='150' r='50'/%3E%3C/g%3E%3Ccircle fill='%233e3e3e' cx='50' cy='200' r='50'/%3E%3Cg fill='%233a3a3a' %3E%3Ccircle cx='0' cy='250' r='50'/%3E%3Ccircle cx='100' cy='250' r='50'/%3E%3C/g%3E%3Ccircle fill='%23373737' cx='50' cy='300' r='50'/%3E%3Cg fill='%23333333' %3E%3Ccircle cx='0' cy='350' r='50'/%3E%3Ccircle cx='100' cy='350' r='50'/%3E%3C/g%3E%3Ccircle fill='%23303030' cx='50' cy='400' r='50'/%3E%3Cg fill='%232c2c2c' %3E%3Ccircle cx='0' cy='450' r='50'/%3E%3Ccircle cx='100' cy='450' r='50'/%3E%3C/g%3E%3Ccircle fill='%23292929' cx='50' cy='500' r='50'/%3E%3Cg fill='%23252525' %3E%3Ccircle cx='0' cy='550' r='50'/%3E%3Ccircle cx='100' cy='550' r='50'/%3E%3C/g%3E%3Ccircle fill='%23222222' cx='50' cy='600' r='50'/%3E%3Cg fill='%231e1e1e' %3E%3Ccircle cx='0' cy='650' r='50'/%3E%3Ccircle cx='100' cy='650' r='50'/%3E%3C/g%3E%3Ccircle fill='%231b1b1b' cx='50' cy='700' r='50'/%3E%3Cg fill='%23181818' %3E%3Ccircle cx='0' cy='750' r='50'/%3E%3Ccircle cx='100' cy='750' r='50'/%3E%3C/g%3E%3Ccircle fill='%23151515' cx='50' cy='800' r='50'/%3E%3Cg fill='%23111111' %3E%3Ccircle cx='0' cy='850' r='50'/%3E%3Ccircle cx='100' cy='850' r='50'/%3E%3C/g%3E%3Ccircle fill='%230c0c0c' cx='50' cy='900' r='50'/%3E%3Cg fill='%23060606' %3E%3Ccircle cx='0' cy='950' r='50'/%3E%3Ccircle cx='100' cy='950' r='50'/%3E%3C/g%3E%3Ccircle fill='%23000000' cx='50' cy='1000' r='50'/%3E%3C/g%3E%3C/svg%3E");
+    background-attachment: fixed;
+    background-size: contain;
+}
+
+.container{
+   width:90%;
+   /* border:1px solid rgb(252, 252, 252); */
+   display:flex;
+   flex-direction: row;
+   height:85vh;
+   margin:5% 5%;
+}
+
+h1{
+    text-orientation: upright;
+    border:1px solid rgb(252, 251, 251);
+    writing-mode:vertical-lr;
+    font-size:50px;
+    margin-right: 5px;
+    text-align:center;
+}
+.content{
+    width:40%;
+    border:1px solid rgb(253, 251, 251);
+}
+.img{
+    width:60%;
+    border:1px solid rgb(252, 248, 248);
+}
+.text{
+    border:1px solid rgb(248, 245, 245);
+    display:flex;
+    flex-direction:column;
+}
+.text h2{
+    /* border:1px solid black; */
+    font-size: 40px;
+    padding-left:5%;
+    margin-bottom:2%;
+    
+}
+.text p{
+    font-size: 20px;
+    padding-left:5%;
+    margin-top:2%;
+}
+
+.btn{
+    display:flex;
+    flex-direction:column;
+    justify-content: center;
+    /* border: 1px solid rgb(253, 253, 253); */
+
+}
+.btn li{
+    list-style: none;
+}
+
+.btn li a{
+    text-decoration: none;
+   color:white;
+   text-transform:capitalize;
+}
+
+.btn ul li{
+    display:inline-block;
+    width:40%;
+    font-size: 20px;
+    text-align:center;
+}
+
+.btn li::before{
+    content: "\2192";
+    margin-right: 8px;
+}
+
+.btn li a:hover{
+    color:rgb(180, 178, 178);
+    padding-left: .5rem;
+    transition-timing-function: ease-in-out;
+    transition-duration:.3s;
+}
+
+
+@media screen and (max-width:950px){
+    .img{
+      display:none;
+    }
+
+    .content{
+        width:100%;
+    }
+}
+    @media screen and (max-width:780px){
+        .btn ul li{
+            display:block;
+            width:100%;
+            font-size: 15px;
+            margin:2%;
+            text-align:center;
+        }
+        .container{
+            width:90%;
+            height:80vh;
+            border:1px solid rgb(252, 252, 252);
+            display:flex;
+            flex-direction: row;
+            margin:5% 5%;
+         }
+         .text{
+            border:1px solid rgb(248, 245, 245);
+            display:flex;
+            flex-direction:column;
+        }
+         .text h2{
+            font-size: 20px;
+            padding-left:5%;
+            margin-bottom:5%;
+        }
+
+        .text p{
+            font-size: 15px;
+            padding-left:5%;
+            margin-top:5%;
+        }
+        
+}
