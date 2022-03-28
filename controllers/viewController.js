@@ -17,3 +17,23 @@ exports.getEvents = function (req, res, next) {
 exports.getErrorPage = function (req, res, next) {
   res.status(200).render("pages/errors", { title: "Error" });
 };
+
+exports.getContactus = function (req, res, next) {
+  res.status(200).render("pages/contactus", { title: "Contactus" });
+};
+
+exports.getUserprofile = function (req, res, next) {
+  res.status(200).render("pages/userprofile", { title: "Userprofile" });
+};
+
+exports.getAboutus = function (req, res, next) {
+  res.status(200).render("pages/Aboutus", { title: "Aboutus" });
+};
+
+exports.getEventsharing = function (req, res, next) {
+  res.status(200).render("pages/eventsharing", { title: "Eventsharing" });
+};
+
+exports.getNewTeam = function (req, res, next) {
+  res.status(200).render("pages/newTeam", { title: "NewTeam" });
+};
