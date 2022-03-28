@@ -43,7 +43,18 @@ const userSchema = new mongoose.Schema({
   },
   hobbies: {
     type: [String],
-    enum: ["Basketball", "Football", "Music", "Badminton", "Tennis"],
+    enum: [
+      "Educational",
+      "Games",
+      "coding meetups",
+      "Mixers",
+      "political gatherings",
+      "Major events",
+      "Friend meetups",
+      "Travelling",
+      "Random meetups",
+      "Hangouts",
+    ],
   },
 });
 
