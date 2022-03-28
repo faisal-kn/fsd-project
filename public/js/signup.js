@@ -1,7 +1,5 @@
 "use Strict";
 
-// import axios from "axios";
-
 const next = document.getElementById("next");
 const back = document.getElementById("back");
 const userName = document.getElementById("name");
@@ -11,10 +9,7 @@ const confirmPassword = document.getElementById("confirm_password");
 const form = document.getElementById("form-user--data");
 const signupBtn = document.getElementById("signup-btn");
 
-console.log(signupBtn);
-
 next.addEventListener("click", () => {
-  // console.log('clicked');
   let mainbox1 = document.getElementById("mainbox");
   mainbox1.style.display = "none";
   let altbox1 = document.getElementById("altbox");
@@ -50,14 +45,17 @@ hobbiesMap.set("Hangouts", 0);
 options.forEach((element) => {
   element.style.backgroundColor = "white";
   element.addEventListener("click", () => {
+    console.log(element.style.backgroundColor);
     if (element.style.backgroundColor == "white") {
       element.style.backgroundColor = "blue";
+      change = 1;
       hobbiesMap.set(element.innerText, 1);
     }
     if (element.style.backgroundColor == "blue" && change == 0) {
       element.style.backgroundColor = "white";
       hobbiesMap.set(element.innerText, 0);
     }
+    change = 0;
   });
 });
 
@@ -65,6 +63,7 @@ let userNameValue = "";
 let emailValue = "";
 let passwordValue = "";
 let confirmPasswordValue = "";
+let hobbies = [];
 
 if (form) {
   next.addEventListener("click", (e) => {
@@ -75,22 +74,38 @@ if (form) {
   });
 }
 
-signupBtn.addEventListener("submit", (e) => {
-  e.preventDefault();
-  console.log(2);
+signupBtn.addEventListener("click", () => {
   for (const [key, value] of hobbiesMap.entries()) {
-    console.log(key, value);
+    if (value === 1) {
+      hobbies.push(key);
+    }
   }
+
+  signup(
+    userNameValue,
+    emailValue,
+    passwordValue,
+    confirmPasswordValue,
+    hobbies
+  );
 });
 
 const signup = async (
   userNameValue,
   emailValue,
   passwordValue,
-  confirmPasswordValue
+  confirmPasswordValue,
+  hobbies
 ) => {
   try {
-    const res = await fetch("http://localhost:3000/api/user/signup", {
+    console.log(
+      userNameValue,
+      emailValue,
+      passwordValue,
+      confirmPasswordValue,
+      hobbies
+    );
+    const res = await fetch("http://localhost:3001/api/user/signup", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -100,9 +115,13 @@ const signup = async (
         email: emailValue,
         password: passwordValue,
         confirmPassword: confirmPasswordValue,
+        hobbies: hobbies,
       }),
     });
     const data = await res.json();
+    if (data.status === "success") {
+      window.location.href = "http://localhost:3001/events";
+    }
     console.log(data);
   } catch (err) {
     console.log(err);

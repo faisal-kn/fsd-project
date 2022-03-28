@@ -32,6 +32,10 @@ const eventSchema = new mongoose.Schema({
     type: Number,
     default: 0,
   },
+  description: {
+    type: String,
+    required: [true, "A description is required"],
+  },
 });
 
 const Event = mongoose.model("Event", eventSchema);

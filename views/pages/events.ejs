@@ -61,8 +61,16 @@
                                             <div class="mb-3">
                                                 <label for="Select" class="form-label">Select your hobbies</label>
                                                 <select id="Select" class="form-select">
-                                                    <option>Football</option>
-                                                    <option>BasketBall</option>
+                                                    <option>Games</option>
+                                                    <option>coding meetups</option>
+                                                    <option>Mixers</option>
+                                                    <option>political gatherings</option>
+                                                    <option>Major events</option>
+                                                    <option>Educational</option>
+                                                    <option>Friend meetups</option>
+                                                    <option>Travelling</option>
+                                                    <option>Random meetups</option>
+                                                    <option>Hangouts</option>
                                                 </select>
                                             </div>
                                             <button class="btn btn-outline-success mt-4" id="secondButton"
@@ -130,39 +138,53 @@
                                 <div class="modal-body">
                                     <div class="container">
                                         <div class="row">
-                                            <div class="col-lg-12 me-3">
+                                            <div class="col-lg-12 me-3 pt-1">
                                                 <label class="form-label" for="lat">Name</label>
                                                 <input class="form-control" type="text" id="name" name="name"
                                                     required />
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class=" me-3">
+                                            <div class=" me-3 pt-1">
                                                 <label class="form-label" for="lat">Date</label>
                                                 <input class="form-control" type="date" id="date" name="date"
                                                     required />
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class=" me-3">
-                                                <label class="form-label" for="lat">Most Relevent Hobby</label>
-                                                <input class="form-control" type="text" id="attendees" name="attendes"
-                                                    required />
+                                            <div class=" me-3 pt-1">
+                                                <label for="Select" class="form-label">Select most relevent hobbies</label>
+                                                <select id="hobbies" class="form-select">
+                                                    <option>Games</option>
+                                                    <option>coding meetups</option>
+                                                    <option>Mixers</option>
+                                                    <option>political gatherings</option>
+                                                    <option>Major events</option>
+                                                    <option>Educational</option>
+                                                    <option>Friend meetups</option>
+                                                    <option>Travelling</option>
+                                                    <option>Random meetups</option>
+                                                    <option>Hangouts</option>
+                                                </select>
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class="me-3">
+                                            <div class="me-3 pt-1">
                                                 <label class="form-label" for="lat">Host</label>
                                                 <input class="form-control" type="text" id="host" name="host"
                                                     required />
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class="me-3">
+                                            <div class="me-3 pt-1">
                                                 <label class="form-label" for="lat">Total Spot</label>
                                                 <input class="form-control" type="number" id="total" name="totalSpot"
                                                     required />
                                             </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="event-description">Event Description</label>
+                                            <textarea class="form-control" id="event-description" rows="3"></textarea>
                                         </div>
                                     </div>
 

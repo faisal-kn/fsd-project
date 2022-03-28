@@ -10,10 +10,11 @@ const myModal = new bootstrap.Modal(document.getElementById("myModal"));
 const modal = document.getElementById("myModal");
 const eventName = document.getElementById("name");
 const date = document.getElementById("date");
-const hobbies = document.getElementById("attendees");
+const hobbies = document.getElementById("hobbies");
 const host = document.getElementById("host");
 const total = document.getElementById("total");
 const form = document.getElementById("form-event--data");
+const eventDescription = document.getElementById("event-description");
 
 let map;
 
@@ -26,12 +27,14 @@ const eventRequest = (lat, lng) => {
       const hobbiesValue = hobbies.value.trim();
       const hostValue = host.value.trim();
       const totalValue = total.value.trim();
+      const eventDescriptionValue = eventDescription.value.trim();
       createEvent(
         eventNameValue,
         dateValue,
         hobbiesValue,
         hostValue,
         totalValue,
+        eventDescriptionValue,
         lat,
         lng
       );
@@ -73,6 +76,7 @@ const createEvent = async (
   hobbiesValue,
   hostValue,
   totalValue,
+  eventDescriptionValue,
   lat,
   lng
 ) => {
@@ -88,6 +92,7 @@ const createEvent = async (
         location: [lat, lng],
         hobby: hobbiesValue,
         host: hostValue,
+        description: eventDescriptionValue,
         totalSpot: totalValue,
       }),
     });
