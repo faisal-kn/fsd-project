@@ -38,16 +38,20 @@ exports.getOneEvent = async function (req, res, next) {
   console.log(event);
   res.status(200).render("pages/eventsharing", {
     name: event.name,
-    location,
-    date,
-    attendees,
-    hobby,
-    host,
-    totalSpot,
-    description,
+    location:event.location,
+    date:event.date,
+    attendees: event.attendees,
+    hobby:event.hobby,
+    host: event.host,
+    totalSpot:event.totalSpot,
+    description: event.description,
   });
 };
 
 exports.getNewTeam = function (req, res, next) {
   res.status(200).render("pages/newTeam", { title: "NewTeam" });
+};
+
+exports.getAdminportal = function (req, res, next) {
+  res.status(200).render("pages/adminportal", { title: "Adminportal" });
 };
