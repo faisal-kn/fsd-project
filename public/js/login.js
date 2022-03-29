@@ -15,7 +15,6 @@ if (form) {
 
 const login = async (emailValue, passwordValue) => {
   try {
-    console.log(2);
     console.log(emailValue, passwordValue);
     const res = await fetch("http://localhost:3001/api/user/login", {
       method: "POST",

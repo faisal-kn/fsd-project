@@ -23,7 +23,6 @@
   position: absolute;
   z-index: 2;
   right: 20px;
-  /* left: 20px; */
   top: 20px;
   z-index: 1000;
   height: 50px;
@@ -34,9 +33,6 @@
   font-size: 20px;
   color: #fff;
   cursor: pointer;
-  /*background: linear-gradient(-135deg, #c850c0, #4158d0);*/
-  /* background: linear-gradient(375deg, #1cc7d0, #2ede98); */
-  /* background: linear-gradient(-45deg, #e3eefe 0%, #efddfb 100%); */
   background: #000;
   transition: all 0.3s ease-in-out;
 }

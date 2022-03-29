@@ -1,5 +1,4 @@
-"use Strict";
-
+// "use Strict";
 const next = document.getElementById("next");
 const back = document.getElementById("back");
 const userName = document.getElementById("name");
@@ -8,12 +7,48 @@ const password = document.getElementById("password");
 const confirmPassword = document.getElementById("confirm_password");
 const form = document.getElementById("form-user--data");
 const signupBtn = document.getElementById("signup-btn");
+const mainbox1 = document.getElementById("mainbox");
+const altbox1 = document.getElementById("altbox");
+
+let userNameValue = "";
+let emailValue = "";
+let passwordValue = "";
+let confirmPasswordValue = "";
+let hobbies = [];
+
+const hideAlert = () => {
+  const el = document.querySelector(".alert");
+  if (el) el.parentElement.removeChild(el);
+};
+
+const showAlert = (type, msg, time = 5) => {
+  hideAlert();
+  const markup = `<div class="alert alert--${type}">${msg}</div>`;
+  document.querySelector("body").insertAdjacentHTML("afterbegin", markup);
+  window.setTimeout(hideAlert, time * 1000);
+};
 
 next.addEventListener("click", () => {
-  let mainbox1 = document.getElementById("mainbox");
-  mainbox1.style.display = "none";
-  let altbox1 = document.getElementById("altbox");
-  altbox1.style.display = "flex";
+  userNameValue = userName.value.trim();
+  emailValue = email.value.trim();
+  passwordValue = password.value.trim();
+  confirmPasswordValue = confirmPassword.value.trim();
+
+  if (passwordValue.length < 8) {
+    showAlert("error", "Password must be at least 8 characters long");
+    return;
+  }
+  if (passwordValue != confirmPasswordValue) {
+    showAlert("error", "Confirm password do not match");
+    return;
+  }
+  if (userNameValue && emailValue && passwordValue && confirmPasswordValue) {
+    mainbox1.style.display = "none";
+    altbox1.style.display = "flex";
+  } else {
+    // console.log(userNameValue, emailValue, passwordValue, confirmPasswordValue);
+    showAlert("error", "Please fill all the fields");
+  }
 });
 
 back.addEventListener("click", () => {
@@ -59,19 +94,8 @@ options.forEach((element) => {
   });
 });
 
-let userNameValue = "";
-let emailValue = "";
-let passwordValue = "";
-let confirmPasswordValue = "";
-let hobbies = [];
-
 if (form) {
-  next.addEventListener("click", (e) => {
-    userNameValue = userName.value.trim();
-    emailValue = email.value.trim();
-    passwordValue = password.value.trim();
-    confirmPasswordValue = confirmPassword.value.trim();
-  });
+  next.addEventListener("click", (e) => {});
 }
 
 signupBtn.addEventListener("click", () => {
@@ -98,13 +122,6 @@ const signup = async (
   hobbies
 ) => {
   try {
-    console.log(
-      userNameValue,
-      emailValue,
-      passwordValue,
-      confirmPasswordValue,
-      hobbies
-    );
     const res = await fetch("http://localhost:3001/api/user/signup", {
       method: "POST",
       headers: {

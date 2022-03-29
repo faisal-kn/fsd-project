@@ -37,7 +37,7 @@ exports.getOneEvent = async function (req, res, next) {
   const event = await Events.findOne({ _id: req.params.eventid });
   console.log(event);
   res.status(200).render("pages/eventsharing", {
-    name: event.name,
+    name,
     location,
     date,
     attendees,

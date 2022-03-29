@@ -1,4 +1,4 @@
-"use Strict";
+// "use Strict";
 
 const leftBtn = document.getElementById("left-btn");
 const rightBtn = document.getElementById("right-btn");
@@ -17,6 +17,7 @@ const form = document.getElementById("form-event--data");
 const eventDescription = document.getElementById("event-description");
 const hobby = document.getElementById("hobbies-select");
 const secondButton = document.getElementById("secondButton");
+
 
 let map;
 
