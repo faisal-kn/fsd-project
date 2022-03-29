@@ -1,73 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-    />
-    <link rel="stylesheet" href="/styles/login.css" />
+    <%- include('../partials/head'); %>
+    <link rel="stylesheet" href="/styles/signup.css" />
 
-    <script type="module" src="/js/signup.js"></script>
+    
     <title>Login</title>
   </head>
 
   <body>
     <div class="page">
       <div class="container">
-        <h1 style="text-align: center">Signup to your account</h1>
+        <h1 class="heading" >Create your account</h1>
         <h3 style="font-size: 18px; text-align: center; opacity: 0.4">
-          display message
+          Your first step into the future!
         </h3>
-        <div class="box">
-          <div class="box1">
-            <form action="#" class="form" id="form-user--data">
+        <div class="card1">
+          <div class="image">
+          </div>
+          <div class="box" id="mainbox">
+            <h3 class="texts" style="padding-bottom: 15px;">Fill out some details</h3>
+            <form action="#" class="form1" id="form-user--data">
               <input
-                class="details"
-                type="text"
-                name="username"
-                id="name"
-                placeholder="Enter your username"
+              class="details"
+              type="text"
+              name="username"
+              id="name"
+              placeholder="Username"
               />
               <input
                 class="details"
                 type="text"
                 name="email"
                 id="email"
-                placeholder="Give your email"
+                placeholder="Email"
               />
               <input
                 class="details"
                 type="password"
                 name="password"
                 id="password"
-                placeholder="Enter your password"
+                placeholder="Password"
               />
               <input
                 class="details"
                 type="password"
                 name="confirm_password"
                 id="confirm_password"
-                placeholder="Confirm your password"
+                placeholder="Confirm password"
               />
 
-              <button type="submit" class="login-btn">Signup</button>
+              <button type="button" class="login-btn" id="next">Next</button>
             </form>
+                   
           </div>
-          <div class="box2">
-            <div class="other_buttons">
-              <button type="button" class="login_button">
-                Login with google
-              </button>
-              <button type="button" class="login_button">
-                Create an account
-              </button>
+          <div class="alt-box" id="altbox">
+            <h2 style="text-align: center;" class="texts">Select a few hobbies of yours!</h2>
+            <div class="boxes">
+              <button class="options">Games</button>
+              <button class="options">coding meetups</button>
+              <button class="options">Mixers</button>
+              <button class="options">political gatherings</button>
+              <button class="options">Major events</button>
+              <button class="options">Educational</button>
+              <button class="options">Friend meetups</button>
+              <button class="options">Travelling</button>
+              <button class="options">Random meetups</button>
+              <button class="options">Hangouts</button>
+              <div class="end-buttons">
+
+                <button type="submit" class="alt-button" id="back">Back</button>
+                <button type="submit" class="alt-button" id = "signup-btn">Sign up</button>
+              </div>
             </div>
           </div>
         </div>
+        </div>
       </div>
     </div>
+    <script src="/js/signup.js"></script>
   </body>
 </html>

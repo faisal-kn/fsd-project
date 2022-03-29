@@ -37,6 +37,25 @@ const userSchema = new mongoose.Schema({
     default: true,
     select: false,
   },
+  friends: {
+    type: [String],
+    default: [],
+  },
+  hobbies: {
+    type: [String],
+    enum: [
+      "Educational",
+      "Games",
+      "coding meetups",
+      "Mixers",
+      "political gatherings",
+      "Major events",
+      "Friend meetups",
+      "Travelling",
+      "Random meetups",
+      "Hangouts",
+    ],
+  },
 });
 
 userSchema.pre("save", async function (next) {

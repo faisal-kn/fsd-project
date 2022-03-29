@@ -1,15 +1,212 @@
 <!DOCTYPE html>
 
 <html lang="en">
-  <head>
+
+<head>
     <%- include('../partials/head'); %>
-  </head>
-  <body>
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+            integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+            crossorigin="" />
+        <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+            integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+            crossorigin=""></script>
+
+        <link rel="stylesheet" href="/styles/events.css" />
+</head>
+
+<body>
     <%- include('../partials/nav'); %>
-    <div class="container">
-      <div class="row">
-         
-      </div>
-    </div>
-  </body>
+        <div class="container-fluid pt-4" style="margin-top:60px;">
+            <div class="row">
+                <div class="col-lg-4 aside-container">
+                    <div class="row first-row">
+                        <div class="col">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Filter events</h5>
+                                    <p class="card-text">
+                                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                        <li class="nav-item" role="presentation">
+                                            <button class="nav-link active mr-4" id="home-tab" data-bs-toggle="tab"
+                                                data-bs-target="#home" type="button" role="tab" aria-controls="home"
+                                                aria-selected="true">Search By Friends</button>
+                                        </li>
+                                        <li class="nav-item" role="presentation">
+                                            <button class="nav-link mr-4" id="profile-tab" data-bs-toggle="tab"
+                                                data-bs-target="#profile" type="button" role="tab"
+                                                aria-controls="profile" aria-selected="false">Search By Hobbies</button>
+                                        </li>
+                                        <li class="nav-item" role="presentation">
+                                            <button class="nav-link mr-4" id="contact-tab" data-bs-toggle="tab"
+                                                data-bs-target="#contact" type="button" role="tab"
+                                                aria-controls="contact" aria-selected="false">Search By Latitude Longitude</button>
+                                        </li>
+                                    </ul>
+                                    <div class="tab-content mt-3" id="myTabContent">
+                                        <div class="tab-pane fade show active" id="home" role="tabpanel"
+                                            aria-labelledby="home-tab">
+                                            <div class="mb-3">
+                                                <label for="Select" class="form-label">Select your friend</label>
+                                                <select id="Select" class="form-select">
+                                                    <option>Faisal</option>
+                                                    <option>Sarat</option>
+                                                </select>
+                                            </div>
+
+                                            <button class="btn btn-outline-success mt-4" id="firstButton"
+                                                type="submit">Find</button>
+                                        </div>
+                                        <div class="tab-pane fade" id="profile" role="tabpanel"
+                                            aria-labelledby="profile-tab">
+                                            <div class="mb-3">
+                                                <label for="Select" class="form-label">Select your hobbies</label>
+                                                <select id="hobbies-select" class="form-select">
+                                                    <option>Games</option>
+                                                    <option>coding meetups</option>
+                                                    <option>Mixers</option>
+                                                    <option>political gatherings</option>
+                                                    <option>Major events</option>
+                                                    <option>Educational</option>
+                                                    <option>Friend meetups</option>
+                                                    <option>Travelling</option>
+                                                    <option>Random meetups</option>
+                                                    <option>Hangouts</option>
+                                                </select>
+                                            </div>
+                                            <button class="btn btn-outline-success mt-4" id="secondButton"
+                                                type="submit">Find</button>
+                                        </div>
+                                        <div class="tab-pane fade" id="contact" role="tabpanel"
+                                            aria-labelledby="contact-tab">
+                                            <div class="d-flex align-items-end justify-content-center">
+                                                <div class="flex-grow-1 me-3">
+                                                    <label class="form-label" for="lat">Latitude</label>
+                                                    <input class="form-control" type="text" id="lat" name="firstname"
+                                                        placeholder="lat" />
+                                                </div>
+                                                <div class="flex-grow-1 me-3">
+                                                    <label class="form-label" htmlFor="lon">Longitude</label>
+                                                    <input class="form-control" type="text" id="lon" name="lastname"
+                                                        placeholder="lon" />
+                                                </div>
+                                            </div>
+                                            <button class="btn btn-outline-success mt-4" id="thirdButton"
+                                                type="submit">Find</button>
+                                        </div>
+                                    </div>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center " id="add-new-event">
+                        <button type="button" class="btn btn-outline-success mt-4 mb-3" id="fourthButton">Create
+                            Event</button>
+                    </div>
+                    <div class="row second-row mt-2">
+
+                        <div class="col">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title p-3 text-center">CURRENT POPULAR EVENTS</h5>
+                                    <div id="popular-events"></div>
+                                    <div class="pagination-container">
+                                        <div id="left-btn">
+                                            <i class="fa-solid fa-angle-left"></i>
+                                        </div>
+                                        <span id="page">1</span>/<span id="max-page">2</span>
+                                        <div id="right-btn">
+                                            <i class="fa-solid fa-angle-right"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- modal should be outside bcoz parent is using position absolute -->
+                <div class="modal fade modal-style" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Add a event</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <form action="#" class="form" id="form-event--data">
+                                <div class="modal-body">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-lg-12 me-3 pt-1">
+                                                <label class="form-label" for="lat">Name</label>
+                                                <input class="form-control" type="text" id="name" name="name"
+                                                    required />
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class=" me-3 pt-1">
+                                                <label class="form-label" for="lat">Date</label>
+                                                <input class="form-control" type="date" id="date" name="date"
+                                                    required />
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class=" me-3 pt-1">
+                                                <label for="Select" class="form-label">Select most relevent hobbies</label>
+                                                <select id="hobbies" class="form-select">
+                                                    <option>Games</option>
+                                                    <option>coding meetups</option>
+                                                    <option>Mixers</option>
+                                                    <option>political gatherings</option>
+                                                    <option>Major events</option>
+                                                    <option>Educational</option>
+                                                    <option>Friend meetups</option>
+                                                    <option>Travelling</option>
+                                                    <option>Random meetups</option>
+                                                    <option>Hangouts</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="me-3 pt-1">
+                                                <label class="form-label" for="lat">Host</label>
+                                                <input class="form-control" type="text" id="host" name="host"
+                                                    required />
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="me-3 pt-1">
+                                                <label class="form-label" for="lat">Total Spot</label>
+                                                <input class="form-control" type="number" id="total" name="totalSpot"
+                                                    required />
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="event-description">Event Description</label>
+                                            <textarea class="form-control" id="event-description" rows="3"></textarea>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-primary">Save</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class=" col-lg-8 ">
+                    <div id="map" class="map-container">
+                        <!-- <div class="leaflet-bottom leaflet-right">
+                            <button type="button" class=" btn btnStyle" id="add-event" data-bs-toggle="modal" data-bs-target="#exampleModal" style="pointer-events: auto;"><i class="fa-solid fa-plus"></i></button>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="/js/map.js "></script>
+</body>
+
+
 </html>

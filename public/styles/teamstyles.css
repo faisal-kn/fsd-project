@@ -1,0 +1,10 @@
+@import url("./navbar.css");
+
+body{
+    background-image: url(/assets/simple.svg);
+}
+
+#header{
+    color: antiquewhite;
+    font-size: 50px;
+}

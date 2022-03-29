@@ -1,0 +1,51 @@
+/* @import url("../../node_modules/font-awesome/css/font-awesome.min.css"); */
+@import url("./navbar.css");
+
+.main-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.map-container {
+  height: 90vh;
+}
+
+.aside-container {
+}
+
+.image1 {
+  border-radius: 20px;
+}
+
+.first-row {
+  /* background-color: rgb(195, 199, 202); */
+}
+
+.second-row {
+}
+
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 15px;
+}
+
+.btnStyle {
+  background-color: #4d90fe;
+  background-image: -moz-linear-gradient(center top, #4d90fe, #4787ed);
+  border: 1px solid #3079ed;
+  color: #ffffff;
+  padding: 20px;
+  font-size: 20px;
+  margin-top: 4px;
+  border-radius: 50%;
+  z-index: 100;
+  width: 100%;
+  margin-bottom: 30px;
+  margin-right: 10px;
+}
+
+.modal-style {
+}

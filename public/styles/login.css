@@ -1,3 +1,5 @@
+@import url("./navbar.css");
+
 body {
   background-color: black;
   color: white;
@@ -11,8 +13,8 @@ body {
 }
 
 .container {
-  width: 60%;
-  height: 70%;
+  width: 75%;
+  height: 69%;
   align-self: center;
   justify-content: center;
   /* border: 2px solid white; */
@@ -20,34 +22,54 @@ body {
 
 .box {
   display: flex;
-  /* border: 2px solid white; */
+  flex-direction: column;
+  flex-wrap: wrap;
+  /* justify-items: flex-start; */
+  border: 2px solid white;
+  border-radius: 5px;
   height: 35rem;
 }
 
 .box1 {
-  width: 53%;
-  height: 100%;
+  width: 45%;
+  height: 60%;
   /* border: 2px solid white; */
+
   display: flex;
+  /* justify-items: flex-start; */
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
+  padding-top: 50px;
 }
 
 .box2 {
-  width: 50%;
-  height: 100%;
+  width: 45%;
+  height: 40%;
   /* border: 2px solid white; */
   display: flex;
   justify-content: center;
-  align-items: center;
+  /* align-self: flex-start; */
+
   /* border: 2px solid white; */
+}
+
+.image {
+  width: 55%;
+  height: 100%;
+  /* border: 2px solid wheat; */
+}
+
+.images {
+  height: 100%;
+  width: 100%;
+  /* border: 2px solid wheat; */
 }
 
 .form {
   display: flex;
   /* border: 2px solid gold; */
   flex-direction: column;
-  height: 50%;
+  height: 80%;
   width: 80%;
   justify-content: space-evenly;
   align-items: center;
@@ -76,12 +98,12 @@ body {
 }
 
 .other_buttons {
-  height: 30%;
+  height: 60%;
   width: 90%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  /* border: 2px solid rgb(216, 61, 61); */
+
+  justify-content: center;
   align-items: center;
 }
 
@@ -90,9 +112,10 @@ body {
   height: 34%;
   border: none;
   border-radius: 5px;
-  color: rgb(177, 177, 177);
+  margin-bottom: 10px;
+  color: rgb(114, 114, 114);
   font-weight: 400;
-  background-color: rgb(43, 43, 43);
+  background-color: rgb(26, 24, 24);
 }
 
 .login_button:hover {
@@ -111,6 +134,10 @@ body {
     font-size: 24px;
   }
 
+  .image {
+    display: none;
+  }
+
   h3 {
     font-size: 16px;
   }
@@ -122,31 +149,42 @@ body {
 
   .box {
     flex-direction: column;
+    height: 15rem;
+    border: none;
   }
 
   .box1 {
+    padding-top: 0px;
     width: 100%;
-    height: 40%;
+    height: 60%;
+    justify-content: center;
+    align-items: flex-start;
+    /* border: 2px solid white; */
   }
 
   .form {
     height: 100%;
+    justify-content: center;
   }
 
   .box2 {
     width: 100%;
     align-items: flex-start;
-    height: 30%;
+    padding-top: 5%;
+    height: 40%;
+    justify-content: center;
+    /* align-items: center; */
+    /* border: 2px solid white; */
   }
 
   .details {
     font-size: 12px;
-    height: 25%;
+    height: 100%;
   }
 
   .other_buttons {
     width: 80%;
-    height: 75%;
+    height: 100%;
     justify-content: space-around;
   }
 }

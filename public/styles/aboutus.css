@@ -1,0 +1,388 @@
+@import url("./navbar.css");
+
+*{
+    margin: 0px;
+    padding: 0px ;
+    box-sizing: border-box;
+    color:rgb(167, 164, 164);
+    font-family: Font;
+    /* background-color: #4D4D4D; */
+background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 1000'%3E%3Cg %3E%3Ccircle fill='%234D4D4D' cx='50' cy='0' r='50'/%3E%3Cg fill='%23494949' %3E%3Ccircle cx='0' cy='50' r='50'/%3E%3Ccircle cx='100' cy='50' r='50'/%3E%3C/g%3E%3Ccircle fill='%23454545' cx='50' cy='100' r='50'/%3E%3Cg fill='%23424242' %3E%3Ccircle cx='0' cy='150' r='50'/%3E%3Ccircle cx='100' cy='150' r='50'/%3E%3C/g%3E%3Ccircle fill='%233e3e3e' cx='50' cy='200' r='50'/%3E%3Cg fill='%233a3a3a' %3E%3Ccircle cx='0' cy='250' r='50'/%3E%3Ccircle cx='100' cy='250' r='50'/%3E%3C/g%3E%3Ccircle fill='%23373737' cx='50' cy='300' r='50'/%3E%3Cg fill='%23333333' %3E%3Ccircle cx='0' cy='350' r='50'/%3E%3Ccircle cx='100' cy='350' r='50'/%3E%3C/g%3E%3Ccircle fill='%23303030' cx='50' cy='400' r='50'/%3E%3Cg fill='%232c2c2c' %3E%3Ccircle cx='0' cy='450' r='50'/%3E%3Ccircle cx='100' cy='450' r='50'/%3E%3C/g%3E%3Ccircle fill='%23292929' cx='50' cy='500' r='50'/%3E%3Cg fill='%23252525' %3E%3Ccircle cx='0' cy='550' r='50'/%3E%3Ccircle cx='100' cy='550' r='50'/%3E%3C/g%3E%3Ccircle fill='%23222222' cx='50' cy='600' r='50'/%3E%3Cg fill='%231e1e1e' %3E%3Ccircle cx='0' cy='650' r='50'/%3E%3Ccircle cx='100' cy='650' r='50'/%3E%3C/g%3E%3Ccircle fill='%231b1b1b' cx='50' cy='700' r='50'/%3E%3Cg fill='%23181818' %3E%3Ccircle cx='0' cy='750' r='50'/%3E%3Ccircle cx='100' cy='750' r='50'/%3E%3C/g%3E%3Ccircle fill='%23151515' cx='50' cy='800' r='50'/%3E%3Cg fill='%23111111' %3E%3Ccircle cx='0' cy='850' r='50'/%3E%3Ccircle cx='100' cy='850' r='50'/%3E%3C/g%3E%3Ccircle fill='%230c0c0c' cx='50' cy='900' r='50'/%3E%3Cg fill='%23060606' %3E%3Ccircle cx='0' cy='950' r='50'/%3E%3Ccircle cx='100' cy='950' r='50'/%3E%3C/g%3E%3Ccircle fill='%23000000' cx='50' cy='1000' r='50'/%3E%3C/g%3E%3C/svg%3E");
+background-attachment: fixed;
+background-size: contain;
+}
+ nav{
+     width: 100%;
+     height:75px;
+     background-color: #C0C0C0;
+     line-height:75px;
+     padding: 0px 100px;
+     position:sticky;
+     top:0px;
+ }
+
+ nav .logo{
+     font-size:30px;
+     font-weight:bold;
+     letter-spacing:1.5px;
+ }
+
+ nav .logo p{
+     float:left;
+     color:white;
+     text-transform:uppercase;
+ }
+ nav .logo p:hover{
+    color:#696969;
+    cursor: pointer;
+}
+ nav ul{
+     float:right;
+ }
+
+nav ul li{
+    display:inline-block;
+    list-style: none;
+}
+
+nav ul li a{
+    color:white;
+    text-transform:capitalize;
+    font-size: 20px;
+    text-decoration: none;
+    padding : 0px 32px;
+}
+
+nav ul li a:hover,a:active{
+    color:#696969;
+    text-decoration:underline;
+}
+.section{
+    display:flex;
+    flex-direction:column;
+    flex-wrap: wrap;
+padding-top:30px;
+ width: 100%;
+ background-color: #ddd;
+}
+
+.container{
+    /* border:1px solid black; */
+    padding-top:100px;
+    width: 99%; 
+    /* min-height:190vh;  */
+    display: flex;
+    /* flex-direction: column; */
+    /* margin: auto; */
+    justify-content: wrap;
+}
+
+.content-section{
+    /* border:1px solid black; */
+    /* float: right; */
+    width:45%;
+    margin:20px 50px;
+
+}
+
+.image-section{
+    /* float: left; */
+    width:45%;
+    height:400px;
+    margin:20px 20px;
+} 
+
+.image-section img{
+    width:90%;
+    height: 100%;
+    border-radius: 5px;
+}
+
+.content-section .title{
+    text-transform: uppercase;
+    font-size:28px;
+}
+
+.content-section .content h2{
+    margin-top: 20px;
+    /* color:#2C3539; */
+    font-size: 25px;
+    text-transform:capitalize;
+}
+
+.content-section .content p{
+    margin-top: 10px;
+    font-family: sans-serif;
+    font-size: 17px;
+    line-height:1.5;
+    word-spacing: 3px;
+}
+.content-section .content .button{
+    margin-top: 30px;
+   
+}
+.content-section .content .button a{
+  background-color:#3d3d3d;
+  padding:12px 40px;
+  text-decoration: none;
+  color:#fff;
+  font-size:20px;
+  letter-spacing:1.5px;
+  border-radius: 5px;
+}
+.content-section .content .button a:hover{
+    background-color:#a52a2a;
+    color: #fff;
+
+}
+
+.content-section .social{
+    margin: 40px 40px;
+}
+.content-section .social i{
+    color:#a52a2a;
+    font-size: 30px;
+    padding: 0px 10px;
+}
+.content-section .social i:hover{
+    color:#3d3d3d;
+}
+ 
+ .features{
+    /* border: 1px solid black; */
+     width:95%;
+     margin:auto;
+     margin-top:50px; 
+     min-height:995px;
+ }
+
+.features h1{
+    margin: 46px 21px;
+    text-align: center;
+    /* border: 1px solid black; */
+    text-transform: capitalize;
+}
+
+.f{
+    /* border: 1px solid black; */
+ display: flex;
+ /* justify-content: center; */
+ justify-content: space-evenly;
+ flex-wrap: wrap;
+ height: 715px;
+}
+ .feat{
+    /* border: 1px solid black; */
+    width: 319px;
+    margin: 50px 20px;
+    height: 630px;
+ }
+
+ .feat img{
+    height: 244px;
+    width: 251px;
+    border-radius: 70%;
+    margin-left:40px;
+ }
+
+ .cont {
+    text-align: center;
+     /* border: 1px solid black; */
+     margin-top:37px;
+ }
+ .cont h2{
+
+     margin: top 30px;
+    /* border: 1px solid black; */
+    line-height: 48px;
+    letter-spacing:1px;
+
+ }
+ .cont p{
+     /* border: 1px solid black; */
+     font-size:18px;
+     margin-top:20px;
+     line-height:24px;
+     letter-spacing:1px;
+     word-spacing: 1px;
+
+ }
+
+ .feat a{
+     font-size: 18px;
+     display:block;
+     text-transform: capitalize;
+     text-decoration: none;
+     text-align: center;
+     color:#696969;
+     margin-top:20px;
+     line-height:24px;
+     letter-spacing:1px;
+     word-spacing: 1px;
+ }
+
+ .feat a:hover{
+     color:#3d3d3d;
+     text-decoration: underline;
+ }
+
+ footer{
+     /* border:1px solid black; */
+     height:500px;
+     display:flex;
+     flex-direction: column;
+    
+ }
+ footer .heading {
+     display:block;
+     height:50px;
+    /* border: 1px solid black; */
+    margin:20px 20px;
+    text-align: center;
+    padding:20px;
+    text-transform: capitalize;
+ }
+
+  
+ hr{
+     display: block;
+     width:63%;
+     margin:auto;
+    /* margin-left:247px; */
+    height:4px;
+    background-color:black;
+ }
+
+ .yc{
+    margin-top:50px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:center;
+    flex-shrink: 2px;
+    /* justify-content:space-evenly; */
+}
+ .youracc{
+    /* border: 1px solid black; */
+    width: 170px;
+    height: 100%;
+    margin: 19px 50px;
+    /* text-align: center; */
+ }
+
+ .youracc h3{
+     margin-top:20px;
+     margin-bottom:20px;
+     text-decoration: underline;
+ }
+.youracc li{
+    list-style: none;
+    line-height:34px;
+    font-size: 16px;
+}
+
+ #box4{
+    flex-basis:399px;
+}
+#box4 h3{
+    margin-left:30px;
+}
+.youracc .social{
+    margin:40px 0px;
+}
+
+.youracc .social i{
+    margin-left:40px;
+    font-size:28px;
+    color: rgb(119, 3, 3);
+}
+
+
+@media screen and (max-width: 1512px) {
+  
+    .container{
+        width: 80%;  
+        display: block;
+        margin: auto;
+        padding-top: 50px;
+    }
+
+    .content-section{
+        float: none;
+        width: 100%;
+        display: block;
+        margin: auto;
+    }
+    .image-section{
+        float: none;
+        display:center;
+        width: 100%;
+       
+    }
+
+    .image-section img{
+        width:90%;
+        height:50%;
+        border-radius: 5px;
+        height: auto;
+        display: block;
+        margin: auto;
+    }
+
+    .content-section .title{
+        text-align: center;
+        font-size:20px;
+    }
+
+    .content-section .content .button{
+        text-align: center;
+    }
+    .content-section .content .button a{
+    padding:9px 30px;
+    }
+    .content-section .social{
+        text-align: center;
+    }
+
+     .features{
+        /* border: 1px solid black; */
+         width:95%;
+         margin:auto;
+         margin-top:50px; 
+         height:1719px;
+     }
+     footer{
+        /* border:1px solid black; */
+        height:500px;
+        display:flex;
+        flex-direction: column;
+       
+    }
+}
+@media screen and (max-width: 1325px) {
+    .yc{
+        margin-top:50px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content:center;
+        flex-shrink: 2px;
+        /* justify-content:space-evenly; */
+    }
+    .youracc{
+        height:24%;
+    }
+    footer{
+        /* border:1px solid black; */
+        height: 1136px;
+    display: flex;
+    flex-direction: column;
+    }
+}
+
+@media screen and (max-width: 757px) {
+    .features{
+         width:95%;
+         margin:auto;
+         margin-top:50px; 
+         height:2990px;
+     }
+}

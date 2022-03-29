@@ -9,25 +9,42 @@
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
     />
     <link rel="stylesheet" href="/styles/login.css" />
+    <style>
+      body {
+        background-color: #4d4d4d;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 1000'%3E%3Cg %3E%3Ccircle fill='%234D4D4D' cx='50' cy='0' r='50'/%3E%3Cg fill='%23494949' %3E%3Ccircle cx='0' cy='50' r='50'/%3E%3Ccircle cx='100' cy='50' r='50'/%3E%3C/g%3E%3Ccircle fill='%23454545' cx='50' cy='100' r='50'/%3E%3Cg fill='%23424242' %3E%3Ccircle cx='0' cy='150' r='50'/%3E%3Ccircle cx='100' cy='150' r='50'/%3E%3C/g%3E%3Ccircle fill='%233e3e3e' cx='50' cy='200' r='50'/%3E%3Cg fill='%233a3a3a' %3E%3Ccircle cx='0' cy='250' r='50'/%3E%3Ccircle cx='100' cy='250' r='50'/%3E%3C/g%3E%3Ccircle fill='%23373737' cx='50' cy='300' r='50'/%3E%3Cg fill='%23333333' %3E%3Ccircle cx='0' cy='350' r='50'/%3E%3Ccircle cx='100' cy='350' r='50'/%3E%3C/g%3E%3Ccircle fill='%23303030' cx='50' cy='400' r='50'/%3E%3Cg fill='%232c2c2c' %3E%3Ccircle cx='0' cy='450' r='50'/%3E%3Ccircle cx='100' cy='450' r='50'/%3E%3C/g%3E%3Ccircle fill='%23292929' cx='50' cy='500' r='50'/%3E%3Cg fill='%23252525' %3E%3Ccircle cx='0' cy='550' r='50'/%3E%3Ccircle cx='100' cy='550' r='50'/%3E%3C/g%3E%3Ccircle fill='%23222222' cx='50' cy='600' r='50'/%3E%3Cg fill='%231e1e1e' %3E%3Ccircle cx='0' cy='650' r='50'/%3E%3Ccircle cx='100' cy='650' r='50'/%3E%3C/g%3E%3Ccircle fill='%231b1b1b' cx='50' cy='700' r='50'/%3E%3Cg fill='%23181818' %3E%3Ccircle cx='0' cy='750' r='50'/%3E%3Ccircle cx='100' cy='750' r='50'/%3E%3C/g%3E%3Ccircle fill='%23151515' cx='50' cy='800' r='50'/%3E%3Cg fill='%23111111' %3E%3Ccircle cx='0' cy='850' r='50'/%3E%3Ccircle cx='100' cy='850' r='50'/%3E%3C/g%3E%3Ccircle fill='%230c0c0c' cx='50' cy='900' r='50'/%3E%3Cg fill='%23060606' %3E%3Ccircle cx='0' cy='950' r='50'/%3E%3Ccircle cx='100' cy='950' r='50'/%3E%3C/g%3E%3Ccircle fill='%23000000' cx='50' cy='1000' r='50'/%3E%3C/g%3E%3C/svg%3E");
+        background-attachment: fixed;
+        background-size: contain;
+      }
+    </style>
     <title>Login</title>
   </head>
 
   <body>
+
+    <%- include('../partials/nav.ejs') %>
     <div class="page">
       <div class="container">
         <h1 style="text-align: center">Login to your account</h1>
         <h3 style="font-size: 18px; text-align: center; opacity: 0.4">
-          display message
+          Make sure to share our platform with your friends!
         </h3>
         <div class="box">
+          <div class="image">
+            <img
+              src="https://img.freepik.com/free-vector/navigation-map-street-3d-location-pin-locator-pins-pointer-navigator-maps-locations-marker_102902-1053.jpg?size=626&ext=jpg&ga=GA1.1.1097707927.1648489757"
+              class="images"
+              alt=""
+            />
+          </div>
           <div class="box1">
-            <form action="#" class="form">
+            <form action="#" class="form" id="form-user--data">
               <input
                 class="details"
-                type="text"
+                type="email"
                 name="username"
-                id="username"
-                placeholder="Enter your username"
+                id="email"
+                placeholder="Enter your email"
               />
               <input
                 class="details"
@@ -44,8 +61,8 @@
               <button type="button" class="login_button">
                 Login with google
               </button>
-              <button type="button" class="login_button">
-                Create an account
+              <button type="button" class="login_button" id="login-btn">
+                Login
               </button>
             </div>
           </div>
