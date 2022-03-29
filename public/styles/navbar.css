@@ -1,14 +1,20 @@
-
-
-a{
+a {
   font-size: larger;
 }
 
-.position{
+.position {
   position: sticky;
   top: 0px;
   z-index: 1000;
   opacity: 0.8;
   font-weight: 700;
+}
 
+.nav-logo img {
+  display: flex;
+  justify-content: flex-start;
+  /* max-width: 200px; */
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
 }

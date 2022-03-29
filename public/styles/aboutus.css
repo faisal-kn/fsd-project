@@ -1,325 +1,312 @@
 @import url("./navbar.css");
 
-body{
-    margin: 0px;
-    padding: 0px ;
-    box-sizing: border-box;
-    font-family: Font;
-    
+body {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  font-family: Font;
 }
 
-.section{
-    display:flex;
-    flex-direction:column;
-    flex-wrap: wrap;
-padding-top:30px;
- width: 100%;
- background-color: #ddd;
+.section {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  padding-top: 30px;
+  width: 100%;
+  background-color: #ddd;
 }
 
-.container{
-    
-    padding-top:100px;
-    width: 99%; 
-    display: flex;
-    justify-content: wrap;
+.container {
+  padding-top: 100px;
+  width: 99%;
+  display: flex;
+  justify-content: wrap;
 }
 
-.content-section{
-    width:45%;
-    margin:20px 50px;
-
+.content-section {
+  width: 45%;
+  margin: 20px 50px;
 }
 
-.image-section{
-    width:45%;
-    height:400px;
-    margin:20px 20px;
-} 
-
-.image-section img{
-    width:90%;
-    height: 100%;
-    border-radius: 5px;
+.image-section {
+  width: 45%;
+  height: 400px;
+  margin: 20px 20px;
 }
 
-.content-section .title{
-    text-transform: uppercase;
-    font-size:28px;
-}
-
-.content-section .contents h2{
-    margin-top: 20px;
-    font-size: 25px;
-    text-transform:capitalize;
-}
-
-.content-section .content p{
-    margin-top: 10px;
-    font-family: sans-serif;
-    font-size: 17px;
-    line-height:1.5;
-    word-spacing: 3px;
-}
-.content-section .contents .button{
-    margin-top: 30px;
-}
-.content-section .contents .button a{
-  background-color:#3d3d3d;
-  padding:12px 40px;
-  text-decoration: none;
-  color:#fff;
-  font-size:20px;
-  letter-spacing:1.5px;
+.image-section img {
+  width: 90%;
+  height: 100%;
   border-radius: 5px;
 }
-.content-section .contents .button a:hover{
-    background-color:#a52a2a;
-    color: #fff;
 
+.content-section .title {
+  text-transform: uppercase;
+  font-size: 28px;
 }
 
-.content-section .social{
-    margin: 40px 40px;
-}
-.content-section .social i{
-    color:#a52a2a;
-    font-size: 30px;
-    padding: 0px 10px;
-}
-.content-section .social i:hover{
-    color:#3d3d3d;
-}
- 
- .features{
-     width:95%;
-     margin:auto;
-     margin-top:50px; 
-     min-height:995px;
- }
-
-.features h1{
-    margin: 46px 21px;
-    text-align: center;
-    text-transform: capitalize;
+.content-section .contents h2 {
+  margin-top: 20px;
+  font-size: 25px;
+  text-transform: capitalize;
 }
 
-.f{
- display: flex;
- justify-content: space-evenly;
- flex-wrap: wrap;
- height: 715px;
+.content-section .content p {
+  margin-top: 10px;
+  font-family: sans-serif;
+  font-size: 17px;
+  line-height: 1.5;
+  word-spacing: 3px;
 }
- .feat{
-    width: 319px;
-    margin: 50px 20px;
-    height: 630px;
- }
-
- .feat img{
-    height: 244px;
-    width: 251px;
-    border-radius: 70%;
-    margin-left:40px;
- }
-
- .cont {
-    text-align: center;
-     margin-top:37px;
- }
- .cont h2{
-
-     margin: top 30px;
-    /* border: 1px solid black; */
-    line-height: 48px;
-    letter-spacing:1px;
-
- }
- .cont p{
-     /* border: 1px solid black; */
-     font-size:18px;
-     margin-top:20px;
-     line-height:24px;
-     letter-spacing:1px;
-     word-spacing: 1px;
-
- }
-
- .feat a{
-     font-size: 18px;
-     display:block;
-     text-transform: capitalize;
-     text-decoration: none;
-     text-align: center;
-     color:#696969;
-     margin-top:20px;
-     line-height:24px;
-     letter-spacing:1px;
-     word-spacing: 1px;
- }
-
- .feat a:hover{
-     color:#dadada;
-     text-decoration: underline;
- }
-
- footer{
-     /* border:1px solid black; */
-     height:500px;
-     display:flex;
-     flex-direction: column;
-    
- }
- footer .heading {
-     display:block;
-     height:50px;
-    /* border: 1px solid black; */
-    margin:20px 20px;
-    text-align: center;
-    padding:20px;
-    text-transform: capitalize;
- }
-
-  
- hr{
-     display: block;
-     width:63%;
-     margin:auto;
-    /* margin-left:247px; */
-    height:4px;
-    background-color:black;
- }
-
- .yc{
-    margin-top:50px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content:center;
-    flex-shrink: 2px;
-    /* justify-content:space-evenly; */
+.content-section .contents .button {
+  margin-top: 30px;
 }
- .youracc{
-    /* border: 1px solid black; */
-    width: 170px;
-    height: 100%;
-    margin: 19px 50px;
-    /* text-align: center; */
- }
-
- .youracc h3{
-     margin-top:20px;
-     margin-bottom:20px;
-     text-decoration: underline;
- }
-.youracc li{
-    list-style: none;
-    line-height:34px;
-    font-size: 16px;
+.content-section .contents .button a {
+  background-color: #3d3d3d;
+  padding: 12px 40px;
+  text-decoration: none;
+  color: #fff;
+  font-size: 20px;
+  letter-spacing: 1.5px;
+  border-radius: 5px;
+}
+.content-section .contents .button a:hover {
+  background-color: #a52a2a;
+  color: #fff;
 }
 
- #box4{
-    flex-basis:399px;
+.content-section .social {
+  margin: 40px 0;
 }
-#box4 h3{
-    margin-left:30px;
+.content-section .social i {
+  color: #a52a2a;
+  font-size: 30px;
+  padding: 0px 10px;
 }
-.youracc .social{
-    margin:40px 0px;
-}
-
-.youracc .social i{
-    margin-left:40px;
-    font-size:28px;
-    color: rgb(119, 3, 3);
+.content-section .social i:hover {
+  color: #3d3d3d;
 }
 
+.features {
+  width: 95%;
+  margin: auto;
+  margin-top: 50px;
+  min-height: 995px;
+}
+
+.features h1 {
+  margin: 46px 21px;
+  text-align: center;
+  text-transform: capitalize;
+}
+
+.f {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  height: 715px;
+}
+.feat {
+  width: 319px;
+  margin: 50px 20px;
+  height: 630px;
+}
+
+.feat img {
+  height: 244px;
+  width: 251px;
+  border-radius: 70%;
+  margin-left: 40px;
+}
+
+.cont {
+  text-align: center;
+  margin-top: 37px;
+}
+.cont h2 {
+  margin: top 30px;
+  /* border: 1px solid black; */
+  line-height: 48px;
+  letter-spacing: 1px;
+}
+.cont p {
+  /* border: 1px solid black; */
+  font-size: 18px;
+  margin-top: 20px;
+  line-height: 24px;
+  letter-spacing: 1px;
+  word-spacing: 1px;
+}
+
+.feat a {
+  font-size: 18px;
+  display: block;
+  text-transform: capitalize;
+  text-decoration: none;
+  text-align: center;
+  color: #696969;
+  margin-top: 20px;
+  line-height: 24px;
+  letter-spacing: 1px;
+  word-spacing: 1px;
+}
+
+.feat a:hover {
+  color: #dadada;
+  text-decoration: underline;
+}
+
+footer {
+  /* border:1px solid black; */
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+}
+footer .heading {
+  display: block;
+  height: 50px;
+  /* border: 1px solid black; */
+  margin: 20px 20px;
+  text-align: center;
+  padding: 20px;
+  text-transform: capitalize;
+}
+
+hr {
+  display: block;
+  width: 63%;
+  margin: auto;
+  /* margin-left:247px; */
+  height: 4px;
+  background-color: black;
+}
+
+.yc {
+  margin-top: 50px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  flex-shrink: 2px;
+  /* justify-content:space-evenly; */
+}
+.youracc {
+  /* border: 1px solid black; */
+  width: 170px;
+  height: 100%;
+  margin: 19px 50px;
+  /* text-align: center; */
+}
+
+.youracc h3 {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  text-decoration: underline;
+}
+.youracc li {
+  list-style: none;
+  line-height: 34px;
+  font-size: 16px;
+}
+
+#box4 {
+  flex-basis: 399px;
+}
+#box4 h3 {
+  margin-left: 30px;
+}
+.youracc .social {
+  margin: 40px 0px;
+}
+
+.youracc .social i {
+  margin-left: 40px;
+  font-size: 28px;
+  color: rgb(119, 3, 3);
+}
 
 @media screen and (max-width: 1512px) {
-  
-    .container{
-        width: 80%;  
-        display: block;
-        margin: auto;
-        padding-top: 50px;
-    }
+  .container {
+    width: 80%;
+    display: block;
+    margin: auto;
+    padding-top: 50px;
+  }
 
-    .content-section{
-        float: none;
-        width: 100%;
-        display: block;
-        margin: auto;
-    }
-    .image-section{
-        float: none;
-        display:center;
-        width: 100%;
-       
-    }
+  .content-section {
+    float: none;
+    width: 100%;
+    display: block;
+    margin: auto;
+  }
+  .image-section {
+    float: none;
+    display: center;
+    width: 100%;
+  }
 
-    .image-section img{
-        width:90%;
-        height:50%;
-        border-radius: 5px;
-        height: auto;
-        display: block;
-        margin: auto;
-    }
+  .image-section img {
+    width: 90%;
+    height: 50%;
+    border-radius: 5px;
+    height: auto;
+    display: block;
+    margin: auto;
+  }
 
-    .content-section .title{
-        text-align: center;
-        font-size:20px;
-    }
+  .content-section .title {
+    text-align: center;
+    font-size: 20px;
+  }
 
-    .content-section .contents .button{
-        text-align: center;
-    }
-    .content-section .contents .button a{
-    padding:9px 30px;
-    }
-    .content-section .social{
-        text-align: center;
-    }
+  .content-section .contents .button {
+    text-align: center;
+  }
+  .content-section .contents .button a {
+    padding: 9px 30px;
+  }
+  .content-section .social {
+    text-align: center;
+  }
 
-     .features{
-        /* border: 1px solid black; */
-         width:95%;
-         margin:auto;
-         margin-top:50px; 
-         height:1719px;
-     }
-     footer{
-        /* border:1px solid black; */
-        height:500px;
-        display:flex;
-        flex-direction: column;
-       
-    }
-}
-@media screen and (max-width: 1325px) {
-    .yc{
-        margin-top:50px;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content:center;
-        flex-shrink: 2px;
-        /* justify-content:space-evenly; */
-    }
-    .youracc{
-        height:24%;
-    }
-    footer{
-        /* border:1px solid black; */
-        height: 1136px;
+  .features {
+    /* border: 1px solid black; */
+    width: 95%;
+    margin: auto;
+    margin-top: 50px;
+    height: 1719px;
+  }
+  footer {
+    /* border:1px solid black; */
+    height: 500px;
     display: flex;
     flex-direction: column;
-    }
+  }
+}
+@media screen and (max-width: 1325px) {
+  .yc {
+    margin-top: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex-shrink: 2px;
+    /* justify-content:space-evenly; */
+  }
+  .youracc {
+    height: 24%;
+  }
+  footer {
+    /* border:1px solid black; */
+    height: 1136px;
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 @media screen and (max-width: 757px) {
-    .features{
-         width:95%;
-         margin:auto;
-         margin-top:50px; 
-         height:2990px;
-     }
+  .features {
+    width: 95%;
+    margin: auto;
+    margin-top: 50px;
+    height: 2990px;
+  }
 }
