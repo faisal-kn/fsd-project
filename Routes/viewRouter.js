@@ -11,6 +11,7 @@ router.get("/error", viewController.getErrorPage);
 router.get("/contactus", viewController.getContactus);
 router.get("/userprofile", viewController.getUserprofile);
 router.get("/aboutus", viewController.getAboutus);
-router.get("/eventsharing", viewController.getEventsharing);
 router.get("/newTeam", viewController.getNewTeam);
+router.get("/events/:eventid", viewController.getOneEvent);
+
 module.exports = router;

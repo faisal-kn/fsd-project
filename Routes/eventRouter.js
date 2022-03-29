@@ -7,9 +7,15 @@ const router = express.Router();
 
 router.post(
   "/create-event",
-  /*authController.protect,*/ eventController.createEvent
+  authController.protect,
+  eventController.createEvent
 );
 router.get("/popular-events", eventController.getPopularEvents);
-router.get("/all-events", eventController.getAllEvents);
+router.get("/all-events", authController.protect, eventController.getAllEvents);
+router.get(
+  "/get-event-by-hobby/:hobby",
+  authController.protect,
+  eventController.getEventByHobby
+);
 
 module.exports = router;

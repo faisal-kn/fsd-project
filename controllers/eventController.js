@@ -26,3 +26,12 @@ exports.getAllEvents = async (req, res, next) => {
     res.status(401).json({ status: "failed", error: err });
   }
 };
+
+exports.getEventByHobby = async (req, res, next) => {
+  try {
+    const eventByHobby = await Event.find({ hobby: req.params.hobby });
+    res.status(200).json({ status: "success", data: { eventByHobby } });
+  } catch (err) {
+    res.status(401).json({ status: "failed", error: err });
+  }
+};

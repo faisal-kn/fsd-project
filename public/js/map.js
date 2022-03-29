@@ -15,6 +15,8 @@ const host = document.getElementById("host");
 const total = document.getElementById("total");
 const form = document.getElementById("form-event--data");
 const eventDescription = document.getElementById("event-description");
+const hobby = document.getElementById("hobbies-select");
+const secondButton = document.getElementById("secondButton");
 
 let map;
 
@@ -42,10 +44,28 @@ const eventRequest = (lat, lng) => {
   }
 };
 
+if (secondButton) {
+  secondButton.addEventListener("click", async () => {
+    hobbyValue = hobby.value;
+    console.log(hobbyValue);
+    const res = await fetch(
+      `http://localhost:3001/api/event/get-event-by-hobby/${hobbyValue}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    const data = await res.json();
+    console.log(data);
+  });
+}
+
 const createMarker = (ele) => {
   const marker = new L.Marker([ele.location[0], ele.location[1]]);
   const popup = L.popup().setContent(
-    `<a href="http://www.google.com">${ele.name}</a>`
+    `<a href=/events/${ele._id}>${ele.name}</a>`
   );
   marker.bindPopup(popup).openPopup();
   marker.addTo(map);
@@ -127,9 +147,6 @@ const markerHandler = (e) => {
   eventRequest(lat, lng);
   map.off("click", markerHandler);
   myModal.show();
-  // modal.addEventListener("hide.bs.modal", (e) => {
-  //   map.removeLayer(marker);
-  // });
 };
 
 addNewEventBtn.addEventListener("click", (e) => {
