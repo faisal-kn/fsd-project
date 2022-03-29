@@ -27,9 +27,6 @@ exports.getContactus = function (req, res, next) {
 };
 
 exports.getUserprofile = function (req, res, next) {
-
-  // const user = ;
-
   res.status(200).render("pages/userprofile", { title: "Userprofile" });
 };
 
