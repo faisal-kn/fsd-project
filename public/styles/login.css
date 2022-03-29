@@ -1,4 +1,5 @@
 @import url("./navbar.css");
+@import url("./alert.css");
 
 body {
   background-color: black;
@@ -13,10 +14,13 @@ body {
 }
 
 .container {
+  display: flex;
+  flex-direction: column;
   width: 75%;
   height: 69%;
   align-self: center;
   justify-content: center;
+  align-items: center;
   /* border: 2px solid white; */
 }
 
@@ -24,6 +28,8 @@ body {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
+  /* align-items: center; */
+  width: 85%;
   /* justify-items: flex-start; */
   border: 2px solid white;
   border-radius: 5px;

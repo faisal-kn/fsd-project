@@ -7,10 +7,12 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
     <link rel="stylesheet" href="/styles/adminportal.css">
     <link rel="stylesheet" href="/styles/footer.css">
+    <link rel="stylesheet" href="style/navbar.css">
     <script type="module" src="/js/adminportal.js"></script>
     <title>Admin portal</title>
 </head>
 <body>
+  <%- include('../partials/nav.ejs') %>
     <div class="mainbox">
         <div class="subbox1">
 
@@ -163,6 +165,6 @@
         </div>
 
     </div>
-    <%- include('../partials/footer.ejs') %>
+  <%- include('../partials/footer.ejs') %>
 </body>
 </html>

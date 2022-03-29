@@ -6,6 +6,7 @@ const cookieParser = require("cookie-parser");
 const viewRouter = require("./Routes/viewRouter");
 const userRouter = require("./Routes/userRouter");
 const eventRouter = require("./Routes/eventRouter");
+const AppError = require('./utils/AppError');
 
 const app = express();
 app.use(express.json());
