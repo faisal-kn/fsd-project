@@ -1,3 +1,5 @@
+
+
 a{
   font-size: larger;
 }
@@ -7,6 +9,6 @@ a{
   top: 0px;
   z-index: 1000;
   opacity: 0.8;
-  font-weight: 600;
+  font-weight: 700;
 
 }

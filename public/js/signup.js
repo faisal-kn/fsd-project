@@ -82,11 +82,11 @@ options.forEach((element) => {
   element.addEventListener("click", () => {
     console.log(element.style.backgroundColor);
     if (element.style.backgroundColor == "white") {
-      element.style.backgroundColor = "blue";
+      element.style.backgroundColor = "aqua";
       change = 1;
       hobbiesMap.set(element.innerText, 1);
     }
-    if (element.style.backgroundColor == "blue" && change == 0) {
+    if (element.style.backgroundColor == "aqua" && change == 0) {
       element.style.backgroundColor = "white";
       hobbiesMap.set(element.innerText, 0);
     }
