@@ -1,10 +1,12 @@
 const Events = require("../models/Events");
+const Users = require("../models/Users");
 
 exports.getLogin = function (req, res, next) {
   res.status(200).render("pages/login", { title: "Login" });
 };
 
 exports.getHome = function (req, res, next) {
+  console.log(res.locals.user);
   res.status(200).render("pages/home", { title: "Home" });
 };
 
@@ -25,6 +27,9 @@ exports.getContactus = function (req, res, next) {
 };
 
 exports.getUserprofile = function (req, res, next) {
+
+  // const user = ;
+
   res.status(200).render("pages/userprofile", { title: "Userprofile" });
 };
 
@@ -37,14 +42,14 @@ exports.getOneEvent = async function (req, res, next) {
   const event = await Events.findOne({ _id: req.params.eventid });
   console.log(event);
   res.status(200).render("pages/eventsharing", {
-    name,
-    location,
-    date,
-    attendees,
-    hobby,
-    host,
-    totalSpot,
-    description,
+    name: event.name,
+    location: event.location,
+    date: event.date,
+    attendees: event.attendees,
+    hobby: event.hobby,
+    host: event.host,
+    totalSpot: event.totalSpot,
+    description: event.description,
   });
 };
 

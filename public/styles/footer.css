@@ -1,69 +1,66 @@
-footer{
-
-    height:500px;
-    display:flex;
-    flex-direction: column;
-
+footer {
+  height: 350px;
+  display: flex;
+  flex-direction: column;
 }
 footer .heading {
-    display:block;
-    height:50px;
-
-   margin:20px 20px;
-   text-align: center;
-   padding:20px;
-   text-transform: capitalize;
+  display: block;
+  height: 50px;
+  /* margin: 20px 20px; */
+  text-align: center;
+  padding: 20px;
+  text-transform: capitalize;
 }
 
+hr {
+  display: block;
+  width: 63%;
+  /* margin:auto; */
 
-hr{
-    display: block;
-    width:63%;
-    margin:auto;
-
-   height:4px;
-   background-color:rgb(231, 228, 228);
+  height: 4px;
+  background-color: rgb(231, 228, 228);
 }
 
-.yc{
-   margin-top:50px;
-   display: flex;
-   flex-wrap: wrap;
-   justify-content:center;
-   flex-shrink: 2px;
-
+.yc {
+  margin-top: 50px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  flex-shrink: 2px;
 }
-.youracc{
-
-   width: 170px;
-   height: 100%;
-   margin: 19px 50px;
-
+.youracc {
+  width: 170px;
+  height: 100%;
+  margin: 19px 50px;
 }
 
-.youracc h3{
-    margin-top:20px;
-    margin-bottom:20px;
-    text-decoration: underline;
+.youracc h3 {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  text-decoration: underline;
 }
-.youracc li{
-   list-style: none;
-   line-height:34px;
-   font-size: 16px;
-}
-
-#box4{
-   flex-basis:399px;
-}
-#box4 h3{
-   margin-left:30px;
-}
-.youracc .social{
-   margin:40px 0px;
+.youracc li {
+  list-style: none;
+  line-height: 34px;
+  font-size: 16px;
 }
 
-.youracc .social i{
-   margin-left:40px;
-   font-size:28px;
-   color: rgb(119, 3, 3);
+#box4 {
+  flex-basis: 399px;
+}
+#box4 h3 {
+  margin-left: 30px;
+}
+.youracc .social {
+  margin: 40px 0px;
+}
+
+.youracc .social i {
+  margin-left: 40px;
+  font-size: 28px;
+  color: rgb(119, 3, 3);
+}
+
+.foot {
+  background-color: rgb(73, 73, 73);
 }

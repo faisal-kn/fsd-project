@@ -7,8 +7,8 @@ console.log(form, loginBtn);
 if (form) {
   form.addEventListener("submit", (e) => {
     e.preventDefault();
-    emailValue = email.value.trim();
-    passwordValue = password.value.trim();
+    const emailValue = email.value.trim();
+    const passwordValue = password.value.trim();
     login(emailValue, passwordValue);
   });
 }
@@ -28,6 +28,7 @@ const login = async (emailValue, passwordValue) => {
     });
     const data = await res.json();
     if (data.status === "success") {
+      
       window.location.href = "http://localhost:3001/events";
     }
   } catch (err) {

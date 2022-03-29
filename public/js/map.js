@@ -1,4 +1,4 @@
-// "use Strict";
+"use Strict";
 
 const leftBtn = document.getElementById("left-btn");
 const rightBtn = document.getElementById("right-btn");
@@ -18,8 +18,9 @@ const eventDescription = document.getElementById("event-description");
 const hobby = document.getElementById("hobbies-select");
 const secondButton = document.getElementById("secondButton");
 
-
 let map;
+const allCookie = document.cookie;
+console.log(allCookie);
 
 const eventRequest = (lat, lng) => {
   if (form) {
@@ -217,7 +218,7 @@ const renderPopularEvents = (maxElement, currentPage, maxPerPage) => {
   if (end > maxElement) {
     end = maxElement;
   }
-  console.log(start, end);
+
   popularEvents.innerHTML = "";
   for (let i = start; i < end; i++) {
     const eventMarkup = `

@@ -1,6 +1,7 @@
 const User = require("../models/Users");
 const jwt = require("jsonwebtoken");
 const { promisify } = require("util");
+const AppError = require("../utils/AppError");
 
 exports.signup = async (req, res, next) => {
   try {
@@ -14,7 +15,6 @@ exports.signup = async (req, res, next) => {
       httpOnly: true,
     };
     res.cookie("auth", token, cookieOptions);
-
     res.status(200).json({
       status: "success",
       token,
@@ -45,7 +45,7 @@ exports.login = async (req, res, next) => {
     }
     let user = await User.findOne({ email: email }).select("+password");
     if (!user || !(await user.checkPassword(password, user.password)))
-      throw new Error("Incorrect email or password.");
+      return next(new AppError("Incorrect email or password.", 401));
 
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
       expiresIn: process.env.JWT_EXPIRES_IN,
@@ -59,6 +59,7 @@ exports.login = async (req, res, next) => {
 
     //To remove the password field from the output
     user = await User.findOne({ email: email });
+
     res.status(200).json({
       status: "success",
       token,
@@ -84,15 +85,46 @@ exports.protect = async (req, res, next) => {
     token = req.cookies?.auth;
   }
   if (!token) {
-    throw new Error("You are not logged in . Please log in to get access");
+    return next(
+      new AppError("You are not logged in . Please log in to get access", 401)
+    );
   }
   const decoded = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
 
   const user = await User.findById(decoded.id);
   if (!user)
-    throw new Error(
-      "User belonging to this token has been deleted from our database"
+    return next(
+      new AppError(
+        "User belonging to this token has been deleted from our database",
+        401
+      )
     );
   req.user = user;
+  res.locals.user = user;
+  next();
+};
+
+exports.isLoggedIn = async (req, res, next) => {
+  if (req.cookies?.auth) {
+    try {
+      const decoded = await promisify(jwt.verify)(
+        req.cookies.auth,
+        process.env.JWT_SECRET
+      );
+      //CHECK IF USER EXISTS CURRENTLY.
+      const user = await User.findById(decoded.id);
+      if (!user) {
+        res.locals.user = "";
+        return next();
+      }
+      res.locals.user = user;
+      return next();
+    } catch (err) {
+      res.locals.user = "";
+      return next();
+    }
+  } else {
+    res.locals.user = "";
+  }
   next();
 };

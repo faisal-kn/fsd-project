@@ -20,7 +20,7 @@
   clip-path: circle(75%);
 }
 .menu-btn {
-  position: absolute;
+  position: fixed;
   z-index: 2;
   right: 20px;
   top: 20px;

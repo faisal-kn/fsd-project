@@ -1,51 +1,33 @@
-<link rel="stylesheet" href="/styles/footer.css">
+<link rel="stylesheet" href="/styles/footer.css" />
 
-<footer >
-  <h3 class="heading" >share an event</h3>
-  <hr>
+<footer class="foot">
+  <!-- <h3 class="heading">share an event</h3> -->
+  <hr />
   <div class="yc">
-      <div class="youracc">
+    <div class="youracc">
       <h3>Your Account</h3>
       <ul>
-          <li><a href="/signup">Sign up</a></li>
-          <li><a href="/login">Log in</a></li>
-          <li><a href="/userprofile">Profile</a></li>
+        <li><a href="/signup">Sign up</a></li>
+        <li><a href="/login">Log in</a></li>
+        <%console.log(user)%>
+        <li><a href="/userprofile/<%=user._id %>">Profile</a></li>
       </ul>
+    </div>
+
+    <div class="youracc">
+      <h3>Discover</h3>
+      <ul>
+        <li><a href="/events">Events</a></li>
+        <li><a href="/eventsharing">Share events</a></li>
+      </ul>
+    </div>
+    <div class="youracc">
+      <h3>Website</h3>
+      <ul>
+        <li><a href="/aboutus">About us</a></li>
+        <li><a href="/newTeam">Our Team</a></li>
+        <li><a href="/contactus">Contact Us</a></li>
+      </ul>
+    </div>
   </div>
-
-<div class="youracc">
-   <h3>Discover</h3>
-   <ul>
-       <li><a href="/events">Events</a></li>
-       <li><a href="/eventsharing">Share events</a></li>
-       <!-- <li>Topics</li>
-       <li>Cities</li>
-       <li>Online Events</li> -->
-   </ul>
-</div>
-<div class="youracc">
-   <h3>Website</h3>
-   <ul>
-       <li><a href="/aboutus">About us</a></li>
-       <li><a href="/newTeam">Our Team</a></li>
-       <li><a href="/contactus">Contact Us</a></li>
-       <!-- <li>Apps</li>
-       <li>Blog</li>
-       <li>Accessibility</li> -->
-   </ul>
-</div>
-<div class="youracc" id="box4">
-   <h3>Follow us on</h3>
-   <div class="social">
-       <a href=""><i class="fab fa-facebook-f"></i></a>
-       <a href=""><i class="fab fa-twitter"></i></a>
-       <a href=""><i class="fab fa-instagram"></i></a>
-       <a href=""><i class="fab fa-youtube"></i></a> 
-   </div>
-
-</div>
-</div>
-<!-- <div class="pp">
-
-</div> -->
 </footer>
