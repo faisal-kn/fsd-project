@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/styles/adminportal.css">
+    <link rel="stylesheet" href="/styles/footer.css">
+    <script type="module" src="/js/adminportal.js"></script>
+    <title>Admin portal</title>
+</head>
+<body>
+    <div class="mainbox">
+        <div class="subbox1">
+
+            <button class="buttons" id = "searchanevent">Search an event</button>
+            <button class="buttons" id = "deleteevent">Delete event</button>
+            <button class="buttons" id = "searchauser">Search a user</button>
+            <button class="buttons" id = "deleteuser">Delete user</button>
+            <button class="buttons" id = "temporaryban">Temporary Ban</button>
+            <button class="buttons" id = "warning">Warning</button>
+            <button class="buttons" id = "eventstats">Event stats</button>
+        </div>
+        <div class="subbox2">
+            <div class="card" id = "card1">
+                <p class="heading">Search an event</p>
+                <p class="texts">
+                    Give the deatils of an event to get detailed infomration on the event that you have searched for. You can also use this to check who all are attending that event. Feel free to search via location if hthat indformation is available to you. 
+                </p>
+                <form action="#" class="form">
+                    <input
+                      class="details"
+                      type="text"
+                      name="EventName"
+                      id="eventname"
+                      placeholder="Search via event name"
+                    />
+                    <input
+                      class="details"
+                      type="text"
+                      name="EventLocation"
+                      id="eventlocation"
+                      placeholder="Search via location"
+                    />
+                    
+                    <button type="submit" class="submit">Search</button>
+                    
+                  </form>
+            </div>
+
+            <div class="card" id = "card2">
+                <p class="heading">Delete event</p>
+                <p class="texts">
+                    Give the deatils of an event to get detailed infomration on the event that you have searched for. You can also use this to check who all are attending that event. Feel free to search via location if hthat indformation is available to you. 
+                </p>
+                <form action="#" class="form">
+                    <input
+                      class="details"
+                      type="text"
+                      name="EventName"
+                      id="eventname"
+                      placeholder="Delete via event name"
+                    />
+                    <input
+                      class="details"
+                      type="text"
+                      name="EventLocation"
+                      id="eventlocation"
+                      placeholder="Delete via location"
+                    />
+                    
+                    <button type="submit" class="submit">Search</button>
+                    
+                  </form>
+                </p>
+            </div>
+            <div class="card" id = "card3">
+                <p class="heading">Search a user</p>
+                <p class="texts">
+                    Give the deatils of an event to get detailed infomration on the event that you have searched for. You can also use this to check who all are attending that event. Feel free to search via location if hthat indformation is available to you. 
+                </p>
+                <form action="#" class="form">
+                    <input
+                      class="details"
+                      type="text"
+                      name="EventName"
+                      id="eventname"
+                      placeholder="Search a user via event name"
+                    />
+                    <input
+                      class="details"
+                      type="text"
+                      name="EventLocation"
+                      id="eventlocation"
+                      placeholder="Search a user via location"
+                    />
+                    
+                    <button type="submit" class="submit">Search</button>
+                    
+                  </form>
+            </div>
+            <div class="card" id = "card4">
+                <p class="heading">Delete user</p>
+                <p class="texts">
+                    Give the deatils of an event to get detailed infomration on the event that you have searched for. You can also use this to check who all are attending that event. Feel free to search via location if hthat indformation is available to you. 
+                </p>
+                <form action="#" class="form">
+                    <input
+                      class="details"
+                      type="text"
+                      name="EventName"
+                      id="eventname"
+                      placeholder="Delete user via user name"
+                    />
+                
+                    
+                    <button type="submit" class="submit">Search</button>
+                    
+                  </form>
+            </div>
+            <div class="card" id = "card5">
+                <p class="heading">Temporary ban</p>
+                <p class="texts">
+                    Give the deatils of an event to get detailed infomration on the event that you have searched for. You can also use this to check who all are attending that event. Feel free to search via location if hthat indformation is available to you. 
+                </p>
+                <form action="#" class="form">
+                    <input
+                      class="details"
+                      type="text"
+                      name="EventName"
+                      id="eventname"
+                      placeholder="Temporary ban via user name"
+                    />
+                   
+                    
+                    <button type="submit" class="submit">Search</button>
+                    
+                  </form>
+            </div>
+            <div class="card" id = "card6">
+                <p class="heading">Warning</p>
+                <p class="texts">
+                    Give the deatils of an event to get detailed infomration on the event that you have searched for. You can also use this to check who all are attending that event. Feel free to search via location if hthat indformation is available to you. 
+                </p>
+                <form action="#" class="form">
+                    <input
+                      class="details"
+                      type="text"
+                      name="EventName"
+                      id="eventname"
+                      placeholder="Give a warning via user name"
+                    />
+                
+                    
+                    <button type="submit" class="submit">Search</button>
+                    
+                  </form>
+            </div>
+            <div class="card" id = "card7">
+                <p class="heading">Event stats</p>
+            </div>
+        </div>
+
+    </div>
+    <%- include('../partials/footer.ejs') %>
+</body>
+</html>
