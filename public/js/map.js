@@ -10,10 +10,13 @@ const myModal = new bootstrap.Modal(document.getElementById("myModal"));
 const modal = document.getElementById("myModal");
 const eventName = document.getElementById("name");
 const date = document.getElementById("date");
-const hobbies = document.getElementById("attendees");
+const hobbies = document.getElementById("hobbies");
 const host = document.getElementById("host");
 const total = document.getElementById("total");
 const form = document.getElementById("form-event--data");
+const eventDescription = document.getElementById("event-description");
+const hobby = document.getElementById("hobbies-select");
+const secondButton = document.getElementById("secondButton");
 
 let map;
 
@@ -26,12 +29,14 @@ const eventRequest = (lat, lng) => {
       const hobbiesValue = hobbies.value.trim();
       const hostValue = host.value.trim();
       const totalValue = total.value.trim();
+      const eventDescriptionValue = eventDescription.value.trim();
       createEvent(
         eventNameValue,
         dateValue,
         hobbiesValue,
         hostValue,
         totalValue,
+        eventDescriptionValue,
         lat,
         lng
       );
@@ -39,10 +44,28 @@ const eventRequest = (lat, lng) => {
   }
 };
 
+if (secondButton) {
+  secondButton.addEventListener("click", async () => {
+    hobbyValue = hobby.value;
+    console.log(hobbyValue);
+    const res = await fetch(
+      `http://localhost:3001/api/event/get-event-by-hobby/${hobbyValue}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    const data = await res.json();
+    console.log(data);
+  });
+}
+
 const createMarker = (ele) => {
   const marker = new L.Marker([ele.location[0], ele.location[1]]);
   const popup = L.popup().setContent(
-    `<a href="http://www.google.com">${ele.name}</a>`
+    `<a href=/events/${ele._id}>${ele.name}</a>`
   );
   marker.bindPopup(popup).openPopup();
   marker.addTo(map);
@@ -73,6 +96,7 @@ const createEvent = async (
   hobbiesValue,
   hostValue,
   totalValue,
+  eventDescriptionValue,
   lat,
   lng
 ) => {
@@ -88,6 +112,7 @@ const createEvent = async (
         location: [lat, lng],
         hobby: hobbiesValue,
         host: hostValue,
+        description: eventDescriptionValue,
         totalSpot: totalValue,
       }),
     });
@@ -122,9 +147,6 @@ const markerHandler = (e) => {
   eventRequest(lat, lng);
   map.off("click", markerHandler);
   myModal.show();
-  // modal.addEventListener("hide.bs.modal", (e) => {
-  //   map.removeLayer(marker);
-  // });
 };
 
 addNewEventBtn.addEventListener("click", (e) => {

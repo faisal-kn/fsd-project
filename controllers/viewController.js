@@ -1,3 +1,5 @@
+const Events = require("../models/Events");
+
 exports.getLogin = function (req, res, next) {
   res.status(200).render("pages/login", { title: "Login" });
 };
@@ -30,8 +32,20 @@ exports.getAboutus = function (req, res, next) {
   res.status(200).render("pages/Aboutus", { title: "Aboutus" });
 };
 
-exports.getEventsharing = function (req, res, next) {
-  res.status(200).render("pages/eventsharing", { title: "Eventsharing" });
+exports.getOneEvent = async function (req, res, next) {
+  // console.log(req.params.eventid);
+  const event = await Events.findOne({ _id: req.params.eventid });
+  console.log(event);
+  res.status(200).render("pages/eventsharing", {
+    name: event.name,
+    location,
+    date,
+    attendees,
+    hobby,
+    host,
+    totalSpot,
+    description,
+  });
 };
 
 exports.getNewTeam = function (req, res, next) {
