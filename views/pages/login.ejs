@@ -9,7 +9,6 @@
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
     />
     <link rel="stylesheet" href="/styles/login.css" />
-
     <style>
       body {
         background-color: #4d4d4d;
@@ -26,9 +25,16 @@
       <div class="container">
         <h1 style="text-align: center">Login to your account</h1>
         <h3 style="font-size: 18px; text-align: center; opacity: 0.4">
-          display message
+          Make sure to share our platform with your friends!
         </h3>
         <div class="box">
+          <div class="image">
+            <img
+              src="https://img.freepik.com/free-vector/navigation-map-street-3d-location-pin-locator-pins-pointer-navigator-maps-locations-marker_102902-1053.jpg?size=626&ext=jpg&ga=GA1.1.1097707927.1648489757"
+              class="images"
+              alt=""
+            />
+          </div>
           <div class="box1">
             <form action="#" class="form" id="form-user--data">
               <input
@@ -45,9 +51,7 @@
                 id="password"
                 placeholder="Enter your password"
               />
-              <button type="submit" id="login-btn" class="login-btn">
-                Login
-              </button>
+              <button type="submit" class="login-btn">Login</button>
             </form>
           </div>
           <div class="box2">
@@ -55,14 +59,13 @@
               <button type="button" class="login_button">
                 Login with google
               </button>
-              <button type="button" class="login_button">
-                Create an account
+              <button type="button" class="login_button" id="login-btn">
+                Login
               </button>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <script src="/js/login.js"></script>
   </body>
 </html>
