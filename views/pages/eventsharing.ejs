@@ -1,50 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/styles/es.css">
-    <link rel="stylesheet" href="/styles/footer.css">
+  <head>
+    <%- include("../partials/head") %>
+    <link rel="stylesheet" href="/styles/es.css" />
+    <link rel="stylesheet" href="/styles/footer.css" />
     <title>Event share</title>
+  </head>
 
-</head>
-
-<body style="color: white;">
-
+  <body style="color: white">
     <%- include('../partials/nav.ejs') %>
     <div class="container">
-        <h1>event details</h1>
-        <div class="cont">
-            <div class="text">
-                <h2><%= name %></h2>
-                <p>
-                Location : <%= location %>
-                <br><br>Date : <%= date %>
-                <br><br>Attendees : <%= attendees %>
-                <br><br>Hobby : <%= hobby %>
-                <br><br>Host : <%= host %>
-                <br><br>Total Spot : <%= totalSpot %>
-                <br><br>Description : <%= description %>
-                </p>
-                   <div class="btn">
-                       <ul>
-                           <li><a href="#">events</a></li>
-                           <li><a href="#">share events</a></li>
-                       </ul>
-                </div>
-            </div>
-           <div class="image"> <img src="/assets/basketballmatch.jpg" alt="basketball match" ></div>
-               
-            
+      <h1>event details</h1>
+      <div class="cont">
+        <div class="text">
+          <h2><%= name %></h2>
+          <p>
+            Location : <%= location %>
+            <br /><br />Date : <%= date %> <br /><br />Attendees : <%= attendees
+            %> <br /><br />Hobby : <%= hobby %> <br /><br />Host : <%= host %>
+            <br /><br />Total Spot : <%= totalSpot %> <br /><br />Description :
+            <%= description %>
+          </p>
+          <div class="btn">
+            <ul>
+              <li><a href="#">events</a></li>
+              <li><a href="#">share events</a></li>
+            </ul>
+          </div>
         </div>
+        <div class="image">
+          <img src="/assets/basketballmatch.jpg" alt="basketball match" />
+        </div>
+      </div>
 
-        <div class="image1">
-            <img src="/assets/eventsshare.jpg" alt="">
-        </div>
+      <div class="image1">
+        <img src="/assets/eventsshare.jpg" alt="" />
+      </div>
     </div>
-<script></script>
-<%- include('../partials/footer.ejs') %>
-</body>
+    <script></script>
+    <%- include('../partials/footer.ejs') %>
+  </body>
 </html>
