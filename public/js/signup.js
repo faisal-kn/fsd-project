@@ -34,10 +34,6 @@ next.addEventListener("click", () => {
   passwordValue = password.value.trim();
   confirmPasswordValue = confirmPassword.value.trim();
 
-  if (passwordValue.length < 8) {
-    showAlert("error", "Password must be at least 8 characters long");
-    return;
-  }
   if (passwordValue != confirmPasswordValue) {
     showAlert("error", "Confirm password do not match");
     return;
@@ -46,8 +42,12 @@ next.addEventListener("click", () => {
     mainbox1.style.display = "none";
     altbox1.style.display = "flex";
   } else {
-    // console.log(userNameValue, emailValue, passwordValue, confirmPasswordValue);
     showAlert("error", "Please fill all the fields");
+    return;
+  }
+  if (passwordValue.length < 8) {
+    showAlert("error", "Password must be at least 8 characters long");
+    return;
   }
 });
 
@@ -82,11 +82,11 @@ options.forEach((element) => {
   element.addEventListener("click", () => {
     console.log(element.style.backgroundColor);
     if (element.style.backgroundColor == "white") {
-      element.style.backgroundColor = "aqua";
+      element.style.backgroundColor = "blue";
       change = 1;
       hobbiesMap.set(element.innerText, 1);
     }
-    if (element.style.backgroundColor == "aqua" && change == 0) {
+    if (element.style.backgroundColor == "blue" && change == 0) {
       element.style.backgroundColor = "white";
       hobbiesMap.set(element.innerText, 0);
     }

@@ -4,35 +4,14 @@ const form = document.getElementById("form-user--data");
 const loginBtn = document.getElementById("login-btn");
 
 console.log(form, loginBtn);
-
-const hideAlert = () => {
-  const el = document.querySelector(".alert");
-  if (el) el.parentElement.removeChild(el);
-};
-
-const showAlert = (type, msg, time = 5) => {
-  hideAlert();
-  const markup = `<div class="alert alert--${type}">${msg}</div>`;
-  document.querySelector("body").insertAdjacentHTML("afterbegin", markup);
-  window.setTimeout(hideAlert, time * 1000);
-};
-
 if (form) {
   form.addEventListener("submit", (e) => {
     e.preventDefault();
     const emailValue = email.value.trim();
     const passwordValue = password.value.trim();
-    if(emailValue && passwordValue)
-    {
-      login(emailValue, passwordValue);
-    }
-    else
-    {
-      showAlert('error','please fill all the fields');
-    }
+    login(emailValue, passwordValue);
   });
 }
-
 
 const login = async (emailValue, passwordValue) => {
   try {

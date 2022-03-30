@@ -13,7 +13,7 @@ router.get("/error", viewController.getErrorPage);
 router.get("/contactus", viewController.getContactus);
 router.get("/userprofile", viewController.getUserprofile);
 router.get("/aboutus", viewController.getAboutus);
-router.get("/teams", viewController.getNewTeam);
+router.get("/Newteam", viewController.getNewTeam);
 router.get("/events/:eventid", viewController.getOneEvent);
 router.get("/adminportal", viewController.getAdminportal);
 
