@@ -1,70 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+  <head>
+    <%- include("../partials/head") %>
 
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-      crossorigin="anonymous"
-    />
+    <link rel="stylesheet" href="/styles/contactus.css" />
+    <link rel="stylesheet" href="/styles/footer.css" />
+  </head>
 
-    <link rel="stylesheet" href="/styles/contactus.css">
-    <link rel="stylesheet" href="/styles/footer.css">
+  <body>
+    <%- include('../partials/nav.ejs') %>
+    <div class="main">
+      <div class="details">
+        <h2 class="alt-heaing">Contact Form</h2>
+        <br />
+        <form>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Name</label>
+            <input
+              type="email"
+              class="form-control"
+              id="exampleInputEmail1"
+              aria-describedby="emailHelp"
+              placeholder="name"
+            />
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Email</label>
+            <input
+              type="password"
+              class="form-control"
+              id="exampleInputPassword1"
+              placeholder="email"
+            />
+          </div>
 
-</head>
+          <div class="form-group">
+            <label for="exampleFormControlTextarea1">Message</label>
+            <textarea
+              class="form-control"
+              id="exampleFormControlTextarea1"
+              rows="3"
+            ></textarea>
+          </div>
 
-<body >
-  
-  <%- include('../partials/nav.ejs') %>
-  <div class="main">
-
-    <div class="details">
-      <h2 class="alt-heaing">Contact Form</h2>
-      <br>
-      <form>
-        <div class="form-group">
-          <label for="exampleInputEmail1">Name</label>
-          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="name">
-            </div>
-            <div class="form-group">
-              <label for="exampleInputPassword1">Email</label>
-              <input type="password" class="form-control" id="exampleInputPassword1" placeholder="email">
-            </div>
-            
-            <div class="form-group">
-              <label for="exampleFormControlTextarea1">Message</label>
-              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-            </div>
-            
-            <div class="form-check">
-              <input type="checkbox" class="form-check-input" id="exampleCheck1">
-              <label class="form-check-label" for="exampleCheck1">Reporting an issue</label>
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-          </form>
-        </div>
-        
-        <div class="text">
-          <h1 class="heading">Contact Us</h1>
-          <p>
-            Fill out our contact form to get in touch with us. we will respond to your message as soon as possible.
-            
-            
-            Please check the 'reporting an issue' box to report any issue you have faced with the website. 
-            <br>
-            We hope you didn't have too much trouble.
-            
-            
-            Please leave feedback of how your experience visiting our website was. Any queries regarding the website are more than welcome. 
-          </p>
-          <p><strong><em>Details given will never be shared with anyone</em></strong></p>
-        </div>
+          <div class="form-check">
+            <input
+              type="checkbox"
+              class="form-check-input"
+              id="exampleCheck1"
+            />
+            <label class="form-check-label" for="exampleCheck1"
+              >Reporting an issue</label
+            >
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
       </div>
-      <%- include('../partials/footer.ejs') %>
-      </body>
-      </html>
+
+      <div class="text">
+        <h1 class="heading">Contact Us</h1>
+        <p>
+          Fill out our contact form to get in touch with us. we will respond to
+          your message as soon as possible. Please check the 'reporting an
+          issue' box to report any issue you have faced with the website.
+          <br />
+          We hope you didn't have too much trouble. Please leave feedback of how
+          your experience visiting our website was. Any queries regarding the
+          website are more than welcome.
+        </p>
+        <p>
+          <strong
+            ><em>Details given will never be shared with anyone</em></strong
+          >
+        </p>
+      </div>
+    </div>
+    <%- include('../partials/footer.ejs') %>
+  </body>
+</html>
