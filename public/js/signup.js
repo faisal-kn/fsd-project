@@ -56,6 +56,16 @@ next.addEventListener("click", () => {
     showAlert("error", "Confirm password do not match");
     return;
   }
+
+  if (emailValue.indexOf("@") < 0) {
+    showAlert("error", "Please enter a Valid email.");
+    return;
+  }
+  if (passwordValue.length < 8) {
+    showAlert("error", "Password must be at least 8 characters long");
+    return;
+  }
+
   if (userNameValue && emailValue && passwordValue && confirmPasswordValue) {
     mainbox1.style.display = "none";
     altbox1.style.display = "flex";
@@ -63,14 +73,11 @@ next.addEventListener("click", () => {
     showAlert("error", "Please fill all the fields");
     return;
   }
-  if (passwordValue.length < 8) {
-    showAlert("error", "Password must be at least 8 characters long");
-    return;
-  }
+  
+
 });
 
 back.addEventListener("click", () => {
-  // console.log('clicked');
   let altbox2 = document.getElementById("altbox");
   altbox2.style.display = "none";
   let mainbox2 = document.getElementById("mainbox");
@@ -100,11 +107,11 @@ options.forEach((element) => {
   element.addEventListener("click", () => {
     console.log(element.style.backgroundColor);
     if (element.style.backgroundColor == "white") {
-      element.style.backgroundColor = "blue";
+      element.style.backgroundColor = "lightblue";
       change = 1;
       hobbiesMap.set(element.innerText, 1);
     }
-    if (element.style.backgroundColor == "blue" && change == 0) {
+    if (element.style.backgroundColor == "lightblue" && change == 0) {
       element.style.backgroundColor = "white";
       hobbiesMap.set(element.innerText, 0);
     }
