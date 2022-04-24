@@ -46,24 +46,6 @@ const eventRequest = (lat, lng) => {
   }
 };
 
-if (secondButton) {
-  secondButton.addEventListener("click", async () => {
-    hobbyValue = hobby.value;
-    console.log(hobbyValue);
-    const res = await fetch(
-      `http://localhost:3001/api/event/get-event-by-hobby/${hobbyValue}`,
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
-    const data = await res.json();
-    console.log(data);
-  });
-}
-
 const createMarker = (ele) => {
   const marker = new L.Marker([ele.location[0], ele.location[1]]);
   const popup = L.popup().setContent(
@@ -129,19 +111,19 @@ const createEvent = async (
   }
 };
 
-const getHobbies = async () => {
-  try {
-    const res = await fetch("http://localhost:3001/api/user/hobbies", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    const data = await res.json();
-  } catch (err) {
-    console.log(err);
-  }
-};
+// const getHobbies = async () => {
+//   try {
+//     const res = await fetch("http://localhost:3001/api/user/hobbies", {
+//       method: "GET",
+//       headers: {
+//         "Content-Type": "application/json",
+//       },
+//     });
+//     const data = await res.json();
+//   } catch (err) {
+//     console.log(err);
+//   }
+// };
 
 const markerHandler = (e) => {
   const { lat, lng } = e.latlng;
@@ -184,9 +166,45 @@ const currentPage = (currentPage) => {
   page.innerHTML = currentPage;
 };
 
-const pagination = () => {
-  const maxElement = 7;
-  const maxPerPage = 2;
+if (secondButton) {
+  secondButton.addEventListener("click", async () => {
+    hobbyValue = hobby.value;
+    console.log(hobbyValue);
+    const res = await fetch(
+      `http://localhost:3001/api/event/get-event-by-hobby/${hobbyValue}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    const data = await res.json();
+    return pagination(data.data.eventByHobby.length, 2, data.data.eventByHobby);
+  });
+}
+
+const getAllEvent = async () => {
+  try {
+    const res = await fetch("http://localhost:3001/api/event/all-events", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const data = await res.json();
+    return data.data.events;
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+const pagination = async (maxElement = 7, maxPerPage = 2, data) => {
+  if (!data) {
+    data = await getAllEvent();
+  }
+
+  maxElement = data.length;
   if (maxElement > maxPerPage) {
     const totalPage = Math.ceil(maxElement / maxPerPage);
     maxPage.innerHTML = totalPage;
@@ -197,6 +215,7 @@ const pagination = () => {
       } else if (page.innerHTML == 1) {
         page.innerHTML = totalPage;
       }
+      console.log(maxElement, maxPerPage);
       renderPopularEvents(maxElement, page.innerHTML, maxPerPage);
     });
 
@@ -209,33 +228,40 @@ const pagination = () => {
       renderPopularEvents(maxElement, page.innerHTML, maxPerPage);
     });
   }
-  renderPopularEvents(maxElement, 1, maxPerPage);
+  renderPopularEvents(maxElement, 1, maxPerPage, data);
 };
 
-const renderPopularEvents = (maxElement, currentPage, maxPerPage) => {
+const renderPopularEvents = (
+  maxElement,
+  currentPage,
+  maxPerPage,
+  data = []
+) => {
+  console.log(data);
   const start = (currentPage - 1) * maxPerPage;
   let end = start + maxPerPage;
   if (end > maxElement) {
     end = maxElement;
   }
-
+  // console.log(start, end);
   popularEvents.innerHTML = "";
-  for (let i = start; i < end; i++) {
+  for (let i = start; i < end - 1; i++) {
+    console.log(data[i]);
     const eventMarkup = `
     <div class="row">
       <div class="col">
         <img src="https://secure-content.meetupstatic.com/images/classic-events/470917220/222x125.jpg" width="222" height="125" alt="" class="image1"/>
       </div> 
       <div class="col">
-        <span>THU, MAR 24 @ 5:30 AM IST</span>
+        <span>${data[i].date}</span>
         <p style="font: size 20px;">
-          Tennis Tournament
+          ${data[i].name}
         </p>
         <h5>
           New York , NY
         </h5>
         <p>
-          1 attendee -<span style="color:rgb(224, 58, 58)"> 3 spots left</span>
+          1 attendee -<span style="color:rgb(224, 58, 58)"> ${data[i].totalSpot} spots left</span>
         </p>
     </div>
       <hr style="width:80%; margin:auto; margin-bottom:9px;"/>

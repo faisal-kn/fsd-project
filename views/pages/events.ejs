@@ -180,11 +180,12 @@
                                                 </select>
                                             </div>
                                         </div>
+                                        <% console.log(user) %>
                                         <div class="row">
                                             <div class="me-3 pt-1">
-                                                <label class="form-label" for="lat">Host</label>
+                                                <label class="form-label" for="lat" >Host</label>
                                                 <input class="form-control" type="text" id="host" name="host"
-                                                    required />
+                                                    required disabled value=<%= user.username %>>
                                             </div>
                                         </div>
                                         <div class="row">

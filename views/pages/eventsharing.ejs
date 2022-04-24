@@ -15,11 +15,11 @@
         <div class="text">
           <h2><%= name %></h2>
           <p>
-            Location : <%= location %>
-            <br /><br />Date : <%= date %> <br /><br />Attendees : <%= attendees
-            %> <br /><br />Hobby : <%= hobby %> <br /><br />Host : <%= host %>
-            <br /><br />Total Spot : <%= totalSpot %> <br /><br />Description :
-            <%= description %>
+            Location : <span id="locations"><%= location %></span>
+            <br /><br /><span id="dates">Date : <%= date %> </span>
+            <br /><br />Attendees : <%= attendees %> <br /><br />Hobby : <%=
+            hobby %> <br /><br />Host : <%= host %> <br /><br />Total Spot : <%=
+            totalSpot %> <br /><br />Description : <%= description %>
           </p>
           <div class="btn">
             <ul>
@@ -39,5 +39,6 @@
     </div>
     <script></script>
     <%- include('../partials/footer.ejs') %>
+    <script src="/js/reverseGeocoding.js "></script>
   </body>
 </html>
