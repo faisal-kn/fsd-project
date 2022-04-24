@@ -1,10 +1,11 @@
-const { Router } = require("express");
+const multer = require("multer");
 const express = require("express");
 const authController = require("../controllers/authController");
 const userController = require("../controllers/userController");
 
 const router = express.Router();
 
+const upload = multer({ dest: "public/uploads" });
 router.post("/signup", authController.signup);
 router.post("/login", authController.login);
 router.get("/logout", authController.logout);
@@ -13,6 +14,12 @@ router.patch(
   "/changeusername",
   authController.protect,
   userController.changeUserName
+);
+router.post(
+  "/updatePhoto",
+  userController.uploadUserPhoto,
+  userController.resizeUserPhoto,
+  userController.updatePhoto
 );
 
 module.exports = router;
