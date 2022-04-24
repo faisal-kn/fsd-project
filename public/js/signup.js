@@ -1,4 +1,4 @@
-// "use Strict";
+"use Strict";
 const next = document.getElementById("next");
 const back = document.getElementById("back");
 const userName = document.getElementById("name");
@@ -9,12 +9,30 @@ const form = document.getElementById("form-user--data");
 const signupBtn = document.getElementById("signup-btn");
 const mainbox1 = document.getElementById("mainbox");
 const altbox1 = document.getElementById("altbox");
+const updatePhotoBtn = document.getElementById("photo-form");
+const photo = document.getElementById("photo");
 
 let userNameValue = "";
 let emailValue = "";
 let passwordValue = "";
 let confirmPasswordValue = "";
 let hobbies = [];
+
+updatePhotoBtn.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const form = new FormData();
+  form.append("photo", photo.files[0]);
+  form.append("userId", "hello");
+  console.log(form);
+  try {
+    const res = await fetch("http://localhost:3001/api/user/updatePhoto", {
+      method: "POST",
+      body: form,
+    });
+  } catch (err) {
+    console.log(err);
+  }
+});
 
 const hideAlert = () => {
   const el = document.querySelector(".alert");

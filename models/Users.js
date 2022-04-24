@@ -12,6 +12,10 @@ const userSchema = new mongoose.Schema({
     unique: [true, "This email address already exists in our database ."],
     lowercase: true,
   },
+  photo: {
+    type: String,
+    default: "default.jpg",
+  },
   password: {
     type: String,
     required: [true, "A password is required"],
