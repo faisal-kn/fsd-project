@@ -35,3 +35,4 @@ exports.getEventByHobby = async (req, res, next) => {
     res.status(401).json({ status: "failed", error: err });
   }
 };
+
