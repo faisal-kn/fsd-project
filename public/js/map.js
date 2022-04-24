@@ -18,6 +18,10 @@ const eventDescription = document.getElementById("event-description");
 const hobby = document.getElementById("hobbies-select");
 const secondButton = document.getElementById("secondButton");
 
+
+
+
+
 let map;
 const allCookie = document.cookie;
 console.log(allCookie);

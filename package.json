@@ -29,6 +29,7 @@
     "local-reverse-geocoder": "^0.11.1",
     "mongoose": "^6.2.7",
     "morgan": "^1.10.0",
+    "node-geocoder": "^4.0.0",
     "nodemon": "^2.0.15"
   }
 }

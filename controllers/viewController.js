@@ -2,6 +2,8 @@ const geocoder = require("local-reverse-geocoder");
 const Events = require("../models/Events");
 const Users = require("../models/Users");
 
+
+
 exports.getLogin = function (req, res, next) {
   res.status(200).render("pages/login", { title: "Login" });
 };
@@ -39,6 +41,9 @@ exports.getOneEvent = async function (req, res, next) {
   // console.log(req.params.eventid);
   const event = await Events.findOne({ _id: req.params.eventid });
 
+  
+  
+  
   res.status(200).render("pages/eventsharing", {
     name: event.name,
     location: event.location,
