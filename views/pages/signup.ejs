@@ -10,6 +10,15 @@
   </head>
 
   <body>
+    <form id="photo-form">
+      <div>
+          <label>Upload profile picture</label>
+          <input type="file" name="photo" id="photo" required/>
+      </div>
+      <div>
+          <input type="submit" value="Upload" />
+      </div>
+  </form>
     <div class="page">
       <div class="container">
         <h1 class="heading" >Create your account</h1>
@@ -52,6 +61,7 @@
                 id="confirm_password"
                 placeholder="Confirm password"
               />
+            
               <button type="button" class="login-btn" id="next">Next</button>
               <div style=" padding-top:20px;">Already have a account ? <a href="/login" style="text-decoration:none; color:orange;">Sign in</a></div>
             </form>
@@ -70,6 +80,7 @@
               <button class="options">Travelling</button>
               <button class="options">Random meetups</button>
               <button class="options">Hangouts</button>
+              
               <div class="end-buttons">
 
                 <button type="submit" class="alt-button" id="back">Back</button>
