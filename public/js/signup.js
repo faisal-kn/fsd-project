@@ -47,7 +47,7 @@ next.addEventListener("click", () => {
     showAlert("error", "Password must be at least 8 characters long");
     return;
   }
-  
+
   if (userNameValue && emailValue && passwordValue && confirmPasswordValue) {
     mainbox1.style.display = "none";
     altbox1.style.display = "flex";
@@ -89,11 +89,11 @@ options.forEach((element) => {
   element.addEventListener("click", () => {
     console.log(element.style.backgroundColor);
     if (element.style.backgroundColor == "white") {
-      element.style.backgroundColor = "blue";
+      element.style.backgroundColor = "lightblue";
       change = 1;
       hobbiesMap.set(element.innerText, 1);
     }
-    if (element.style.backgroundColor == "blue" && change == 0) {
+    if (element.style.backgroundColor == "lightblue" && change == 0) {
       element.style.backgroundColor = "white";
       hobbiesMap.set(element.innerText, 0);
     }
