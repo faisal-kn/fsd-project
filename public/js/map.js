@@ -19,8 +19,6 @@ const hobby = document.getElementById("hobbies-select");
 const secondButton = document.getElementById("secondButton");
 
 let map;
-const allCookie = document.cookie;
-console.log(allCookie);
 
 const eventRequest = (lat, lng) => {
   if (form) {
@@ -48,6 +46,7 @@ const eventRequest = (lat, lng) => {
 
 const createMarker = (ele) => {
   const marker = new L.Marker([ele.location[0], ele.location[1]]);
+
   const popup = L.popup().setContent(
     `<a href=/events/${ele._id}>${ele.name}</a>`
   );
@@ -111,20 +110,6 @@ const createEvent = async (
   }
 };
 
-// const getHobbies = async () => {
-//   try {
-//     const res = await fetch("http://localhost:3001/api/user/hobbies", {
-//       method: "GET",
-//       headers: {
-//         "Content-Type": "application/json",
-//       },
-//     });
-//     const data = await res.json();
-//   } catch (err) {
-//     console.log(err);
-//   }
-// };
-
 const markerHandler = (e) => {
   const { lat, lng } = e.latlng;
 
@@ -159,6 +144,7 @@ const loadMap = (position) => {
     attribution:
       '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
   }).addTo(map);
+
   getAllEvents();
 };
 
@@ -180,7 +166,7 @@ if (secondButton) {
       }
     );
     const data = await res.json();
-    return pagination(data.data.eventByHobby.length, 2, data.data.eventByHobby);
+    markers.clearLayers();
   });
 }
 
@@ -199,24 +185,26 @@ const getAllEvent = async () => {
   }
 };
 
-const pagination = async (maxElement = 7, maxPerPage = 2, data) => {
-  if (!data) {
-    data = await getAllEvent();
-  }
+const pagination = async (maxElement = 7, maxPerPage = 2) => {
+  data = await getAllEvent();
 
   maxElement = data.length;
+  console.log(maxElement);
   if (maxElement > maxPerPage) {
     const totalPage = Math.ceil(maxElement / maxPerPage);
     maxPage.innerHTML = totalPage;
-
     leftBtn.addEventListener("click", (e) => {
       if (page.innerHTML > 1) {
         page.innerHTML--;
       } else if (page.innerHTML == 1) {
         page.innerHTML = totalPage;
       }
-      console.log(maxElement, maxPerPage);
-      renderPopularEvents(maxElement, page.innerHTML, maxPerPage);
+      renderPopularEvents(
+        maxElement,
+        parseInt(page.innerHTML),
+        maxPerPage,
+        data
+      );
     });
 
     rightBtn.addEventListener("click", (e) => {
@@ -225,7 +213,12 @@ const pagination = async (maxElement = 7, maxPerPage = 2, data) => {
       } else if (page.innerHTML == totalPage) {
         page.innerHTML = 1;
       }
-      renderPopularEvents(maxElement, page.innerHTML, maxPerPage);
+      renderPopularEvents(
+        maxElement,
+        parseInt(page.innerHTML),
+        maxPerPage,
+        data
+      );
     });
   }
   renderPopularEvents(maxElement, 1, maxPerPage, data);
@@ -237,32 +230,33 @@ const renderPopularEvents = (
   maxPerPage,
   data = []
 ) => {
-  console.log(data);
+
   const start = (currentPage - 1) * maxPerPage;
   let end = start + maxPerPage;
   if (end > maxElement) {
     end = maxElement;
   }
-  // console.log(start, end);
+
   popularEvents.innerHTML = "";
-  for (let i = start; i < end - 1; i++) {
+  for (let i = start; i < end; i++) {
     console.log(data[i]);
     const eventMarkup = `
     <div class="row">
-      <div class="col">
+      <div class="col d-flex align-items-center">
         <img src="https://secure-content.meetupstatic.com/images/classic-events/470917220/222x125.jpg" width="222" height="125" alt="" class="image1"/>
       </div> 
       <div class="col">
         <span>${data[i].date}</span>
-        <p style="font: size 20px;">
+        <p style="font-size: 14px;">
           ${data[i].name}
         </p>
-        <h5>
+        <h5 style="font-size: 14px;">
           New York , NY
         </h5>
-        <p>
+        <p style="font-size: 14px;">
           1 attendee -<span style="color:rgb(224, 58, 58)"> ${data[i].totalSpot} spots left</span>
         </p>
+        <a href=/events/${data[i]._id}><button class="btn btn-success" style="margin-bottom:10px;" id=${data[i]._id}> Get to know more</button></a>
     </div>
       <hr style="width:80%; margin:auto; margin-bottom:9px;"/>
     </div>
