@@ -15,8 +15,9 @@ router.patch(
   authController.protect,
   userController.changeUserName
 );
-router.post(
+router.patch(
   "/updatePhoto",
+  authController.protect,
   userController.uploadUserPhoto,
   userController.resizeUserPhoto,
   userController.updatePhoto

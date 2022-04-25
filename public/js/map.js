@@ -18,12 +18,15 @@ const eventDescription = document.getElementById("event-description");
 const hobby = document.getElementById("hobbies-select");
 const secondButton = document.getElementById("secondButton");
 
+const updatePhotoBtn = document.getElementById("photo-form");
+const photo = document.getElementById("photo");
 let map;
 
 const eventRequest = (lat, lng) => {
   if (form) {
     form.addEventListener("submit", (e) => {
       e.preventDefault();
+
       const eventNameValue = eventName.value.trim();
       const dateValue = date.value.trim();
       const hobbiesValue = hobbies.value.trim();
@@ -84,22 +87,23 @@ const createEvent = async (
   lng
 ) => {
   try {
+    const form = new FormData();
+    console.log(photo);
+    form.append("photo", photo.files[0]);
+    form.append("name", eventNameValue);
+    form.append("date", dateValue);
+    form.append("location", [lat, lng]);
+    form.append("hobby", hobbiesValue);
+    form.append("host", hostValue);
+    form.append("description", eventDescriptionValue);
+    form.append("totalSpot", totalValue);
+
     const res = await fetch("http://localhost:3001/api/event/create-event", {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        name: eventNameValue,
-        date: dateValue,
-        location: [lat, lng],
-        hobby: hobbiesValue,
-        host: hostValue,
-        description: eventDescriptionValue,
-        totalSpot: totalValue,
-      }),
+      body: form,
     });
     const data = await res.json();
+
     console.log(data);
     if (data.status === "success") {
       createMarker(data.data.newEvent);
@@ -230,7 +234,6 @@ const renderPopularEvents = (
   maxPerPage,
   data = []
 ) => {
-
   const start = (currentPage - 1) * maxPerPage;
   let end = start + maxPerPage;
   if (end > maxElement) {

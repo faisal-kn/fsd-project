@@ -7,10 +7,13 @@ const viewRouter = require("./Routes/viewRouter");
 const userRouter = require("./Routes/userRouter");
 const eventRouter = require("./Routes/eventRouter");
 const AppError = require('./utils/AppError');
-
+const multer = require("multer");
+var bodyParser = require("body-parser");
 const app = express();
 
-app.use(express.json());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
 app.use(cookieParser());
 
 app.set("view engine", "ejs");
