@@ -36,6 +36,10 @@ const eventSchema = new mongoose.Schema({
     type: String,
     required: [true, "A description is required"],
   },
+  photo: {
+    type: String,
+    default: "default.jpg",
+  },
 });
 
 const Event = mongoose.model("Event", eventSchema);

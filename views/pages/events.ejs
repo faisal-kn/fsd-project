@@ -190,6 +190,7 @@
                                                     required disabled value=<%= user.username %>>
                                             </div>
                                         </div>
+                                        
                                         <div class="row">
                                             <div class="me-3 pt-1">
                                                 <label class="form-label" for="lat">Total Spot</label>
@@ -200,9 +201,12 @@
                                         <div class="form-group">
                                             <label for="event-description">Event Description</label>
                                             <textarea class="form-control" id="event-description" rows="3"></textarea>
+                                        </div>                                 
+                                        <div>
+                                            <label>Upload Event Pictures</label>
+                                            <input type="file" name="photo" id="photo" required />
                                         </div>
                                     </div>
-
                                 </div>
                                 <div class="modal-footer">
                                     <button type="submit" class="btn btn-primary" id="save">Save</button>
@@ -213,9 +217,6 @@
                 </div>
                 <div class=" col-lg-8 ">
                     <div id="map" class="map-container">
-                        <!-- <div class="leaflet-bottom leaflet-right">
-                            <button type="button" class=" btn btnStyle" id="add-event" data-bs-toggle="modal" data-bs-target="#exampleModal" style="pointer-events: auto;"><i class="fa-solid fa-plus"></i></button>
-                        </div> -->
                     </div>
                     
                 </div>

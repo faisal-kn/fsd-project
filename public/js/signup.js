@@ -18,21 +18,6 @@ let passwordValue = "";
 let confirmPasswordValue = "";
 let hobbies = [];
 
-updatePhotoBtn.addEventListener("submit", async (e) => {
-  e.preventDefault();
-  const form = new FormData();
-  form.append("photo", photo.files[0]);
-  form.append("userId", "hello");
-  console.log(form);
-  try {
-    const res = await fetch("http://localhost:3001/api/user/updatePhoto", {
-      method: "POST",
-      body: form,
-    });
-  } catch (err) {
-    console.log(err);
-  }
-});
 
 const hideAlert = () => {
   const el = document.querySelector(".alert");

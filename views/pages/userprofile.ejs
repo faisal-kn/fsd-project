@@ -3,7 +3,6 @@
   <head>
     <%- include("../partials/head") %>
     <link rel="stylesheet" href="/styles/user.css" />
-    
   </head>
 
   <body id="body">
@@ -89,9 +88,22 @@
           <div class="subbox2">
             <div class="big-box">
               <div class="profile-pic">
-                <img src="/assets/alt-icon.png" alt="profile-picture" style="object-fit: contain; width: 80%; height: 80%; ">
+                <img
+                  src="/uploads/<%= user.photo %>"
+                  alt="profile-picture"
+                  style="object-fit: contain; width: 50%; height: 50%"
+                />
+                <%= console.log(user) %>
+                <form id="photo-form">
+                  <div>
+                    <label>Upload profile picture</label>
+                    <input type="file" name="photo" id="photos" required />
+                  </div>
+                  <div>
+                    <input type="submit" value="Upload" />
+                  </div>
+                </form>
               </div>
-                <button class="addphotobutton">Update photo</button>
             </div>
           </div>
         </div>
@@ -108,7 +120,6 @@
           <div class="subbox2"></div>
         </div>
 
-        
         <div class="card" id="hobbies">
           <div class="subbox1">
             <h4>hobbies</h4>

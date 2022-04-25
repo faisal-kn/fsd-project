@@ -28,7 +28,7 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <!-- class="topnav-right" -->
-      
+
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ms-auto mb-2 mg-lg-0 pt-1">
           <% if(user){ %>
@@ -51,9 +51,12 @@
             <a class="nav-link" href="/newTeam">Our team</a>
           </li>
 
-          <div class="nav-logo" style="padding-left: 10px; padding-right: 10px;">
+          <div class="nav-logo" style="padding-left: 10px; padding-right: 10px">
             <a href="/userprofile"
-              ><img src="/assets/alt-icon.png" class="img-fluid" alt="icon"
+              ><img
+                src="/uploads/<%= user.photo %>"
+                class="img-fluid"
+                alt="icon"
             /></a>
           </div>
           <% } else{ %>

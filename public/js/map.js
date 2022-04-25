@@ -18,18 +18,15 @@ const eventDescription = document.getElementById("event-description");
 const hobby = document.getElementById("hobbies-select");
 const secondButton = document.getElementById("secondButton");
 
-
-
-
-
+const updatePhotoBtn = document.getElementById("photo-form");
+const photo = document.getElementById("photo");
 let map;
-const allCookie = document.cookie;
-console.log(allCookie);
 
 const eventRequest = (lat, lng) => {
   if (form) {
     form.addEventListener("submit", (e) => {
       e.preventDefault();
+
       const eventNameValue = eventName.value.trim();
       const dateValue = date.value.trim();
       const hobbiesValue = hobbies.value.trim();
@@ -52,6 +49,7 @@ const eventRequest = (lat, lng) => {
 
 const createMarker = (ele) => {
   const marker = new L.Marker([ele.location[0], ele.location[1]]);
+
   const popup = L.popup().setContent(
     `<a href=/events/${ele._id}>${ele.name}</a>`
   );
@@ -89,22 +87,23 @@ const createEvent = async (
   lng
 ) => {
   try {
+    const form = new FormData();
+    console.log(photo);
+    form.append("photo", photo.files[0]);
+    form.append("name", eventNameValue);
+    form.append("date", dateValue);
+    form.append("location", [lat, lng]);
+    form.append("hobby", hobbiesValue);
+    form.append("host", hostValue);
+    form.append("description", eventDescriptionValue);
+    form.append("totalSpot", totalValue);
+
     const res = await fetch("http://localhost:3001/api/event/create-event", {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        name: eventNameValue,
-        date: dateValue,
-        location: [lat, lng],
-        hobby: hobbiesValue,
-        host: hostValue,
-        description: eventDescriptionValue,
-        totalSpot: totalValue,
-      }),
+      body: form,
     });
     const data = await res.json();
+
     console.log(data);
     if (data.status === "success") {
       createMarker(data.data.newEvent);
@@ -114,20 +113,6 @@ const createEvent = async (
     console.log(err);
   }
 };
-
-// const getHobbies = async () => {
-//   try {
-//     const res = await fetch("http://localhost:3001/api/user/hobbies", {
-//       method: "GET",
-//       headers: {
-//         "Content-Type": "application/json",
-//       },
-//     });
-//     const data = await res.json();
-//   } catch (err) {
-//     console.log(err);
-//   }
-// };
 
 const markerHandler = (e) => {
   const { lat, lng } = e.latlng;
@@ -163,6 +148,7 @@ const loadMap = (position) => {
     attribution:
       '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
   }).addTo(map);
+
   getAllEvents();
 };
 
@@ -184,7 +170,7 @@ if (secondButton) {
       }
     );
     const data = await res.json();
-    return pagination(data.data.eventByHobby.length, 2, data.data.eventByHobby);
+    markers.clearLayers();
   });
 }
 
@@ -203,24 +189,26 @@ const getAllEvent = async () => {
   }
 };
 
-const pagination = async (maxElement = 7, maxPerPage = 2, data) => {
-  if (!data) {
-    data = await getAllEvent();
-  }
+const pagination = async (maxElement = 7, maxPerPage = 2) => {
+  data = await getAllEvent();
 
   maxElement = data.length;
+  console.log(maxElement);
   if (maxElement > maxPerPage) {
     const totalPage = Math.ceil(maxElement / maxPerPage);
     maxPage.innerHTML = totalPage;
-
     leftBtn.addEventListener("click", (e) => {
       if (page.innerHTML > 1) {
         page.innerHTML--;
       } else if (page.innerHTML == 1) {
         page.innerHTML = totalPage;
       }
-      console.log(maxElement, maxPerPage);
-      renderPopularEvents(maxElement, page.innerHTML, maxPerPage);
+      renderPopularEvents(
+        maxElement,
+        parseInt(page.innerHTML),
+        maxPerPage,
+        data
+      );
     });
 
     rightBtn.addEventListener("click", (e) => {
@@ -229,7 +217,12 @@ const pagination = async (maxElement = 7, maxPerPage = 2, data) => {
       } else if (page.innerHTML == totalPage) {
         page.innerHTML = 1;
       }
-      renderPopularEvents(maxElement, page.innerHTML, maxPerPage);
+      renderPopularEvents(
+        maxElement,
+        parseInt(page.innerHTML),
+        maxPerPage,
+        data
+      );
     });
   }
   renderPopularEvents(maxElement, 1, maxPerPage, data);
@@ -241,32 +234,32 @@ const renderPopularEvents = (
   maxPerPage,
   data = []
 ) => {
-  console.log(data);
   const start = (currentPage - 1) * maxPerPage;
   let end = start + maxPerPage;
   if (end > maxElement) {
     end = maxElement;
   }
-  // console.log(start, end);
+
   popularEvents.innerHTML = "";
-  for (let i = start; i < end - 1; i++) {
+  for (let i = start; i < end; i++) {
     console.log(data[i]);
     const eventMarkup = `
     <div class="row">
-      <div class="col">
+      <div class="col d-flex align-items-center">
         <img src="https://secure-content.meetupstatic.com/images/classic-events/470917220/222x125.jpg" width="222" height="125" alt="" class="image1"/>
       </div> 
       <div class="col">
         <span>${data[i].date}</span>
-        <p style="font: size 20px;">
+        <p style="font-size: 14px;">
           ${data[i].name}
         </p>
-        <h5>
+        <h5 style="font-size: 14px;">
           New York , NY
         </h5>
-        <p>
+        <p style="font-size: 14px;">
           1 attendee -<span style="color:rgb(224, 58, 58)"> ${data[i].totalSpot} spots left</span>
         </p>
+        <a href=/events/${data[i]._id}><button class="btn btn-success" style="margin-bottom:10px;" id=${data[i]._id}> Get to know more</button></a>
     </div>
       <hr style="width:80%; margin:auto; margin-bottom:9px;"/>
     </div>

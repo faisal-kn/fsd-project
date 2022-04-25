@@ -39,34 +39,6 @@ exports.resizeUserPhoto = async (req, res, next) => {
 
 exports.uploadUserPhoto = upload.single("photo");
 
-exports.resizeTourImages = async (req, res, next) => {
-  try {
-    if (!req.files.imageCover || !req.files.images) return next();
-    const coverFileName = `tours-${req.params.id}-${Date.now()}-cover.jpeg`;
-    await sharp(req.files.imageCover[0].buffer)
-      .resize(2000, 1333)
-      .toFormat("jpeg")
-      .jpeg({ quality: 90 })
-      .toFile(`./public/img/tours/${coverFileName}`);
-
-    req.body.imageCover = coverFileName;
-    req.body.images = [];
-    //now we need to process the images
-    await Promise.all(
-      req.files.images.map(async (image, i) => {
-        const imageName = `tours-${req.params.id}-${Date.now()}-${i + 1}.jpeg`;
-        await sharp(image.buffer)
-          .resize(2000, 1333)
-          .toFormat("jpeg")
-          .jpeg({ quality: 90 })
-          .toFile(`./public/img/tours/${imageName}`);
-        req.body.images.push(imageName);
-      })
-    );
-    next();
-  } catch (err) {}
-};
-
 exports.getHobbies = async (req, res, next) => {
   try {
     const hobbies = await User.find({ _id: req.user._id }).select("hobbies");
@@ -113,10 +85,11 @@ exports.changePersonalInformation = async (req, res, next) => {
 exports.updatePhoto = async (req, res, next) => {
   try {
     console.log(req.file);
-    let filteredObj;
+    let filteredObj = { photo: "" };
     if (req.file) filteredObj.photo = req.file.filename;
+    console.log(filteredObj, req.user);
     const updatedUser = await User.findByIdAndUpdate(
-      req.CurrentUser._id,
+      req.user._id,
       filteredObj,
       {
         new: true,
@@ -124,7 +97,6 @@ exports.updatePhoto = async (req, res, next) => {
       }
     );
     res.status(200).json({ status: "success", updatedUser });
-    next();
   } catch (err) {
     console.log(err);
   }
