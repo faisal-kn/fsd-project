@@ -20,6 +20,7 @@ const secondButton = document.getElementById("secondButton");
 
 const updatePhotoBtn = document.getElementById("photo-form");
 const photo = document.getElementById("photo");
+
 let map;
 
 const eventRequest = (lat, lng) => {
@@ -49,7 +50,6 @@ const eventRequest = (lat, lng) => {
 
 const createMarker = (ele) => {
   const marker = new L.Marker([ele.location[0], ele.location[1]]);
-
   const popup = L.popup().setContent(
     `<a href=/events/${ele._id}>${ele.name}</a>`
   );
@@ -97,13 +97,13 @@ const createEvent = async (
     form.append("host", hostValue);
     form.append("description", eventDescriptionValue);
     form.append("totalSpot", totalValue);
-
+    console.log([lat, lng]);
     const res = await fetch("http://localhost:3001/api/event/create-event", {
       method: "POST",
       body: form,
     });
     const data = await res.json();
-
+    flag = 1;
     console.log(data);
     if (data.status === "success") {
       createMarker(data.data.newEvent);
