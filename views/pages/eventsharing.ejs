@@ -56,12 +56,9 @@
     const joinBtn = document.getElementById("join-event-btn");
     joinBtn.addEventListener("click", async () => {
       const res = await fetch(
-        "http://localhost:3001/api/user/add-joined-event",
+        `http://localhost:3001/api/user/add-joined-event/${EVENT_ID}`,
         {
-          method: "POST",
-          body: JSON.stringify({
-            joinedEvents: EVENT_ID,
-          }),
+          method: "PATCH",
         }
       );
       const data = await res.json();

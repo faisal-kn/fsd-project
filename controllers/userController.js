@@ -104,10 +104,10 @@ exports.updatePhoto = async (req, res, next) => {
 
 exports.addJoinedEvent = async (req, res, next) => {
   try {
-    console.log("hi", req.body);
-    const oldEvents = req.user.joinedEvents;
+    req.body = req.params.joinedEvents;
+    let oldEvents = req.user.joinedEvents;
     req.body = oldEvents.push(req.body);
-    console.log(req.body);
+    console.log("hi",req.body);
     const updatedUser = await User.findByIdAndUpdate(req.user._id, req.body, {
       new: true,
       runValidators: true,

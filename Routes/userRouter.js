@@ -24,8 +24,8 @@ router.patch(
   userController.updatePhoto
 );
 
-router.post(
-  "/add-joined-event",
+router.patch(
+  "/add-joined-event/:joinedEvents",
   authController.protect,
   userController.addJoinedEvent
 );
@@ -33,6 +33,7 @@ router.post(
 router.delete(
   "deleteUser/:id",
   authController.protect,
+  authController.restrictTo("admin"),
   userController.deleteUser
 );
 
