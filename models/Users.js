@@ -60,6 +60,7 @@ const userSchema = new mongoose.Schema({
       "Hangouts",
     ],
   },
+  joinedEvents: [{ type: mongoose.Schema.ObjectId, ref: "Event" }],
 });
 
 userSchema.pre("save", async function (next) {

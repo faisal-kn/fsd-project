@@ -22,7 +22,9 @@ const eventSchema = new mongoose.Schema({
     required: [true, "A hobby is required"],
   },
   host: {
-    type: String,
+    type: mongoose.Schema.ObjectId,
+    ref: "User",
+    required: [true, "A Event must have a host"],
   },
   totalSpot: {
     type: Number,
