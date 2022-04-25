@@ -241,7 +241,35 @@ const pagination = async (maxElement = 7, maxPerPage = 2) => {
   renderPopularEvents(maxElement, 1, maxPerPage, data);
 };
 
-const renderPopularEvents = (
+const reverseGeoencode = async (a,b) => {
+  try {
+    
+    const string = 'http://api.positionstack.com/v1/reverse?access_key=fc9a1ebd02ce67ca55a38e4143527ec3&query='+a+','+b;
+    const res = await fetch(
+        string
+        );
+        const information = await res.json();
+        return information;
+    } catch (err) {
+        console.log(err);
+    }
+};
+
+const adddata = async (a,b) => {
+    try{
+        const info =await reverseGeoencode(a,b);
+        var a = info.data[0].label;
+        console.log(a);
+        return a;
+       
+    } catch (err) {
+        console.log(err);
+    }
+}
+
+
+
+const renderPopularEvents =async (
   maxElement,
   currentPage,
   maxPerPage,
@@ -267,7 +295,7 @@ const renderPopularEvents = (
           ${data[i].name}
         </p>
         <h5 style="font-size: 14px;">
-          New York , NY
+          ${await adddata(data[i].location[0], data[i].location[1])}
         </h5>
         <p style="font-size: 14px;">
           1 attendee -<span style="color:rgb(224, 58, 58)"> ${data[i].totalSpot} spots left</span>
@@ -280,6 +308,8 @@ const renderPopularEvents = (
     popularEvents.innerHTML += eventMarkup;
   }
 };
+
+
 
 getPosition();
 pagination();
