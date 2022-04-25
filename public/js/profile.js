@@ -1,4 +1,6 @@
 let userid = document.getElementById("useridlink");
+const joinBtn = document.getElementById("join-event-btn");
+
 userid.addEventListener("click", () => {
   let body = document.getElementById("body");
   body.animate(
@@ -27,3 +29,17 @@ updatePhotoBtn.addEventListener("submit", async (e) => {
     console.log(err);
   }
 });
+
+const getAllUserEvents = async () => {
+  try {
+    const res = await fetch(
+      "http://localhost:3001/api/event/get-events-of-host",
+      {
+        method: "GET",
+      }
+    );
+    const data = await res.json();
+  } catch (err) {
+    console.log(err);
+  }
+};

@@ -101,3 +101,34 @@ exports.updatePhoto = async (req, res, next) => {
     console.log(err);
   }
 };
+
+exports.addJoinedEvent = async (req, res, next) => {
+  try {
+    console.log("hi", req.body);
+    const oldEvents = req.user.joinedEvents;
+    req.body = oldEvents.push(req.body);
+    console.log(req.body);
+    const updatedUser = await User.findByIdAndUpdate(req.user._id, req.body, {
+      new: true,
+      runValidators: true,
+    })
+      .select("joinedEvents")
+      .populate({
+        path: "joinedEvents",
+        select: "-__v",
+      });
+    console.log(updatedUser);
+    res.status(200).json({ status: "success", updatedUser });
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+exports.getAllUsers = async (req, res, next) => {
+  try {
+    const users = await User.find().select("-password");
+    res.status(200).json({ status: "success", data: { users } });
+  } catch (err) {
+    console.log(err);
+  }
+};

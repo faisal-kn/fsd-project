@@ -4,25 +4,6 @@ let locationsToArray = locations.innerHTML.split(",");
 
 const reverseGeoencode = async () => {
   try {
-    const res = await fetch(
-      `https://nominatim.openstreetmap.org/reverse?format=xml&lat=${locationsToArray[0]}&lon=${locationsToArray[1]}&zoom=18&addressdetails=1`,
-      {
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-      }
-    );
-    const data = await res;
-    const dataJson = await data.json();
-    console.log(data);
-  } catch (err) {
-    console.log(err);
-  }
-};
-
-const reverseGeoencode = async () => {
-  try {
     const string = 'http://api.positionstack.com/v1/reverse?access_key=fc9a1ebd02ce67ca55a38e4143527ec3&query='+locationsToArray[0]+','+locationsToArray[1];
     const res = await fetch(
         string
@@ -38,7 +19,7 @@ const reverseGeoencode = async () => {
 const adddata = async () => {
     try{
         const info =await reverseGeoencode();
-        var a = info.data[0].label
+        const a = info.data[0].label;
         document.getElementById("locations").innerHTML = a;
        
     } catch (err) {

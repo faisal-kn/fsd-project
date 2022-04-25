@@ -9,6 +9,7 @@ const upload = multer({ dest: "public/uploads" });
 router.post("/signup", authController.signup);
 router.post("/login", authController.login);
 router.get("/logout", authController.logout);
+router.get("/allUsers", userController.getAllUsers);
 router.get("/hobbies", authController.protect, userController.getHobbies);
 router.patch(
   "/changeusername",
@@ -21,6 +22,12 @@ router.patch(
   userController.uploadUserPhoto,
   userController.resizeUserPhoto,
   userController.updatePhoto
+);
+
+router.patch(
+  "/add-joined-event",
+  authController.protect,
+  userController.addJoinedEvent
 );
 
 module.exports = router;
