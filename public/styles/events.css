@@ -1,7 +1,6 @@
 /* @import url("../../node_modules/font-awesome/css/font-awesome.min.css"); */
 @import url("./navbar.css");
 
-
 .main-container {
   display: flex;
   align-items: center;
@@ -9,15 +8,15 @@
 }
 
 .map-container {
-  height: 123vh;
+  height: 100vh;
 }
 
 .aside-container {
 }
 
-.cb{
+.cb {
   /* height: 10vh; */
-  display:flex;
+  display: flex;
 }
 
 .image1 {
@@ -30,8 +29,6 @@
 
 .second-row {
 }
-
-
 
 .pagination-container {
   display: flex;

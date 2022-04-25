@@ -24,7 +24,6 @@ const photo = document.getElementById("photo");
 let map;
 let markerGroup = [];
 
-
 const eventRequest = (lat, lng) => {
   if (form) {
     form.addEventListener("submit", (e) => {
@@ -190,40 +189,37 @@ if (secondButton) {
 
 const forwardgeoencode = async (a) => {
   try {
-    
-    const string = 'http://api.positionstack.com/v1/forward?access_key=fc9a1ebd02ce67ca55a38e4143527ec3&query='+a;
-    const res = await fetch(
-        string
-        );
-        const information = await res.json();
-        return information;
-    } catch (err) {
-        console.log(err);
-    }
+    const string =
+      "http://api.positionstack.com/v1/forward?access_key=fc9a1ebd02ce67ca55a38e4143527ec3&query=" +
+      a;
+    const res = await fetch(string);
+    const information = await res.json();
+    return information;
+  } catch (err) {
+    console.log(err);
+  }
 };
 
 const addforwarddata = async (a) => {
-    try{
-        const info =await forwardgeoencode(a);
-        const f = [];
-        f[0] = info.data[0].latitude;
-        f[1] = info.data[0].longitude;
-        return f;
-       
-    } catch (err) {
-        console.log(err);
-    }
-}
+  try {
+    const info = await forwardgeoencode(a);
+    const f = [];
+    f[0] = info.data[0].latitude;
+    f[1] = info.data[0].longitude;
+    return f;
+  } catch (err) {
+    console.log(err);
+  }
+};
 
-if(thirdButton){
+if (thirdButton) {
   thirdButton.addEventListener("click", async () => {
     const city = document.getElementById("lat").value;
     const loc = await addforwarddata(city);
     console.log(loc);
     var markerBounds = L.latLngBounds([loc]);
-    map.fitBounds(markerBounds);  
-
-  }); 
+    map.fitBounds(markerBounds);
+  });
 }
 
 const getAllEvent = async () => {
@@ -321,6 +317,10 @@ const renderPopularEvents = async (
   popularEvents.innerHTML = "";
   for (let i = start; i < end; i++) {
     console.log(data[i]);
+    const b = data[i].date.split(/\D+/);
+    data[i].date = new Date(
+      Date.UTC(b[0], --b[1], b[2], b[3], b[4], b[5], b[6])
+    );
     const eventMarkup = `
     <div class="row">
       <div class="col d-flex align-items-center">
