@@ -10,9 +10,8 @@
         <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
             integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
             crossorigin=""></script>
-
-        
-
+            <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.3.0/dist/MarkerCluster.css" />
+            <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.3.0/dist/MarkerCluster.Default.css" />
         <link rel="stylesheet" href="/styles/events.css" />
         <link rel="stylesheet" href="/styles/footer.css">
 </head>
@@ -113,15 +112,6 @@
                                 <div class="card-body">
                                     <h5 class="card-title p-3 text-center">CURRENT POPULAR EVENTS</h5>
                                     <div id="popular-events"></div>
-                                    <!-- <div class="pagination-container">
-                                        <div id="left-btn">
-                                            <i class="fa-solid fa-angle-left"></i>
-                                        </div>
-                                        <span id="page">1</span>/<span id="max-page">2</span>
-                                        <div id="right-btn">
-                                            <i class="fa-solid fa-angle-right"></i>
-                                        </div>
-                                    </div> -->
                                     <div class="pagination-container">
                                         <div class="pagination-container clickme" style="border: 3px solid black; border-radius:20px; background: solid rgb(129, 127, 127)">
                                         <div id="left-btn">
@@ -182,7 +172,7 @@
                                                 </select>
                                             </div>
                                         </div>
-                                        <% console.log(user) %>
+                                       
                                         <div class="row">
                                             <div class="me-3 pt-1">
                                                 <label class="form-label" for="lat" >Host</label>

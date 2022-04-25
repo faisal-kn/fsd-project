@@ -22,6 +22,7 @@ const updatePhotoBtn = document.getElementById("photo-form");
 const photo = document.getElementById("photo");
 
 let map;
+let markerGroup = [];
 
 const eventRequest = (lat, lng) => {
   if (form) {
@@ -49,11 +50,13 @@ const eventRequest = (lat, lng) => {
 };
 
 const createMarker = (ele) => {
+  console.log(ele.location[0], ele.location[1]);
   const marker = new L.Marker([ele.location[0], ele.location[1]]);
   const popup = L.popup().setContent(
     `<a href=/events/${ele._id}>${ele.name}</a>`
   );
   marker.bindPopup(popup).openPopup();
+  markerGroup.push(marker);
   marker.addTo(map);
 };
 
@@ -148,7 +151,11 @@ const loadMap = (position) => {
     attribution:
       '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
   }).addTo(map);
-
+  L.Icon.Default.prototype.options = {
+    iconUrl: "/assets/alt-icon.png",
+    iconSize: [20, 70],
+    iconAnchor: [10, 70],
+  };
   getAllEvents();
 };
 
@@ -170,7 +177,13 @@ if (secondButton) {
       }
     );
     const data = await res.json();
-    markers.clearLayers();
+    markerGroup.forEach((marker) => {
+      map.removeLayer(marker);
+    });
+    data.data.eventByHobby.forEach((ele) => {
+      createMarker(ele);
+    });
+    console.log(data);
   });
 }
 
@@ -246,7 +259,7 @@ const renderPopularEvents = (
     const eventMarkup = `
     <div class="row">
       <div class="col d-flex align-items-center">
-        <img src="https://secure-content.meetupstatic.com/images/classic-events/470917220/222x125.jpg" width="222" height="125" alt="" class="image1"/>
+        <img src="uploads/${data[i].photo}" width="222" height="125" alt="" class="image1"/>
       </div> 
       <div class="col">
         <span>${data[i].date}</span>
