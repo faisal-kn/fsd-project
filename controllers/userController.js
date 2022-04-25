@@ -124,6 +124,15 @@ exports.addJoinedEvent = async (req, res, next) => {
   }
 };
 
+exports.deleteUser = async (req, res, next) => {
+  try {
+    const deletedUser = await User.findByIdAndDelete(req.params.id);
+    res.json(204).json({ status: "success", data: { deletedUser } });
+  } catch {
+    res.status(401).json({ status: "failed", error: err });
+  }
+};
+
 exports.getAllUsers = async (req, res, next) => {
   try {
     const users = await User.find().select("-password");

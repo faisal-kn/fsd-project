@@ -24,10 +24,16 @@ router.patch(
   userController.updatePhoto
 );
 
-router.patch(
+router.post(
   "/add-joined-event",
   authController.protect,
   userController.addJoinedEvent
+);
+
+router.delete(
+  "deleteUser/:id",
+  authController.protect,
+  userController.deleteUser
 );
 
 module.exports = router;

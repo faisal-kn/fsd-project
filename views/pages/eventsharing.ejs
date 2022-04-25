@@ -58,10 +58,9 @@
       const res = await fetch(
         "http://localhost:3001/api/user/add-joined-event",
         {
-          method: "PATCH",
+          method: "POST",
           body: JSON.stringify({
-            username: userNameValue,
-            
+            joinedEvents: EVENT_ID,
           }),
         }
       );
