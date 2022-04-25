@@ -4,8 +4,9 @@
      <%- include("../partials/head") %>
     <link rel="stylesheet" href="/styles/adminportal.css">
     <link rel="stylesheet" href="/styles/footer.css">
-    <link rel="stylesheet" href="style/navbar.css">
+    <link rel="stylesheet" href="styles/navbar.css">
     <script type="module" src="/js/adminportal.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>Admin portal</title>
 </head>
 <body>
@@ -13,45 +14,41 @@
     <div class="mainbox">
         <div class="subbox1">
 
-            <button class="buttons" id = "searchanevent">Search an event</button>
+            <button class="buttons" id = "searchanevent">Active Users</button>
             <button class="buttons" id = "deleteevent">Delete event</button>
             <button class="buttons" id = "searchauser">Search a user</button>
             <button class="buttons" id = "deleteuser">Delete user</button>
-            <button class="buttons" id = "temporaryban">Temporary Ban</button>
-            <button class="buttons" id = "warning">Warning</button>
-            <button class="buttons" id = "eventstats">Event stats</button>
+            
         </div>
         <div class="subbox2">
             <div class="card" id = "card1">
-                <p class="heading">Search an event</p>
-                <p class="texts">
-                    Give the deatils of an event to get detailed infomration on the event that you have searched for. You can also use this to check who all are attending that event. Feel free to search via location if hthat indformation is available to you. 
-                </p>
-                <form action="#" class="form">
-                    <input
-                      class="details"
-                      type="text"
-                      name="EventName"
-                      id="eventname"
-                      placeholder="Search via event name"
-                    />
-                    <input
-                      class="details"
-                      type="text"
-                      name="EventLocation"
-                      id="eventlocation"
-                      placeholder="Search via location"
-                    />
-                    
-                    <button type="submit" class="submit">Search</button>
-                    
-                  </form>
-            </div>
+                <p class="heading">List of all active users</p>
+                <div class="div_table">
 
-            <div class="card" id = "card2">
-                <p class="heading">Delete event</p>
+                  <table class="table main_table">
+                    <thead class="thead-dark">
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Username</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Hobbies</th>
+                      </tr>
+                    </thead>
+                    <tbody id="tbody">
+                      
+                      
+                      
+                  </tbody>
+                </table>
+              </div>
+                
+                
+              </div>
+              
+              <div class="card" id = "card2">
+                <p class="heading" style="padding-top: 30px;">Delete event</p>
                 <p class="texts">
-                    Give the deatils of an event to get detailed infomration on the event that you have searched for. You can also use this to check who all are attending that event. Feel free to search via location if hthat indformation is available to you. 
+                  Give the deatils of an event to get detailed infomration on the event that you have searched for. You can also use this to check who all are attending that event. Feel free to search via location if hthat indformation is available to you. 
                 </p>
                 <form action="#" class="form">
                     <input
@@ -117,47 +114,6 @@
                     <button type="submit" class="submit">Search</button>
                     
                   </form>
-            </div>
-            <div class="card" id = "card5">
-                <p class="heading">Temporary ban</p>
-                <p class="texts">
-                    Give the deatils of an event to get detailed infomration on the event that you have searched for. You can also use this to check who all are attending that event. Feel free to search via location if hthat indformation is available to you. 
-                </p>
-                <form action="#" class="form">
-                    <input
-                      class="details"
-                      type="text"
-                      name="EventName"
-                      id="eventname"
-                      placeholder="Temporary ban via user name"
-                    />
-                   
-                    
-                    <button type="submit" class="submit">Search</button>
-                    
-                  </form>
-            </div>
-            <div class="card" id = "card6">
-                <p class="heading">Warning</p>
-                <p class="texts">
-                    Give the deatils of an event to get detailed infomration on the event that you have searched for. You can also use this to check who all are attending that event. Feel free to search via location if hthat indformation is available to you. 
-                </p>
-                <form action="#" class="form">
-                    <input
-                      class="details"
-                      type="text"
-                      name="EventName"
-                      id="eventname"
-                      placeholder="Give a warning via user name"
-                    />
-                
-                    
-                    <button type="submit" class="submit">Search</button>
-                    
-                  </form>
-            </div>
-            <div class="card" id = "card7">
-                <p class="heading">Event stats</p>
             </div>
         </div>
 

@@ -29,6 +29,15 @@ exports.signup = async (req, res, next) => {
   }
 };
 
+exports.restrictTo = function (...allowed) {
+  return function (req, res, next) {
+    if (!allowed.includes(req.CurrentUser.role)) {
+      return next(new AppError("You do not have permission to do this.", 403));
+    }
+    next();
+  };
+};
+
 exports.logout = (req, res) => {
   res.cookie("auth", "loggedout", {
     expires: new Date(Date.now() + 10 * 1000),

@@ -18,6 +18,10 @@ const multerFilter = (req, file, cb) => {
   }
 };
 
+const getAllUsers = (req,res,next)=>{
+  
+}
+
 const upload = multer({
   storage: multerStorage,
   fileFilter: multerFilter,
@@ -97,6 +101,46 @@ exports.updatePhoto = async (req, res, next) => {
       }
     );
     res.status(200).json({ status: "success", updatedUser });
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+exports.addJoinedEvent = async (req, res, next) => {
+  try {
+    req.body = req.params.joinedEvents;
+    let oldEvents = req.user.joinedEvents;
+    req.body = oldEvents.push(req.body);
+    console.log("hi",req.body);
+    const updatedUser = await User.findByIdAndUpdate(req.user._id, req.body, {
+      new: true,
+      runValidators: true,
+    })
+      .select("joinedEvents")
+      .populate({
+        path: "joinedEvents",
+        select: "-__v",
+      });
+    console.log(updatedUser);
+    res.status(200).json({ status: "success", updatedUser });
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+exports.deleteUser = async (req, res, next) => {
+  try {
+    const deletedUser = await User.findByIdAndDelete(req.params.id);
+    res.json(204).json({ status: "success", data: { deletedUser } });
+  } catch {
+    res.status(401).json({ status: "failed", error: err });
+  }
+};
+
+exports.getAllUsers = async (req, res, next) => {
+  try {
+    const users = await User.find().select("-password");
+    res.status(200).json({ status: "success", data: { users } });
   } catch (err) {
     console.log(err);
   }

@@ -24,7 +24,6 @@ exports.uploadEvent = upload.single("photo");
 
 exports.resizeEventPhoto = async (req, res, next) => {
   try {
-    console.log("hi", req.file);
     if (!req.file) return next();
     req.file.filename = `event-${Date.now()}.jpeg`;
 
@@ -41,15 +40,17 @@ exports.uploadEventPhoto = upload.single("photo");
 
 exports.createEvent = async (req, res, next) => {
   try {
-    req.body.location = [
-      parseFloat(req.body.location[0]),
-      parseFloat(req.body.location[1]),
-    ];
-    console.log(req.body);
+    let news = req.body.location.split(",");
+    news[0] = parseFloat(news[0]);
+    news[1] = parseFloat(news[1]);
+    req.body.location = news;
+    req.body.host = req.user._id;
+
     const newEvent = await Event.create(req.body);
     req.event = newEvent;
     return next();
   } catch (err) {
+    console.log(err);
     res.status(401).json({ status: "failed", error: err });
   }
 };
@@ -94,4 +95,15 @@ exports.uploadPhoto = async (req, res, next) => {
     });
     res.status(200).json({ status: "success", data: { newEvent } });
   } catch (err) {}
+};
+
+exports.getEventsOfHost = async (req, res, next) => {
+  try {
+    console.log(req.user._id);
+    const eventsOfHost = await Event.find({ host: req.user._id });
+    console.log(eventsOfHost);
+    res.status(200).json({ status: "success", data: { eventsOfHost } });
+  } catch (err) {
+    res.status(401).json({ status: "failed", error: err });
+  }
 };

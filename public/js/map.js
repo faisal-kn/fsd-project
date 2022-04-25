@@ -20,7 +20,10 @@ const secondButton = document.getElementById("secondButton");
 
 const updatePhotoBtn = document.getElementById("photo-form");
 const photo = document.getElementById("photo");
+
 let map;
+let markerGroup = [];
+
 
 const eventRequest = (lat, lng) => {
   if (form) {
@@ -48,12 +51,13 @@ const eventRequest = (lat, lng) => {
 };
 
 const createMarker = (ele) => {
+  console.log(ele.location[0], ele.location[1]);
   const marker = new L.Marker([ele.location[0], ele.location[1]]);
-
   const popup = L.popup().setContent(
     `<a href=/events/${ele._id}>${ele.name}</a>`
   );
   marker.bindPopup(popup).openPopup();
+  markerGroup.push(marker);
   marker.addTo(map);
 };
 
@@ -97,13 +101,13 @@ const createEvent = async (
     form.append("host", hostValue);
     form.append("description", eventDescriptionValue);
     form.append("totalSpot", totalValue);
-
+    console.log([lat, lng]);
     const res = await fetch("http://localhost:3001/api/event/create-event", {
       method: "POST",
       body: form,
     });
     const data = await res.json();
-
+    flag = 1;
     console.log(data);
     if (data.status === "success") {
       createMarker(data.data.newEvent);
@@ -148,7 +152,11 @@ const loadMap = (position) => {
     attribution:
       '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
   }).addTo(map);
-
+  L.Icon.Default.prototype.options = {
+    iconUrl: "/assets/alt-icon.png",
+    iconSize: [20, 70],
+    iconAnchor: [10, 70],
+  };
   getAllEvents();
 };
 
@@ -170,8 +178,52 @@ if (secondButton) {
       }
     );
     const data = await res.json();
-    markers.clearLayers();
+    markerGroup.forEach((marker) => {
+      map.removeLayer(marker);
+    });
+    data.data.eventByHobby.forEach((ele) => {
+      createMarker(ele);
+    });
+    console.log(data);
   });
+}
+
+const forwardgeoencode = async (a) => {
+  try {
+    
+    const string = 'http://api.positionstack.com/v1/forward?access_key=fc9a1ebd02ce67ca55a38e4143527ec3&query='+a;
+    const res = await fetch(
+        string
+        );
+        const information = await res.json();
+        return information;
+    } catch (err) {
+        console.log(err);
+    }
+};
+
+const addforwarddata = async (a) => {
+    try{
+        const info =await forwardgeoencode(a);
+        const f = [];
+        f[0] = info.data[0].latitude;
+        f[1] = info.data[0].longitude;
+        return f;
+       
+    } catch (err) {
+        console.log(err);
+    }
+}
+
+if(thirdButton){
+  thirdButton.addEventListener("click", async () => {
+    const city = document.getElementById("lat").value;
+    const loc = await addforwarddata(city);
+    console.log(loc);
+    var markerBounds = L.latLngBounds([loc]);
+    map.fitBounds(markerBounds);  
+
+  }); 
 }
 
 const getAllEvent = async () => {
@@ -228,7 +280,33 @@ const pagination = async (maxElement = 7, maxPerPage = 2) => {
   renderPopularEvents(maxElement, 1, maxPerPage, data);
 };
 
-const renderPopularEvents = (
+const reverseGeoencode = async (a, b) => {
+  try {
+    const string =
+      "http://api.positionstack.com/v1/reverse?access_key=fc9a1ebd02ce67ca55a38e4143527ec3&query=" +
+      a +
+      "," +
+      b;
+    const res = await fetch(string);
+    const information = await res.json();
+    return information;
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+const adddata = async (a, b) => {
+  try {
+    const info = await reverseGeoencode(a, b);
+    var a = info.data[0].label;
+    console.log(a);
+    return a;
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+const renderPopularEvents = async (
   maxElement,
   currentPage,
   maxPerPage,
@@ -246,7 +324,9 @@ const renderPopularEvents = (
     const eventMarkup = `
     <div class="row">
       <div class="col d-flex align-items-center">
-        <img src="https://secure-content.meetupstatic.com/images/classic-events/470917220/222x125.jpg" width="222" height="125" alt="" class="image1"/>
+        <img src="uploads/${
+          data[i].photo
+        }" width="222" height="125" alt="" class="image1"/>
       </div> 
       <div class="col">
         <span>${data[i].date}</span>
@@ -254,12 +334,18 @@ const renderPopularEvents = (
           ${data[i].name}
         </p>
         <h5 style="font-size: 14px;">
-          New York , NY
+        ${await adddata(data[i].location[0], data[i].location[1])}
         </h5>
         <p style="font-size: 14px;">
-          1 attendee -<span style="color:rgb(224, 58, 58)"> ${data[i].totalSpot} spots left</span>
+          1 attendee -<span style="color:rgb(224, 58, 58)"> ${
+            data[i].totalSpot
+          } spots left</span>
         </p>
-        <a href=/events/${data[i]._id}><button class="btn btn-success" style="margin-bottom:10px;" id=${data[i]._id}> Get to know more</button></a>
+        <a href=/events/${
+          data[i]._id
+        }><button class="btn btn-success" style="margin-bottom:10px;" id=${
+      data[i]._id
+    }> Get to know more</button></a>
     </div>
       <hr style="width:80%; margin:auto; margin-bottom:9px;"/>
     </div>

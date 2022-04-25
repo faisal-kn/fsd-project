@@ -21,6 +21,7 @@
 .subbox2{
     width: 80%;
     height: 100%;
+    
     /* border: 2px solid green; */
 }
 .buttons{
@@ -103,4 +104,9 @@ button:focus {
     color: white;
     font-size: large;
     background-color:blue;
+}
+
+.div_table{
+    height: 800px;
+    width: 800px;
 }

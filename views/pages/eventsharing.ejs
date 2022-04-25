@@ -5,6 +5,10 @@
     <link rel="stylesheet" href="/styles/es.css" />
     <link rel="stylesheet" href="/styles/footer.css" />
     <title>Event share</title>
+    <script
+      src="https://kit.fontawesome.com/f6dcf461c1.js"
+      crossorigin="anonymous"
+    ></script>
   </head>
 
   <body style="color: white">
@@ -22,14 +26,15 @@
             hobby %> <br /><br />Host : <%= host %> <br /><br />Total Spot : <%=
             totalSpot %> <br /><br />Description : <%= description %>
           </p>
-          <div class="btn">
-            
-            <ul>
-              <li><a href="#">events</a></li>
-              <li><a href="#">share events</a></li>
-            </ul>
+
+          <div class="icon_button">
+            <Button onclick="Toggle1()" id="btnh1" class="icon"
+              ><i class="fas fa-heart"></i
+            ></Button>
+            <button class="join" id="join-event-btn">Join</button>
           </div>
         </div>
+
         <div class="image">
           <img src="/assets/basketballmatch.jpg" alt="basketball match" />
         </div>
@@ -45,4 +50,29 @@
     <%- include('../partials/footer.ejs') %>
     <script src="/js/reverseGeocoding.js "></script>
   </body>
+
+  <script>
+    var btnvar1 = document.getElementById("btnh1");
+    const EVENT_ID = "<%= eventid %>";
+    const current_Event = "<%= user.joinedEvents %>";
+    console.log(EVENT_ID);
+    const joinBtn = document.getElementById("join-event-btn");
+    joinBtn.addEventListener("click", async () => {
+      const res = await fetch(
+        `http://localhost:3001/api/user/add-joined-event/${EVENT_ID}`,
+        {
+          method: "PATCH",
+        }
+      );
+      const data = await res.json();
+      console.log(data);
+    });
+    function Toggle1() {
+      if (btnvar1.style.color == "red") {
+        btnvar1.style.color = "grey";
+      } else {
+        btnvar1.style.color = "red";
+      }
+    }
+  </script>
 </html>

@@ -22,4 +22,10 @@ router.get(
   eventController.getEventByHobby
 );
 
+router.get(
+  "/get-events-of-host/",
+  authController.protect,
+  eventController.getEventsOfHost
+);
+
 module.exports = router;
