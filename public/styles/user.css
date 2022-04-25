@@ -1,7 +1,7 @@
 @import url("./navbar.css");
 
 body{
-   color: white;
+   color: rgb(255, 255, 255);
    background-color: #4D4D4D;
 background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 1000'%3E%3Cg %3E%3Ccircle fill='%234D4D4D' cx='50' cy='0' r='50'/%3E%3Cg fill='%23494949' %3E%3Ccircle cx='0' cy='50' r='50'/%3E%3Ccircle cx='100' cy='50' r='50'/%3E%3C/g%3E%3Ccircle fill='%23454545' cx='50' cy='100' r='50'/%3E%3Cg fill='%23424242' %3E%3Ccircle cx='0' cy='150' r='50'/%3E%3Ccircle cx='100' cy='150' r='50'/%3E%3C/g%3E%3Ccircle fill='%233e3e3e' cx='50' cy='200' r='50'/%3E%3Cg fill='%233a3a3a' %3E%3Ccircle cx='0' cy='250' r='50'/%3E%3Ccircle cx='100' cy='250' r='50'/%3E%3C/g%3E%3Ccircle fill='%23373737' cx='50' cy='300' r='50'/%3E%3Cg fill='%23333333' %3E%3Ccircle cx='0' cy='350' r='50'/%3E%3Ccircle cx='100' cy='350' r='50'/%3E%3C/g%3E%3Ccircle fill='%23303030' cx='50' cy='400' r='50'/%3E%3Cg fill='%232c2c2c' %3E%3Ccircle cx='0' cy='450' r='50'/%3E%3Ccircle cx='100' cy='450' r='50'/%3E%3C/g%3E%3Ccircle fill='%23292929' cx='50' cy='500' r='50'/%3E%3Cg fill='%23252525' %3E%3Ccircle cx='0' cy='550' r='50'/%3E%3Ccircle cx='100' cy='550' r='50'/%3E%3C/g%3E%3Ccircle fill='%23222222' cx='50' cy='600' r='50'/%3E%3Cg fill='%231e1e1e' %3E%3Ccircle cx='0' cy='650' r='50'/%3E%3Ccircle cx='100' cy='650' r='50'/%3E%3C/g%3E%3Ccircle fill='%231b1b1b' cx='50' cy='700' r='50'/%3E%3Cg fill='%23181818' %3E%3Ccircle cx='0' cy='750' r='50'/%3E%3Ccircle cx='100' cy='750' r='50'/%3E%3C/g%3E%3Ccircle fill='%23151515' cx='50' cy='800' r='50'/%3E%3Cg fill='%23111111' %3E%3Ccircle cx='0' cy='850' r='50'/%3E%3Ccircle cx='100' cy='850' r='50'/%3E%3C/g%3E%3Ccircle fill='%230c0c0c' cx='50' cy='900' r='50'/%3E%3Cg fill='%23060606' %3E%3Ccircle cx='0' cy='950' r='50'/%3E%3Ccircle cx='100' cy='950' r='50'/%3E%3C/g%3E%3Ccircle fill='%23000000' cx='50' cy='1000' r='50'/%3E%3C/g%3E%3C/svg%3E");
 background-attachment: fixed;
@@ -9,43 +9,6 @@ background-size: contain;
 border: 1px solid white;
 /* scroll-behavior: smooth; */
 }
-
-.big-box{
-    width: 50%;
-    height: 95%;
-    margin: auto;
-    /* border: 2px solid white; */
-    
-}
-
-.profile-pic{
-    width: 100%;
-    height: 80%;
-    /* border: 2px solid blue; */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.addphoto{
-    /* border: 2px solid blueviolet; */
-    width: 100%;
-    height: 20%;
-}
-
-.addphotobutton{
-    border: none;
-    background-color: #3b3b3b;
-    color: white;
-    opacity: .8;
-    width: 100%;
-    height: 20%;
-}
-
-.addphotobutton:hover{
-    opacity:1;
-}
-
 
 .container{
     width:100%;
@@ -133,6 +96,7 @@ border: 1px solid white;
     display:flex;
     flex-direction:column;
     background-color: rgb(39, 39, 39);
+
 }
 
 .subbox2{
@@ -159,17 +123,17 @@ border: 1px solid white;
 }
 .subbox1 p{
     /* border: 2px solid white; */
+    margin-top:8px;
     padding-left:20px;
     padding-right:10px;
-    font-size:12px;
+    font-size:17px;
     word-spacing:none;
-    line-height:15px;
 }
 
-.subbox2 .name{
+.subbox2 #name{
     /* border: 1px solid white; */
-    width:85%;
-    height:25%;
+    width:86%;
+    /* height:25%; */
     margin:11px;
     background-color: #3b3b3b;
     border-radius:5px;
@@ -184,65 +148,57 @@ border: 1px solid white;
     opacity:1;
 }
 
-.subbox2 .button{
+::-webkit-input-placeholder { 
+    color: aliceblue;
+    font-weight: bold;
+  }
+  
+.subbox2 button{
     width:20%;
     height:15%;
     background-color: #3b3b3b;
     border-radius:3px;
     border:none;
-    margin-left: 71%;
+    margin-left:63%;
     color:white;
     font-size: 10px;
     opacity:.8;
 }
 
-.subbox2 .button:hover{
+.subbox2 button:hover{
     opacity:1;
 }
-.subbox2 .email{
-    /* border: 1px solid white; */
+#personal{
+    height:335px;
+}
+.subbox2 #Email{
     width:86%;
     margin:3% 4%;
     background-color: #3b3b3b;
-    border-radius:3px;
+    border-radius:5px;
     height:20%;
     padding:2% 3%;
     opacity: .8;
-}
-.subbox2 .email:hover{
-    opacity: 1;
-}
-.per{
-    display:flex;
-    flex-direction: row;
-    width:100%;
-    height:60%;
+    color: aliceblue;
+
 }
 
-.subbox2 .country,.pin,.dob{
-    width:23%;
-    margin:0 4.2%;
+.subbox2 #place,#pincode,#dob{
+    width:86%;
+    margin:2% 4%;
     background-color: #3b3b3b;
     border-radius:3px;
-    height:45%;
+    height:100%;
     padding:2% 3%;
-    font-size:10px;
     opacity:.8;
+    color: aliceblue;
+    
 }
 
-.subbox2 .country:hover{
-    opacity: 1;
-}
-.subbox2 .pin:hover{
-    opacity: 1;
-}
-.subbox2 .dob:hover{
-    opacity: 1;
-}
  .subbox2 .change {
-    margin-left:70%;
+    margin-left:61%;
     margin-bottom:5%;
-    height:23%;
+    
 }
 .subbox2 .save{
     margin-left:68%;
@@ -258,11 +214,86 @@ form{
     width:85%;
     margin-left:4%;
 }
+.pf{
+    margin-top:3%;
+}
+
+#pincode::-webkit-outer-spin-button,
+#pincode::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+#hobbies-2{
+    display:flex;
+    flex-direction: row;
+    /* border: 1px solid white; */
+    justify-content:center;
+    align-items:center;
+    flex-wrap: wrap;
+}
+
+.box{
+    /* border: 1px solid white; */
+    border-radius: 4px;
+    background-color:#3b3b3b;
+    width:20%;
+    color:rgb(175, 172, 172);
+    text-align: center;
+    height:28%;
+    margin:5% 1.5%;
+    justify-self: center;
+}
+
 form input{
     margin:1%;
     background-color: #3b3b3b;
     border: none;
     font-size: 20px;
+}
+.b{
+display: flex;
+flex-direction: row;
+width: 100%;
+height: 100%;
+}
+
+.big-box{
+    width: 50%;
+    height: 100%;
+    text-align: center;
+    /* border: 1px solid white; */
+}
+ .form{
+     /* border: 1px solid white; */
+     padding: 5%;
+ }
+.profile-pic{
+    width: 100%;
+    height: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.addphoto{
+
+    width: 100%;
+    height: 20%;
+}
+
+.addphotobutton{
+    border: none;
+    background-color: #3b3b3b;
+    color: white;
+    opacity: .8;
+    width: 100%;
+    height: 20%;
+}
+
+.addphotobutton:hover{
+    opacity:1;
 }
 
 @media screen and (max-width:990px){
