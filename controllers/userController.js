@@ -18,9 +18,7 @@ const multerFilter = (req, file, cb) => {
   }
 };
 
-const getAllUsers = (req,res,next)=>{
-  
-}
+
 
 const upload = multer({
   storage: multerStorage,
