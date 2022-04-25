@@ -9,10 +9,15 @@
 }
 
 .map-container {
-  height: 90vh;
+  height: 123vh;
 }
 
 .aside-container {
+}
+
+.cb{
+  /* height: 10vh; */
+  display:flex;
 }
 
 .image1 {
@@ -48,7 +53,4 @@
   width: 100%;
   margin-bottom: 30px;
   margin-right: 10px;
-}
-
-.modal-style {
 }
