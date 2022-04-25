@@ -188,6 +188,44 @@ if (secondButton) {
   });
 }
 
+const forwardgeoencode = async (a) => {
+  try {
+    
+    const string = 'http://api.positionstack.com/v1/forward?access_key=fc9a1ebd02ce67ca55a38e4143527ec3&query='+a;
+    const res = await fetch(
+        string
+        );
+        const information = await res.json();
+        return information;
+    } catch (err) {
+        console.log(err);
+    }
+};
+
+const addforwarddata = async (a) => {
+    try{
+        const info =await forwardgeoencode(a);
+        const f = [];
+        f[0] = info.data[0].latitude;
+        f[1] = info.data[0].longitude;
+        return f;
+       
+    } catch (err) {
+        console.log(err);
+    }
+}
+
+if(thirdButton){
+  thirdButton.addEventListener("click", async () => {
+    const city = document.getElementById("lat").value;
+    const loc = await addforwarddata(city);
+    console.log(loc);
+    var markerBounds = L.latLngBounds([loc]);
+    map.fitBounds(markerBounds);  
+
+  }); 
+}
+
 const getAllEvent = async () => {
   try {
     const res = await fetch("http://localhost:3001/api/event/all-events", {
@@ -296,7 +334,7 @@ const renderPopularEvents = async (
           ${data[i].name}
         </p>
         <h5 style="font-size: 14px;">
-          ${await adddata(data[i].location[0], data[i].location[1])}
+        ${await adddata(data[i].location[0], data[i].location[1])}
         </h5>
         <p style="font-size: 14px;">
           1 attendee -<span style="color:rgb(224, 58, 58)"> ${
