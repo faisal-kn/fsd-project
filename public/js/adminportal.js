@@ -40,7 +40,7 @@ const hideAlert = () => {
 
 const showAlert = (type, msg, time = 5) => {
   hideAlert();
-  const markup = `<div class="alert alert--${type}">${msg}</div>`;
+  const markup = `<div class="alertssss alert--${type}">${msg}</div>`;
   document.querySelector("body").insertAdjacentHTML("afterbegin", markup);
   window.setTimeout(hideAlert, time * 1000);
 };
@@ -196,11 +196,17 @@ deleteUser.addEventListener("click", async () => {
 
 searchUser.addEventListener("click", async () => {
   const userName = searchuserName.value;
+  console.log(userName);
   const string = `http://localhost:3001/api/user/getUser/${userName}`;
   const res = await fetch(string, {
     method: "GET",
   });
   const info = await res.json();
+  if (info.status === "success") {
+    showAlert("success", "User Fetched successfully");
+  } else {
+    showAlert("error", "User not Found");
+  }
 });
 
 delEventBtn.addEventListener("click", async () => {
