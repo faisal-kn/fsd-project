@@ -11,7 +11,9 @@ const searchuserName = document.getElementById("searchUsername");
 const delEventBtn = document.getElementById("delEventBtn");
 const eventNameDelete = document.getElementById("eventname");
 const userName = document.getElementById("username");
-const addanadmin = document.getElementById("addanadmin")
+const addanadmin = document.getElementById("addanadmin");
+const adminName = document.getElementById("adminName");
+const addAdminBtn = document.getElementById("addAdminBtn");
 
 cards = Array.from(cards);
 
@@ -29,6 +31,18 @@ const displayusers = async () => {
   } catch (err) {
     console.log(err);
   }
+};
+
+const hideAlert = () => {
+  const el = document.querySelector(".alert");
+  if (el) el.parentElement.removeChild(el);
+};
+
+const showAlert = (type, msg, time = 5) => {
+  hideAlert();
+  const markup = `<div class="alert alert--${type}">${msg}</div>`;
+  document.querySelector("body").insertAdjacentHTML("afterbegin", markup);
+  window.setTimeout(hideAlert, time * 1000);
 };
 
 const update = async () => {
@@ -172,6 +186,12 @@ deleteUser.addEventListener("click", async () => {
   const res = await fetch(string, {
     method: "DELETE",
   });
+  const info = await res.json();
+  if (info.status === "success") {
+    showAlert("success", "User Deleted successfully");
+  } else {
+    showAlert("error", "User not Found");
+  }
 });
 
 searchUser.addEventListener("click", async () => {
@@ -181,7 +201,6 @@ searchUser.addEventListener("click", async () => {
     method: "GET",
   });
   const info = await res.json();
-  console.log(info);
 });
 
 delEventBtn.addEventListener("click", async () => {
@@ -190,4 +209,25 @@ delEventBtn.addEventListener("click", async () => {
   const res = await fetch(string, {
     method: "DELETE",
   });
+  const info = await res.json();
+  if (info.status === "success") {
+    showAlert("success", "Event Deleted successfully");
+  } else {
+    showAlert("error", "Event not Found");
+  }
+});
+
+addAdminBtn.addEventListener("click", async () => {
+  const userName = adminName.value;
+  const string = `http://localhost:3001/api/user/add-admin/${userName}`;
+  const res = await fetch(string, {
+    method: "GET",
+  });
+  const info = await res.json();
+  if (info.status === "success") {
+    showAlert("success", "Admin added successfully");
+  } else {
+    showAlert("error", "Failed to add admin");
+  }
+  console.log(info);
 });

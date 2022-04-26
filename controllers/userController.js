@@ -157,3 +157,16 @@ exports.getUserByUsername = async (req, res, next) => {
     res.status(401).json({ status: "failed", error: err });
   }
 };
+
+exports.addAdmin = async (req, res, next) => {
+  try {
+    const user = await User.findOne({ username: req.params.username });
+    if (!user)
+      return next(new AppError("the required user does not exist", 404));
+    user.role = "admin";
+    await user.save();
+    res.status(200).json({ status: "success", data: { user } });
+  } catch (err) {
+    res.status(401).json({ status: "failed", error: err });
+  }
+};
