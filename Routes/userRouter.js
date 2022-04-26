@@ -32,7 +32,7 @@ router.patch(
 );
 
 router.delete(
-  "deleteUser/:id",
+  "/deleteUser/:username",
   authController.protect,
   authController.restrictTo("admin"),
   userController.deleteUser
