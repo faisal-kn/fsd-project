@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
+const { sign, verify } = require("jsonwebtoken");
 
 const userSchema = new mongoose.Schema({
   username: {
@@ -25,12 +26,6 @@ const userSchema = new mongoose.Schema({
   confirmPassword: {
     type: String,
     required: [true, "Confirm the password"],
-    validate: {
-      validator: function (pass) {
-        return this.password === pass;
-      },
-      message: "Password do not match .Please enter again",
-    },
   },
   passwordCreatedAt: {
     type: Date,
@@ -61,12 +56,16 @@ const userSchema = new mongoose.Schema({
     ],
   },
   joinedEvents: [{ type: mongoose.Schema.ObjectId, ref: "Event" }],
+  status: {
+    type: String,
+    enum: ["Pending", "Active"],
+    default: "Pending",
+  },
 });
 
 userSchema.pre("save", async function (next) {
   if (!this.isModified("password")) return;
   this.password = await bcrypt.hash(this.password, 10);
-  this.confirmPassword = undefined;
   next();
 });
 
@@ -80,6 +79,17 @@ userSchema.methods.checkPassword = async function (
   userPassword
 ) {
   return await bcrypt.compare(candidatePassword, userPassword);
+};
+
+userSchema.methods.generateToken = function () {
+  const user = this;
+  const token = sign({ _id: user._id.toHexString() }, process.env.JWT_SECRET, {
+    expiresIn: "1d",
+  }).toString();
+  user.tokens.push({ token });
+  return user.save().then((us) => {
+    return token;
+  });
 };
 
 const User = mongoose.model("User", userSchema);

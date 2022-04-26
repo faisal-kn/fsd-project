@@ -6,10 +6,11 @@ const cookieParser = require("cookie-parser");
 const viewRouter = require("./Routes/viewRouter");
 const userRouter = require("./Routes/userRouter");
 const eventRouter = require("./Routes/eventRouter");
-const AppError = require('./utils/AppError');
+const AppError = require("./utils/AppError");
 const multer = require("multer");
 var bodyParser = require("body-parser");
 const app = express();
+const Email = require("./utils/Email");
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -27,6 +28,15 @@ app.use(cors());
 
 app.use("/api/user", userRouter);
 app.use("/api/event", eventRouter);
+
+app.get("/verify/:token", (req, res, next) => {
+  const token = req.params.token;
+  if (Email.verifyEmail(token)) {
+    res.redirect("/");
+  } else {
+    res.send("No page exists");
+  }
+});
 app.use("/", viewRouter);
 
 app.all("*", (req, res, next) => {

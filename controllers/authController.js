@@ -2,6 +2,7 @@ const User = require("../models/Users");
 const jwt = require("jsonwebtoken");
 const { promisify } = require("util");
 const AppError = require("../utils/AppError");
+const Email = require("../utils/Email");
 
 exports.signup = async (req, res, next) => {
   try {
@@ -20,6 +21,10 @@ exports.signup = async (req, res, next) => {
       token,
       data: { newUser },
     });
+    // const url = `${req.protocol}://${req.get("host")}/me#`;
+    // console.log(url);
+    // new Email(newUser, url).sendWelcome();
+    await Email.sendEmail(newUser, token);
   } catch (err) {
     console.log(err);
     res.status(401).json({
@@ -55,7 +60,11 @@ exports.login = async (req, res, next) => {
     let user = await User.findOne({ email: email }).select("+password");
     if (!user || !(await user.checkPassword(password, user.password)))
       return next(new AppError("Incorrect email or password.", 401));
-
+    if (user.status != "Active") {
+      return res.status(401).send({
+        message: "Pending Account. Please Verify Your Email!",
+      });
+    }
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
       expiresIn: process.env.JWT_EXPIRES_IN,
     });
@@ -64,6 +73,7 @@ exports.login = async (req, res, next) => {
       expires: new Date(Date.now() + process.env.AUTH_COOKIE_EXPIRES_IN),
       httpOnly: true,
     };
+
     res.cookie("auth", token, cookieOptions);
 
     //To remove the password field from the output
