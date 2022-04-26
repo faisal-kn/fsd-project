@@ -50,4 +50,11 @@ router.delete(
   userController.deleteUser
 );
 
+router.get(
+  "/add-admin/:username",
+  authController.protect,
+  authController.restrictTo("admin"),
+  userController.addAdmin
+);
+
 module.exports = router;

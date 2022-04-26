@@ -12,6 +12,8 @@ const delEventBtn = document.getElementById("delEventBtn");
 const eventNameDelete = document.getElementById("eventname");
 const userName = document.getElementById("userdeleted");
 const addanadmin = document.getElementById("addanadmin");
+const adminName = document.getElementById("adminName");
+const addAdminBtn = document.getElementById("addAdminBtn");
 const forms0 = document.getElementById("forms0");
 const forms1 = document.getElementById("forms1");
 const details = document.getElementById("details");
@@ -34,6 +36,18 @@ const displayusers = async () => {
   } catch (err) {
     console.log(err);
   }
+};
+
+const hideAlert = () => {
+  const el = document.querySelector(".alert");
+  if (el) el.parentElement.removeChild(el);
+};
+
+const showAlert = (type, msg, time = 5) => {
+  hideAlert();
+  const markup = `<div class="alertssss alert--${type}">${msg}</div>`;
+  document.querySelector("body").insertAdjacentHTML("afterbegin", markup);
+  window.setTimeout(hideAlert, time * 1000);
 };
 
 const update = async () => {
@@ -182,6 +196,12 @@ deleteUser.addEventListener("click", async () => {
   const res = await fetch(string, {
     method: "DELETE",
   });
+  const info = await res.json();
+  if (info.status === "success") {
+    showAlert("success", "User Deleted successfully");
+  } else {
+    showAlert("error", "User not Found");
+  }
 });
 
 
@@ -194,11 +214,19 @@ searchUser.addEventListener("click", async () => {
   forms0.style.display = "none";
   forms1.style.display = "flex";
   const userName = searchuserName.value;
+  console.log(userName);
   const string = `http://localhost:3001/api/user/getUser/${userName}`;
   const res = await fetch(string, {
     method: "GET",
   });
   const info = await res.json();
+<<<<<<< HEAD
+  if (info.status === "success") {
+    showAlert("success", "User Fetched successfully");
+  } else {
+    showAlert("error", "User not Found");
+  }
+=======
   console.log(info);
   let userusername = info.data.user.username;
   let useremail = info.data.user.email;
@@ -209,6 +237,7 @@ searchUser.addEventListener("click", async () => {
 
   details.innerHTML = `Username: ${userusername} <br><br> Email: ${useremail} <br><br> Hobbies: ${userhobbies} <br><br> Account created at: ${usercreatetime} <br><br> Status: ${status}`;
 
+>>>>>>> b89702a76abd77cf25f8d89191dea37b9f0e3d17
 });
 
 delEventBtn.addEventListener("click", async () => {
@@ -217,4 +246,25 @@ delEventBtn.addEventListener("click", async () => {
   const res = await fetch(string, {
     method: "DELETE",
   });
+  const info = await res.json();
+  if (info.status === "success") {
+    showAlert("success", "Event Deleted successfully");
+  } else {
+    showAlert("error", "Event not Found");
+  }
+});
+
+addAdminBtn.addEventListener("click", async () => {
+  const userName = adminName.value;
+  const string = `http://localhost:3001/api/user/add-admin/${userName}`;
+  const res = await fetch(string, {
+    method: "GET",
+  });
+  const info = await res.json();
+  if (info.status === "success") {
+    showAlert("success", "Admin added successfully");
+  } else {
+    showAlert("error", "Failed to add admin");
+  }
+  console.log(info);
 });
