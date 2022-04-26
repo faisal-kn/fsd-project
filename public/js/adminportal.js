@@ -10,6 +10,8 @@ const searchUser = document.getElementById("searchUser");
 const searchuserName = document.getElementById("searchUsername");
 const delEventBtn = document.getElementById("delEventBtn");
 const eventNameDelete = document.getElementById("eventname");
+const userName = document.getElementById("username");
+const addanadmin = document.getElementById("addanadmin")
 
 cards = Array.from(cards);
 
@@ -119,6 +121,15 @@ const update = async () => {
 };
 
 update();
+
+addanadmin.addEventListener("click", () => {
+  let a = document.getElementById("card5");
+  console.log(a);
+  cards.forEach((element) => {
+    element.style.display = "none";
+  });
+  a.style.display = "flex";
+});
 
 searchanevent.addEventListener("click", () => {
   let a = document.getElementById("card1");

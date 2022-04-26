@@ -2,6 +2,7 @@ const joinBtn = document.getElementById("join-event-btn");
 
 const updatePhotoBtn = document.getElementById("photo-form");
 const photo = document.getElementById("photo");
+const personal = document.getElementById("personal-1")
 
 updatePhotoBtn.addEventListener("submit", async (e) => {
   e.preventDefault();
@@ -30,9 +31,14 @@ const getAllUserEvents = async () => {
     const data = await res.json();
     console.log(data);
     const eventOfHost = data.data.eventsOfHost;
-    eventOfHost.forEach((oneHost) => {
-      console.log(oneHost);
-    });
+    console.log(eventOfHost);
+    for(i=0; i<2; i++)
+    {
+      console.log(eventOfHost[i].name, eventOfHost[i].date);
+      const string1 = eventOfHost[i].date.substring(0,10);
+      const String = `<div>${eventOfHost[i].name}, ${string1}</div>`;
+      personal.innerHTML += String;
+    }
   } catch (err) {
     console.log(err);
   }

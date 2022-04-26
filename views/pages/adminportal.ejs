@@ -18,6 +18,7 @@
             <button class="buttons" id = "deleteevent">Delete event</button>
             <button class="buttons" id = "searchauser">Search a user</button>
             <button class="buttons" id = "deleteuser">Delete user</button>
+            <button class="buttons" id = "addanadmin">Add an admin</button>
             
         </div>
         <div class="subbox2">
@@ -48,7 +49,7 @@
               <div class="card" id = "card2">
                 <p class="heading" style="padding-top: 30px;">Delete event</p>
                 <p class="texts">
-                  Give the deatils of an event to get detailed infomration on the event that you have searched for. You can also use this to check who all are attending that event. Feel free to search via location if hthat indformation is available to you. 
+                  Give the details of an event to delete the event that you have searched for. Feel free to search via location if that information is available to you. 
                 </p>
                 <form action="#" class="form">
                     <input
@@ -66,7 +67,7 @@
             <div class="card" id = "card3">
                 <p class="heading">Search a user</p>
                 <p class="texts">
-                    Give the deatils of an event to get detailed infomration on the event that you have searched for. You can also use this to check who all are attending that event. Feel free to search via location if hthat indformation is available to you. 
+                    Provide username of any user to get details of that user. These details could be used to flag that user for potential account deletion.
                 </p>
                 <form action="#" class="form">
                     <input
@@ -82,7 +83,7 @@
             <div class="card" id = "card4">
                 <p class="heading">Delete user</p>
                 <p class="texts">
-                    Give the deatils of an event to get detailed infomration on the event that you have searched for. You can also use this to check who all are attending that event. Feel free to search via location if hthat indformation is available to you. 
+                    Give the username of the user you want to delete. Please verify that you are following the guidelines before deleting a user to avoid legal troubles.
                 </p>
                 <form action="#" class="form">
                     <input
@@ -92,10 +93,28 @@
                       id="username"
                       placeholder="Enter a username"
                     />
-                    <button type="submit" class="submit" id="deleteUser">Search</button>
+                    <button type="submit" class="submit" id="deleteUser">Delete</button>
                     
                   </form>
             </div>
+
+            <div class="card" id = "card5">
+              <p class="heading">Add an admin</p>
+              <p class="texts" >
+                  Add an exsting user as an admin. Only admins get access to the admin protal. No normal user can access this page. provide an username to make that account an admin.
+              </p>
+              <form action="#" class="form">
+                  <input
+                    class="details"
+                    type="text"
+                    name="EventName"
+                    id="admin"
+                    placeholder="Enter a username"
+                  />
+                  <button type="submit" class="submit" id="deleteUser">Add</button>
+                  
+                </form>
+          </div>
         </div>
 
     </div>
