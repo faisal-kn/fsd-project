@@ -14,6 +14,11 @@ const userName = document.getElementById("username");
 const addanadmin = document.getElementById("addanadmin");
 const adminName = document.getElementById("adminName");
 const addAdminBtn = document.getElementById("addAdminBtn");
+const forms0 = document.getElementById("forms0");
+const forms1 = document.getElementById("forms1");
+const details = document.getElementById("details");
+const back = document.getElementById("back");
+
 
 cards = Array.from(cards);
 
@@ -63,6 +68,7 @@ const update = async () => {
     for (var i = 0; i < info.data.users.length; i++) {
       const Name = info.data.users[i].username;
       const Email = info.data.users[i].email;
+      const status = info.data.users[i].status;
       if (info.data.users[i].hobbies[0]) {
         Hobbies0 = info.data.users[i].hobbies[0];
       } else {
@@ -127,6 +133,7 @@ const update = async () => {
       <td> ${Name} </td>
       <td> ${Email} </td>
       <td> ${Hobbies0} ${Hobbies1} ${Hobbies2} ${Hobbies3} ${Hobbies4} ${Hobbies5} ${Hobbies6} ${Hobbies7} ${Hobbies8} ${Hobbies9} </td>
+      <td> ${status} </td>
     </tr>`;
     }
   } catch (err) {
@@ -135,6 +142,9 @@ const update = async () => {
 };
 
 update();
+
+
+
 
 addanadmin.addEventListener("click", () => {
   let a = document.getElementById("card5");
@@ -194,7 +204,15 @@ deleteUser.addEventListener("click", async () => {
   }
 });
 
+
+back.addEventListener("click", () => {
+  forms0.style.display = "flex";
+  forms1.style.display = "none";
+});
+
 searchUser.addEventListener("click", async () => {
+  forms0.style.display = "none";
+  forms1.style.display = "flex";
   const userName = searchuserName.value;
   console.log(userName);
   const string = `http://localhost:3001/api/user/getUser/${userName}`;
@@ -202,11 +220,24 @@ searchUser.addEventListener("click", async () => {
     method: "GET",
   });
   const info = await res.json();
+<<<<<<< HEAD
   if (info.status === "success") {
     showAlert("success", "User Fetched successfully");
   } else {
     showAlert("error", "User not Found");
   }
+=======
+  console.log(info);
+  let userusername = info.data.user.username;
+  let useremail = info.data.user.email;
+  let userhobbies = info.data.user.hobbies;
+  let usercreatetime = info.data.user.passwordCreatedAt;
+  let status = info.data.user.status;
+  usercreatetime = usercreatetime.substring(0,10);
+
+  details.innerHTML = `Username: ${userusername} <br><br> Email: ${useremail} <br><br> Hobbies: ${userhobbies} <br><br> Account created at: ${usercreatetime} <br><br> Status: ${status}`;
+
+>>>>>>> b89702a76abd77cf25f8d89191dea37b9f0e3d17
 });
 
 delEventBtn.addEventListener("click", async () => {
