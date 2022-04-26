@@ -54,6 +54,7 @@ const update = async () => {
     for (var i = 0; i < info.data.users.length; i++) {
       const Name = info.data.users[i].username;
       const Email = info.data.users[i].email;
+      const status = info.data.users[i].status;
       if (info.data.users[i].hobbies[0]) {
         Hobbies0 = info.data.users[i].hobbies[0];
       } else {
@@ -118,6 +119,7 @@ const update = async () => {
       <td> ${Name} </td>
       <td> ${Email} </td>
       <td> ${Hobbies0} ${Hobbies1} ${Hobbies2} ${Hobbies3} ${Hobbies4} ${Hobbies5} ${Hobbies6} ${Hobbies7} ${Hobbies8} ${Hobbies9} </td>
+      <td> ${status} </td>
     </tr>`;
     }
   } catch (err) {
@@ -127,16 +129,7 @@ const update = async () => {
 
 update();
 
-searchUser.addEventListener("click", () => {
-  forms0.style.display = "none";
-  forms1.style.display = "flex";
 
-  });
-
-back.addEventListener("click", () => {
-  forms0.style.display = "flex";
-  forms1.style.display = "none";
-});
 
 
 addanadmin.addEventListener("click", () => {
@@ -191,7 +184,15 @@ deleteUser.addEventListener("click", async () => {
   });
 });
 
+
+back.addEventListener("click", () => {
+  forms0.style.display = "flex";
+  forms1.style.display = "none";
+});
+
 searchUser.addEventListener("click", async () => {
+  forms0.style.display = "none";
+  forms1.style.display = "flex";
   const userName = searchuserName.value;
   const string = `http://localhost:3001/api/user/getUser/${userName}`;
   const res = await fetch(string, {
@@ -199,6 +200,15 @@ searchUser.addEventListener("click", async () => {
   });
   const info = await res.json();
   console.log(info);
+  let userusername = info.data.user.username;
+  let useremail = info.data.user.email;
+  let userhobbies = info.data.user.hobbies;
+  let usercreatetime = info.data.user.passwordCreatedAt;
+  let status = info.data.user.status;
+  usercreatetime = usercreatetime.substring(0,10);
+
+  details.innerHTML = `Username: ${userusername} <br><br> Email: ${useremail} <br><br> Hobbies: ${userhobbies} <br><br> Account created at: ${usercreatetime} <br><br> Status: ${status}`;
+
 });
 
 delEventBtn.addEventListener("click", async () => {
