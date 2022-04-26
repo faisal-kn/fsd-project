@@ -33,6 +33,7 @@
                         <th scope="col">Username</th>
                         <th scope="col">Email</th>
                         <th scope="col">Hobbies</th>
+                        <th scope="col">Status</th>
                       </tr>
                     </thead>
                     <tbody id="tbody">
@@ -69,7 +70,7 @@
                 <p class="texts">
                     Provide username of any user to get details of that user. These details could be used to flag that user for potential account deletion.
                 </p>
-                <form action="#" class="form">
+                <form action="#" class="form" id="forms0">
                     <input
                       class="details"
                       type="text"
@@ -79,6 +80,12 @@
                     />       
                     <button type="submit" class="submit" id="searchUser">Search</button>
                   </form>
+                <div id="forms1" class="form" style="display: none;">
+                <div id="details" style="font-size: larger; text-align: justify; margin-left: 50px;">
+                  
+                </div>
+                <button class="submit" id="back">Back</button>
+                </div>
             </div>
             <div class="card" id = "card4">
                 <p class="heading">Delete user</p>
