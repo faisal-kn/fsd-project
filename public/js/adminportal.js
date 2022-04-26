@@ -220,13 +220,11 @@ searchUser.addEventListener("click", async () => {
     method: "GET",
   });
   const info = await res.json();
-<<<<<<< HEAD
   if (info.status === "success") {
     showAlert("success", "User Fetched successfully");
   } else {
     showAlert("error", "User not Found");
   }
-=======
   console.log(info);
   let userusername = info.data.user.username;
   let useremail = info.data.user.email;
@@ -237,7 +235,6 @@ searchUser.addEventListener("click", async () => {
 
   details.innerHTML = `Username: ${userusername} <br><br> Email: ${useremail} <br><br> Hobbies: ${userhobbies} <br><br> Account created at: ${usercreatetime} <br><br> Status: ${status}`;
 
->>>>>>> b89702a76abd77cf25f8d89191dea37b9f0e3d17
 });
 
 delEventBtn.addEventListener("click", async () => {
