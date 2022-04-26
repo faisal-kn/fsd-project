@@ -16,6 +16,14 @@ border: 1px solid white;
     display:flex;
 }
 
+#personal-1{
+    display: flex;
+    font-size: large;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+}
+
 .user{
     /* border:1px solid white; */
     width:22%;

@@ -76,7 +76,7 @@ exports.login = async (req, res, next) => {
 
     res.cookie("auth", token, cookieOptions);
 
-    //To remove the password field from the output
+    //To remove the password field from the output ---------------------
     user = await User.findOne({ email: email });
 
     res.status(200).json({
