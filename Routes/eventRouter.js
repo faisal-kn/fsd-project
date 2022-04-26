@@ -29,4 +29,11 @@ router.get(
   eventController.getEventsOfHost
 );
 
+router.delete(
+  "/deleteEvent/:eventName",
+  authController.protect,
+  authController.restrictTo("admin"),
+  eventController.eventDelete
+);
+
 module.exports = router;
