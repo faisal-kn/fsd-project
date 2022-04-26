@@ -14,36 +14,49 @@
 
   <body>
     <%- include('../partials/nav.ejs') %>
-    <div class="container-fluid" style="padding-top:50px ;text-align:center">
+    <div class="container-fluid" style="padding-top: 50px; text-align: center">
       <div class="row">
         <h1>EVENT DETAILS</h1>
       </div>
     </div>
 
     <div>
-      <div class="container-fluid" style="padding: 50px;">
+      <div class="container-fluid" style="padding: 50px">
         <div class="row gx-5">
-
-
           <div class="col-12 col-md-6 p-3 bg-light">
-            <h1 class="text-10xl sm:text-5xl font-bold" data-testid="search-intro-title"
-              style="padding: 20px; font-weight: 700;"><%= name %></h1>
+            <h1
+              class="text-10xl sm:text-5xl font-bold"
+              data-testid="search-intro-title"
+              style="padding: 20px; font-weight: 700"
+            >
+              <%= name %>
+            </h1>
             <div>
-              <p style="padding: 20px; font-size: large;">
+              <p style="padding: 20px; font-size: large">
                 Location : <%= location %>
-                <br /><br />Date : <%= date %> <br /><br />Attendees : <%= attendees
-                %> <br /><br />Hobby : <%= hobby %> <br /><br />Host : <%= host %>
-                <br /><br />Total Spot : <%= totalSpot %> <br /><br />Description :
-                <%= description %>
+                <br /><br />Date : <%= date %> <br /><br />Attendees : <%=
+                attendees %> <br /><br />Hobby : <%= hobby %> <br /><br />Host :
+                <%= host %> <br /><br />Total Spot : <%= totalSpot %>
+                <br /><br />Description : <%= description %>
               </p>
-              <a href="/signup"><button style="margin: 20px; font-size: large;" class="btn btn-outline-secondary mt-4" id="firstButton" type="submit">Join</button></a>
+              <a href="/signup"
+                ><button
+                  style="margin: 20px; font-size: large"
+                  class="btn btn-outline-secondary mt-4"
+                  id="firstButton"
+                  type="submit"
+                >
+                  Join
+                </button></a
+              >
             </div>
           </div>
-
-
-
+          <%- console.log(photo)%>
           <div id="photo" class="col-12 col-md-6 p-3 bg-light text-center">
-            <img class="img-fluid rounded" src="/assets/basketballmatch.jpg">
+            <!-- <img class="img-fluid rounded" src="/assets/basketballmatch.jpg"> -->
+            <div class="col d-flex align-items-center">
+              <img src="/uploads/<%= photo %>" alt="" class="image1" />
+            </div>
           </div>
         </div>
       </div>

@@ -52,6 +52,7 @@ exports.getOneEvent = async function (req, res, next) {
     host: event.host.username,
     totalSpot: event.totalSpot,
     description: event.description,
+    photo: event.photo,
   });
 };
 
