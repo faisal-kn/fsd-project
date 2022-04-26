@@ -61,6 +61,11 @@ const userSchema = new mongoose.Schema({
     enum: ["Pending", "Active"],
     default: "Pending",
   },
+  role: {
+    type: String,
+    default: "user",
+    enum: ["user", "admin"],
+  },
 });
 
 userSchema.pre("save", async function (next) {

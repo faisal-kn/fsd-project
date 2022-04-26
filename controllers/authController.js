@@ -36,7 +36,8 @@ exports.signup = async (req, res, next) => {
 
 exports.restrictTo = function (...allowed) {
   return function (req, res, next) {
-    if (!allowed.includes(req.CurrentUser.role)) {
+    console.log(req.user);
+    if (!allowed.includes(req.user.role)) {
       return next(new AppError("You do not have permission to do this.", 403));
     }
     next();

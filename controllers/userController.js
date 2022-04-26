@@ -107,7 +107,7 @@ exports.addJoinedEvent = async (req, res, next) => {
     req.body = req.params.joinedEvents;
     let oldEvents = req.user.joinedEvents;
     req.body = oldEvents.push(req.body);
-    console.log("hi",req.body);
+    console.log("hi", req.body);
     const updatedUser = await User.findByIdAndUpdate(req.user._id, req.body, {
       new: true,
       runValidators: true,
@@ -126,9 +126,12 @@ exports.addJoinedEvent = async (req, res, next) => {
 
 exports.deleteUser = async (req, res, next) => {
   try {
-    const deletedUser = await User.findByIdAndDelete(req.params.id);
+    const deletedUser = await User.findOneAndDelete({
+      username: req.params.username,
+    });
     res.json(204).json({ status: "success", data: { deletedUser } });
-  } catch {
+  } catch (err) {
+    console.log(err);
     res.status(401).json({ status: "failed", error: err });
   }
 };
