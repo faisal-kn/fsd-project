@@ -10,7 +10,12 @@ const upload = multer({ dest: "public/uploads" });
 router.post("/signup", authController.signup);
 router.post("/login", authController.login);
 router.get("/logout", authController.logout);
-router.get("/allUsers", userController.getAllUsers);
+router.get(
+  "/allUsers",
+  authController.protect,
+  authController.restrictTo("admin"),
+  userController.getAllUsers
+);
 router.get("/hobbies", authController.protect, userController.getHobbies);
 router.patch(
   "/changeusername",
@@ -25,6 +30,13 @@ router.patch(
   userController.updatePhoto
 );
 
+router.get(
+  "/getUser/:username",
+  authController.protect,
+  authController.restrictTo("admin"),
+  userController.getUserByUsername
+);
+
 router.patch(
   "/add-joined-event/:joinedEvents",
   authController.protect,
@@ -37,7 +49,5 @@ router.delete(
   authController.restrictTo("admin"),
   userController.deleteUser
 );
-
-
 
 module.exports = router;

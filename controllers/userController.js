@@ -144,3 +144,16 @@ exports.getAllUsers = async (req, res, next) => {
     console.log(err);
   }
 };
+
+exports.getUserByUsername = async (req, res, next) => {
+  try {
+    const user = await User.findOne({ username: req.params.username }).select(
+      "-password"
+    );
+    if (!user)
+      return next(new AppError("the required user does not exist", 404));
+    res.status(200).json({ status: "success", data: { user } });
+  } catch (err) {
+    res.status(401).json({ status: "failed", error: err });
+  }
+};

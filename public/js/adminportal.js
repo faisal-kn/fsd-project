@@ -7,6 +7,9 @@ let cards = document.getElementsByClassName("card");
 const deleteUser = document.getElementById("deleteUser");
 const userNameDelete = document.getElementById("username");
 const searchUser = document.getElementById("searchUser");
+const searchuserName = document.getElementById("searchUsername");
+const delEventBtn = document.getElementById("delEventBtn");
+const eventNameDelete = document.getElementById("eventname");
 const userName = document.getElementById("username");
 const addanadmin = document.getElementById("addanadmin");
 const forms0 = document.getElementById("forms0");
@@ -181,11 +184,27 @@ deleteuser.addEventListener("click", (e) => {
 });
 
 deleteUser.addEventListener("click", async () => {
-  console.log(2);
   const userName = userNameDelete.value;
   const string = `http://localhost:3001/api/user/deleteUser/${userName}`;
   const res = await fetch(string, {
     method: "DELETE",
   });
-  console.log(res);
+});
+
+searchUser.addEventListener("click", async () => {
+  const userName = searchuserName.value;
+  const string = `http://localhost:3001/api/user/getUser/${userName}`;
+  const res = await fetch(string, {
+    method: "GET",
+  });
+  const info = await res.json();
+  console.log(info);
+});
+
+delEventBtn.addEventListener("click", async () => {
+  const eventName = eventNameDelete.value;
+  const string = `http://localhost:3001/api/event/deleteEvent/${eventName}`;
+  const res = await fetch(string, {
+    method: "DELETE",
+  });
 });
