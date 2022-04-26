@@ -8,7 +8,12 @@ const deleteUser = document.getElementById("deleteUser");
 const userNameDelete = document.getElementById("username");
 const searchUser = document.getElementById("searchUser");
 const userName = document.getElementById("username");
-const addanadmin = document.getElementById("addanadmin")
+const addanadmin = document.getElementById("addanadmin");
+const forms0 = document.getElementById("forms0");
+const forms1 = document.getElementById("forms1");
+const details = document.getElementById("details");
+const back = document.getElementById("back");
+
 
 cards = Array.from(cards);
 
@@ -118,6 +123,18 @@ const update = async () => {
 };
 
 update();
+
+searchUser.addEventListener("click", () => {
+  forms0.style.display = "none";
+  forms1.style.display = "flex";
+
+  });
+
+back.addEventListener("click", () => {
+  forms0.style.display = "flex";
+  forms1.style.display = "none";
+});
+
 
 addanadmin.addEventListener("click", () => {
   let a = document.getElementById("card5");
