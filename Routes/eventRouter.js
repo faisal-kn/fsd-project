@@ -13,6 +13,7 @@ router.post(
   eventController.resizeEventPhoto,
   eventController.uploadPhoto
 );
+
 router.get("/popular-events", eventController.getPopularEvents);
 router.get("/all-events", authController.protect, eventController.getAllEvents);
 

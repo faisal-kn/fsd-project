@@ -1,15 +1,4 @@
-let userid = document.getElementById("useridlink");
 const joinBtn = document.getElementById("join-event-btn");
-
-userid.addEventListener("click", () => {
-  let body = document.getElementById("body");
-  body.animate(
-    {
-      scrollTop: document.getElementById("userid").offset().top,
-    },
-    "slow"
-  );
-});
 
 const updatePhotoBtn = document.getElementById("photo-form");
 const photo = document.getElementById("photo");
@@ -39,7 +28,14 @@ const getAllUserEvents = async () => {
       }
     );
     const data = await res.json();
+    console.log(data);
+    const eventOfHost = data.data.eventsOfHost;
+    eventOfHost.forEach((oneHost) => {
+      console.log(oneHost);
+    });
   } catch (err) {
     console.log(err);
   }
 };
+
+getAllUserEvents();
