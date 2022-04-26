@@ -15,6 +15,11 @@ router.get("/userprofile", viewController.getUserprofile);
 router.get("/aboutus", viewController.getAboutus);
 router.get("/Newteam", viewController.getNewTeam);
 router.get("/events/:eventid", viewController.getOneEvent);
-router.get("/adminportal", viewController.getAdminportal);
+router.get(
+  "/adminportal",
+  authController.protect,
+  authController.restrictTo("admin"),
+  viewController.getAdminportal
+);
 
 module.exports = router;

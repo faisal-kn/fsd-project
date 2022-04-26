@@ -6,6 +6,9 @@ let eventstats = document.getElementById("eventstats");
 let cards = document.getElementsByClassName("card");
 const deleteUser = document.getElementById("deleteUser");
 const userNameDelete = document.getElementById("username");
+const searchUser = document.getElementById("searchUser");
+const userName = document.getElementById("username");
+
 cards = Array.from(cards);
 
 const displayusers = async () => {
@@ -114,6 +117,31 @@ const update = async () => {
 };
 
 update();
+
+searchanevent.addEventListener("click", () => {
+  let a = document.getElementById("card1");
+  console.log(a);
+  cards.forEach((element) => {
+    element.style.display = "none";
+  });
+  a.style.display = "flex";
+});
+
+deleteevent.addEventListener("click", () => {
+  let a = document.getElementById("card2");
+  cards.forEach((element) => {
+    element.style.display = "none";
+  });
+  a.style.display = "flex";
+});
+
+searchauser.addEventListener("click", () => {
+  let a = document.getElementById("card3");
+  cards.forEach((element) => {
+    element.style.display = "none";
+  });
+  a.style.display = "flex";
+});
 
 deleteuser.addEventListener("click", (e) => {
   e.preventDefault();
