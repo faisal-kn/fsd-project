@@ -317,10 +317,7 @@ const renderPopularEvents = async (
   popularEvents.innerHTML = "";
   for (let i = start; i < end; i++) {
     console.log(data[i]);
-    const b = data[i].date.split(/\D+/);
-    data[i].date = new Date(
-      Date.UTC(b[0], --b[1], b[2], b[3], b[4], b[5], b[6])
-    );
+    let dates = data[i].date.substring(0,10);
     const eventMarkup = `
     <div class="row">
       <div class="col d-flex align-items-center">
@@ -329,7 +326,7 @@ const renderPopularEvents = async (
         }" width="222" height="125" alt="" class="image1"/>
       </div> 
       <div class="col">
-        <span>${data[i].date}</span>
+        <span>${dates}</span>
         <p style="font-size: 14px;">
           ${data[i].name}
         </p>

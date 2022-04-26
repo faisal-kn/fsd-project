@@ -73,7 +73,7 @@ let options = document.getElementsByClassName("options");
 
 let change = 0;
 options = Array.from(options);
-
+//------------------------------------------------------------
 let hobbiesMap = new Map();
 hobbiesMap.set("Games", 0);
 hobbiesMap.set("Educational", 0);
