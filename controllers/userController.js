@@ -126,10 +126,11 @@ exports.addJoinedEvent = async (req, res, next) => {
 
 exports.deleteUser = async (req, res, next) => {
   try {
+    console.log(req.params.username);
     const deletedUser = await User.findOneAndDelete({
       username: req.params.username,
     });
-    res.json(204).json({ status: "success", data: { deletedUser } });
+    res.status(200).json({ status: "success", data: { deletedUser } });
   } catch (err) {
     console.log(err);
     res.status(401).json({ status: "failed", error: err });

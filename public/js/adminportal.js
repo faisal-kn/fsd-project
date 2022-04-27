@@ -1,11 +1,11 @@
-let searchanevent = document.getElementById("searchanevent");
-let deleteevent = document.getElementById("deleteevent");
-let searchauser = document.getElementById("searchauser");
-let deleteuser = document.getElementById("deleteuser");
-let eventstats = document.getElementById("eventstats");
+const searchanevent = document.getElementById("searchanevent");
+const deleteevent = document.getElementById("deleteevent");
+const searchauser = document.getElementById("searchauser");
+const deleteuser = document.getElementById("deleteuser");
+const eventstats = document.getElementById("eventstats");
 let cards = document.getElementsByClassName("card");
 const deleteUser = document.getElementById("deleteUser");
-const userNameDelete = document.getElementById("username");
+const userNameDelete = document.getElementById("userdeteleted");
 const searchUser = document.getElementById("searchUser");
 const searchuserName = document.getElementById("searchUsername");
 const delEventBtn = document.getElementById("delEventBtn");
@@ -18,7 +18,6 @@ const forms0 = document.getElementById("forms0");
 const forms1 = document.getElementById("forms1");
 const details = document.getElementById("details");
 const back = document.getElementById("back");
-
 
 cards = Array.from(cards);
 
@@ -39,13 +38,14 @@ const displayusers = async () => {
 };
 
 const hideAlert = () => {
-  const el = document.querySelector(".alert");
+  const el = document.querySelector(".alerts");
+  console.log(el);
   if (el) el.parentElement.removeChild(el);
 };
 
 const showAlert = (type, msg, time = 5) => {
   hideAlert();
-  const markup = `<div class="alertssss alert--${type}">${msg}</div>`;
+  const markup = `<div class="alerts alert--${type}">${msg}</div>`;
   document.querySelector("body").insertAdjacentHTML("afterbegin", markup);
   window.setTimeout(hideAlert, time * 1000);
 };
@@ -143,9 +143,6 @@ const update = async () => {
 
 update();
 
-
-
-
 addanadmin.addEventListener("click", () => {
   let a = document.getElementById("card5");
   console.log(a);
@@ -204,7 +201,6 @@ deleteUser.addEventListener("click", async () => {
   }
 });
 
-
 back.addEventListener("click", () => {
   forms0.style.display = "flex";
   forms1.style.display = "none";
@@ -231,10 +227,9 @@ searchUser.addEventListener("click", async () => {
   let userhobbies = info.data.user.hobbies;
   let usercreatetime = info.data.user.passwordCreatedAt;
   let status = info.data.user.status;
-  usercreatetime = usercreatetime.substring(0,10);
+  usercreatetime = usercreatetime.substring(0, 10);
 
   details.innerHTML = `Username: ${userusername} <br><br> Email: ${useremail} <br><br> Hobbies: ${userhobbies} <br><br> Account created at: ${usercreatetime} <br><br> Status: ${status}`;
-
 });
 
 delEventBtn.addEventListener("click", async () => {
