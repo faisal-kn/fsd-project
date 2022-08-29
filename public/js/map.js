@@ -24,6 +24,17 @@ const photo = document.getElementById("photo");
 let map;
 let markerGroup = [];
 
+class Event {
+  constructor(name, date, host, total, description, hobbies) {
+    this.name = name;
+    this.date = date;
+    this.host = host;
+    this.total = total;
+    this.description = description;
+    this.hobbies = hobbies;
+  }
+}
+
 const eventRequest = (lat, lng) => {
   if (form) {
     form.addEventListener("submit", (e) => {
@@ -35,13 +46,21 @@ const eventRequest = (lat, lng) => {
       const hostValue = host.value.trim();
       const totalValue = total.value.trim();
       const eventDescriptionValue = eventDescription.value.trim();
-      createEvent(
+      const newEvent = new Event(
         eventNameValue,
         dateValue,
-        hobbiesValue,
         hostValue,
         totalValue,
         eventDescriptionValue,
+        hobbiesValue,
+      );
+      createEvent(
+        newEvent.name,
+        newEvent.date,
+        newEvent.hobbies,
+        newEvent.host,
+        newEvent.total,
+        newEvent.description,
         lat,
         lng
       );
@@ -317,7 +336,7 @@ const renderPopularEvents = async (
   popularEvents.innerHTML = "";
   for (let i = start; i < end; i++) {
     console.log(data[i]);
-    let dates = data[i].date.substring(0,10);
+    let dates = data[i].date.substring(0, 10);
     const eventMarkup = `
     <div class="row">
       <div class="col d-flex align-items-center">

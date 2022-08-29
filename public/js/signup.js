@@ -17,7 +17,20 @@ let emailValue = "";
 let passwordValue = "";
 let confirmPasswordValue = "";
 let hobbies = [];
+let signupFormObj;
 
+class SignupForm {
+  constructor(userName, email, password, confirmPassword) {
+    this.userName = userName;
+    this.email = email;
+    this.password = password;
+    this.confirmPassword = confirmPassword;
+  }
+
+  setHobbies(hobbies) {
+    this.hobbies = hobbies;
+  }
+}
 
 const hideAlert = () => {
   const el = document.querySelector(".alert");
@@ -36,6 +49,12 @@ next.addEventListener("click", () => {
   emailValue = email.value.trim();
   passwordValue = password.value.trim();
   confirmPasswordValue = confirmPassword.value.trim();
+  signupFormObj = new SignupForm(
+    userNameValue,
+    emailValue,
+    passwordValue,
+    confirmPasswordValue
+  );
 
   if (passwordValue != confirmPasswordValue) {
     showAlert("error", "Confirm password do not match");
@@ -58,8 +77,6 @@ next.addEventListener("click", () => {
     showAlert("error", "Please fill all the fields");
     return;
   }
-  
-
 });
 
 back.addEventListener("click", () => {
@@ -116,11 +133,11 @@ signupBtn.addEventListener("click", () => {
   }
 
   signup(
-    userNameValue,
-    emailValue,
-    passwordValue,
-    confirmPasswordValue,
-    hobbies
+    signupFormObj.userName,
+    signupFormObj.email,
+    signupFormObj.password,
+    signupFormObj.confirmPassword,
+    signupFormObj.hobbies
   );
 });
 
