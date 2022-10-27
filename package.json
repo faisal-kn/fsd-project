@@ -2,7 +2,7 @@
   "name": "mapty",
   "version": "1.0.0",
   "description": "A map based social media app",
-  "main": "app.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
@@ -39,7 +39,7 @@
     "react-promise-tracker": "^2.1.0",
     "sharp": "^0.30.4"
   },
-  "engine":{
+  "engine": {
     "node": ">= 14.17.0"
   }
 }
