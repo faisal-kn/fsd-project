@@ -24,7 +24,13 @@ app.set("views", path.join(__dirname, "views"));
 app.use(express.static(path.join(__dirname, "public")));
 
 if (process.env.NODE_ENV === "development") app.use(morgan("dev"));
-app.use(cors());
+
+app.use(
+  cors({
+    origin: true,
+    credentials: true,
+  })
+);
 
 app.use("/api/user", userRouter);
 app.use("/api/event", eventRouter);
