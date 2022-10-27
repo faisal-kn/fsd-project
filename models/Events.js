@@ -24,7 +24,6 @@ const eventSchema = new mongoose.Schema({
   host: {
     type: mongoose.Schema.ObjectId,
     ref: "User",
-    required: [true, "A Event must have a host"],
   },
   totalSpot: {
     type: Number,
