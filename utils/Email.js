@@ -23,7 +23,7 @@ exports.sendEmail = async (user, token) => {
       token +
       '">Verify Here</a>';
     const mailOptions = {
-      from: "khanmohdfaisal75@gmail.com",
+      from: "faisalkhan.m20@iiits.in",
       to: user.email,
       subject: "Please confirm your Email account",
       html: html,
