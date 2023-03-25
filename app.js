@@ -3,7 +3,6 @@ const express = require("express");
 const cors = require("cors");
 const morgan = require("morgan");
 const cookieParser = require("cookie-parser");
-const viewRouter = require("./Routes/viewRouter");
 const userRouter = require("./Routes/userRouter");
 const eventRouter = require("./Routes/eventRouter");
 const AppError = require("./utils/AppError");
@@ -43,7 +42,6 @@ app.get("/verify/:token", (req, res, next) => {
     res.send("No page exists");
   }
 });
-app.use("/", viewRouter);
 
 app.all("*", (req, res, next) => {
   const err = new AppError(
