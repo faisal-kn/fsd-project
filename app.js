@@ -34,12 +34,29 @@ app.use(
 app.use("/api/user", userRouter);
 app.use("/api/event", eventRouter);
 
-app.get("/verify/:token", (req, res, next) => {
+// app.get("/verify/:token", (req, res, next) => {
+//   const token = req.params.token;
+//   if (Email.verifyEmail(token)) {
+//     res.redirect("/");
+//   } else {
+//     res.send("No page exists");
+//   }
+// });
+
+app.get("/api/verifyEmail/:token", async (req, res, next) => {
   const token = req.params.token;
-  if (Email.verifyEmail(token)) {
-    res.redirect("/");
+  const isVerified = await Email.verifyEmail(token);
+  console.log(isVerified);
+  if (isVerified) {
+    res.status(200).json({
+      status: "success",
+      message: "Email verified",
+    });
   } else {
-    res.send("No page exists");
+    res.status(400).json({
+      status: "failed",
+      message: "Email not verified",
+    });
   }
 });
 

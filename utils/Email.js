@@ -8,7 +8,7 @@ const mailServer = nodemailer.createTransport({
   service: "gmail",
   auth: {
     user: "faisal.khanmohd75@gmail.com",
-    pass: "faisal002",
+    pass: "qyrsjpkjftlruxtd",
   },
 });
 
@@ -19,7 +19,7 @@ exports.sendEmail = async (user, token) => {
     }
     html =
       "<h2>Please click the link below to verify your email</h2>" +
-      '<a href="http://localhost:3001/verify/' +
+      '<a href="http://localhost:3000/verify/' +
       token +
       '">Verify Here</a>';
     const mailOptions = {
@@ -40,6 +40,7 @@ exports.sendEmail = async (user, token) => {
 exports.verifyEmail = async (token) => {
   try {
     const decoded = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
+    console.log(decoded);
     const user = await User.findById(decoded.id);
     if (!user) {
       return next(
@@ -48,8 +49,9 @@ exports.verifyEmail = async (token) => {
     } else {
       user.status = "Active";
       user.save();
+      return 1;
     }
   } catch (err) {
-    console.log(err);
+    return 0;
   }
 };
