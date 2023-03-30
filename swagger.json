@@ -1,0 +1,492 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "This is Mapty api",
+    "version": "1.0.0",
+    "title": "Mapty"
+  },
+  "host": "localhost:3001/api/",
+  "tags": [
+    {
+      "name": "Login",
+      "description": "Everything about your Login"
+    },
+    {
+      "name": "Events",
+      "description": "All events data"
+    }
+  ],
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/user/login": {
+      "post": {
+        "tags": [
+          "Login"
+        ],
+        "summary": "Create login",
+        "description": "This can only be done by the logged in user.",
+        "operationId": "createLogin",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Created user object",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Login"
+            }
+          }
+        ],
+        "responses": {
+          "201":{"description": "created"},
+          "404":{"description": "Not found"},
+          "default": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/user/signup": {
+      "post": {
+        "tags": [
+          "Login"
+        ],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "summary": "Create user",
+        "description": "This can only be done by the logged in user.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Created user object",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Signup"
+            }
+          }
+        ],
+        "responses": {
+          "201":{"description": "created"},
+          "404":{"description": "Not found"},
+          "default": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/user/deleteUser/{id}": {
+      "delete": {
+        "tags": [
+          "Login"
+        ],
+        "summary": "Delete user",
+        "description": "This can only be done by the logged in admin.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          
+          {
+            "in": "path",
+            "name": "id",
+            "description": "ID of body",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "404" : {
+            "description": "Not found"
+          }
+        }
+      }
+    },
+    "/user/hobbies": {
+      "get": {
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "tags": [
+          "Login"
+        ],
+        "summary": "Get hobbies",
+        "description": "This can only be done by the logged in user.",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "default": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/user/getUser/{id}": {
+      "get": {
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "tags": [
+          "Login"
+        ],
+        "summary": "get user with username",
+        "description": "This can only be done by the logged in user.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "ID of event",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/user/allUsers": {
+      "get": {
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "tags": [
+          "Login"
+        ],
+        "summary": "Get all users",
+        "description": "This can only be done by the logged in user.",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "default": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/event/create-event": {
+      "post": {
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "tags": [
+          "Events"
+        ],
+        "summary": "Create event",
+        "description": "This can only be done by the logged in user.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Created new event",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/createEvent"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/event/all-events": {
+      "get": {
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "tags": [
+          "Events"
+        ],
+        "summary": "Get Events",
+        "description": "This can only be done by the logged in user.",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "default": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/event/one-event/{id}": {
+      "get": {
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "tags": [
+          "Events"
+        ],
+        "summary": "Each event",
+        "description": "This can only be done by the logged in user.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "ID of event",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/event/get-event-by-hobby/{id}": {
+      "get": {
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "tags": [
+          "Events"
+        ],
+        "summary": "Get event by hobby",
+        "description": "This can only be done by the logged in user.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "ID of event",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/event/popular-events": {
+      "get": {
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "tags": [
+          "Events"
+        ],
+        "summary": "Get popular events",
+        "description": "This can only be done by the logged in user.",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "default": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/event/get-events-of-host": {
+      "get": {
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "tags": [
+          "Events"
+        ],
+        "summary": "Get events of host(logged in user)",
+        "description": "This can only be done by the logged in user.",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "404": {
+            "description": "not found"
+          }
+        }
+      }
+    },
+    "/event/deleteEvent/{id}": {
+      "delete": {
+        "tags": [
+          "Events"
+        ],
+        "summary": "Delete Event",
+        "description": "This can only be done by the logged in admin.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          
+          {
+            "in": "path",
+            "name": "id",
+            "description": "ID of body",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "404" : {
+            "description": "Not found"
+          }
+        }
+      }
+    }
+  },
+  "securityDefinitions": {
+    "Bearer": {
+      "type": "apiKey",
+      "name": "Authorization",
+      "in": "header"
+    }
+  },
+  "definitions": {
+    "Login": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "User"
+      }
+    },
+    "Signup": {
+      "type": "object",
+      "properties": {
+        "username": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "confirmPassword": {
+          "type": "string"
+        },
+        "hobbies": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "User"
+      }
+    },
+    "updateEventData": {
+      "type": "object",
+      "properties": {
+        "eventname": {
+          "type": "string"
+        },
+        "location": {
+          "type": "string"
+        },
+        "data": {
+          "type": "string"
+        },
+        "no-of-attendies": {
+          "type": "integer"
+        },
+        "totalSpots": {
+          "type": "integer"
+        },
+        "event-description": {
+          "type": "string"
+        },
+        "photo": {
+          "type": "string"
+        }
+      }
+    },
+    "createEvent": {
+      "type": "object",
+      "properties": {
+        "eventname": {
+          "type": "string"
+        },
+        "location": {
+          "type": "string"
+        },
+        "data": {
+          "type": "string",
+          "format": "date"
+        },
+        "no-of-attendies": {
+          "type": "integer"
+        },
+        "totalSpots": {
+          "type": "integer"
+        },
+        "event-description": {
+          "type": "string"
+        },
+        "photo": {
+          "type": "string",
+          "format": "binary"
+        }
+      },
+      "xml": {
+        "name": "User"
+      }
+    }
+  }
+}

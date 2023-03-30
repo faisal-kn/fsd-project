@@ -6,6 +6,7 @@ const Email = require("../utils/Email");
 
 exports.signup = async (req, res, next) => {
   try {
+    console.log(req.body);
     const newUser = await User.create(req.body);
     const token = jwt.sign({ id: newUser._id }, process.env.JWT_SECRET, {
       expiresIn: process.env.JWT_EXPIRES_IN,
@@ -40,6 +41,7 @@ exports.restrictTo = function (...allowed) {
     if (!allowed.includes(req.user.role)) {
       return next(new AppError("You do not have permission to do this.", 403));
     }
+    req.user = req.user;
     next();
   };
 };

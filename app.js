@@ -11,6 +11,13 @@ var bodyParser = require("body-parser");
 const app = express();
 const Email = require("./utils/Email");
 
+const swaggerUi = require('swagger-ui-express');
+const swaggerDocument = require('./swagger.json');
+
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
+// your routes here
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
