@@ -32,7 +32,7 @@ exports.resizeEventPhoto = async (req, res, next) => {
       .resize(500, 500)
       .toFormat("jpeg")
       .jpeg({ quality: 90 })
-      .toFile(`../fsd-react/public/upload/${req.file.filename}`);
+      .toFile(`../mapty-react/public/upload/${req.file.filename}`);
     next();
   } catch (err) {}
 };
@@ -112,7 +112,7 @@ exports.eventDelete = async (req, res, next) => {
   try {
     console.log(req.params.eventName);
     const event = await Event.findOneAndDelete({ name: req.params.eventName });
-    res.status(204).json({ status: "success", data: { event } });
+    res.status(200).json({ status: "success", data: { event } });
   } catch (err) {
     res.status(401).json({ status: "failed", error: err });
   }

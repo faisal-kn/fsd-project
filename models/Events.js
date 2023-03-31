@@ -12,6 +12,7 @@ const eventSchema = new mongoose.Schema({
   date: {
     type: Date,
     required: [true, "A date is required"],
+    default: Date.now()
   },
   attendees: {
     type: Number,

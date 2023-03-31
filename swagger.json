@@ -45,8 +45,8 @@
         "responses": {
           "201":{"description": "created"},
           "404":{"description": "Not found"},
-          "default": {
-            "description": "successful operation"
+          "500":{
+            "description": "Internal server error"
           }
         }
       }
@@ -80,8 +80,8 @@
         "responses": {
           "201":{"description": "created"},
           "404":{"description": "Not found"},
-          "default": {
-            "description": "successful operation"
+          "500":{
+            "description": "Internal server error"
           }
         }
       }
@@ -112,6 +112,9 @@
           },
           "404" : {
             "description": "Not found"
+          },
+          "500":{
+            "description": "Internal server error"
           }
         }
       }
@@ -132,8 +135,14 @@
           "application/json"
         ],
         "responses": {
-          "default": {
+          "200": {
             "description": "successful operation"
+          },
+          "404" : {
+            "description": "Not found"
+          },
+          "500":{
+            "description": "Internal server error"
           }
         }
       }
@@ -163,8 +172,14 @@
           }
         ],
         "responses": {
-          "default": {
+          "200": {
             "description": "successful operation"
+          },
+          "404" : {
+            "description": "Not found"
+          },
+          "500":{
+            "description": "Internal server error"
           }
         }
       }
@@ -185,8 +200,14 @@
           "application/json"
         ],
         "responses": {
-          "default": {
+          "200": {
             "description": "successful operation"
+          },
+          "404" : {
+            "description": "Not found"
+          },
+          "500":{
+            "description": "Internal server error"
           }
         }
       }
@@ -218,8 +239,14 @@
           }
         ],
         "responses": {
-          "default": {
+          "201": {
             "description": "successful operation"
+          },
+          "404" : {
+            "description": "Not found"
+          },
+          "500":{
+            "description": "Internal server error"
           }
         }
       }
@@ -240,8 +267,14 @@
           "application/json"
         ],
         "responses": {
-          "default": {
+          "200": {
             "description": "successful operation"
+          },
+          "404" : {
+            "description": "Not found"
+          },
+          "500":{
+            "description": "Internal server error"
           }
         }
       }
@@ -271,8 +304,14 @@
           }
         ],
         "responses": {
-          "default": {
+          "200": {
             "description": "successful operation"
+          },
+          "404" : {
+            "description": "Not found"
+          },
+          "500":{
+            "description": "Internal server error"
           }
         }
       }
@@ -302,8 +341,14 @@
           }
         ],
         "responses": {
-          "default": {
+          "200": {
             "description": "successful operation"
+          },
+          "404" : {
+            "description": "Not found"
+          },
+          "500":{
+            "description": "Internal server error"
           }
         }
       }
@@ -324,8 +369,14 @@
           "application/json"
         ],
         "responses": {
-          "default": {
+          "200": {
             "description": "successful operation"
+          },
+          "404" : {
+            "description": "Not found"
+          },
+          "500":{
+            "description": "Internal server error"
           }
         }
       }
@@ -349,13 +400,16 @@
           "200": {
             "description": "successful operation"
           },
-          "404": {
-            "description": "not found"
+          "404" : {
+            "description": "Not found"
+          },
+          "500":{
+            "description": "Internal server error"
           }
         }
       }
     },
-    "/event/deleteEvent/{id}": {
+    "/event/deleteEvent/{eventName}": {
       "delete": {
         "tags": [
           "Events"
@@ -369,8 +423,8 @@
           
           {
             "in": "path",
-            "name": "id",
-            "description": "ID of body",
+            "name": "eventName",
+            "description": "Event Name",
             "required": true,
             "type": "string"
           }
@@ -431,57 +485,23 @@
         "name": "User"
       }
     },
-    "updateEventData": {
-      "type": "object",
-      "properties": {
-        "eventname": {
-          "type": "string"
-        },
-        "location": {
-          "type": "string"
-        },
-        "data": {
-          "type": "string"
-        },
-        "no-of-attendies": {
-          "type": "integer"
-        },
-        "totalSpots": {
-          "type": "integer"
-        },
-        "event-description": {
-          "type": "string"
-        },
-        "photo": {
-          "type": "string"
-        }
-      }
-    },
     "createEvent": {
       "type": "object",
       "properties": {
-        "eventname": {
+        "name": {
           "type": "string"
         },
         "location": {
           "type": "string"
         },
-        "data": {
-          "type": "string",
-          "format": "date"
-        },
-        "no-of-attendies": {
-          "type": "integer"
-        },
-        "totalSpots": {
-          "type": "integer"
-        },
-        "event-description": {
+        "hobby": {
           "type": "string"
         },
-        "photo": {
-          "type": "string",
-          "format": "binary"
+        "totalSpot": {
+          "type": "integer"
+        },
+        "description": {
+          "type": "string"
         }
       },
       "xml": {
