@@ -11,10 +11,10 @@ var bodyParser = require("body-parser");
 const app = express();
 const Email = require("./utils/Email");
 
-const swaggerUi = require('swagger-ui-express');
-const swaggerDocument = require('./swagger.json');
+const swaggerUi = require("swagger-ui-express");
+const swaggerDocument = require("./swagger.json");
 
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 // your routes here
 
@@ -78,9 +78,9 @@ app.all("*", (req, res, next) => {
 app.use((err, req, res, next) => {
   const { statusCode = 500, message } = err;
   console.log(err);
-  res.status(statusCode).render("pages/errors", {
+  res.status(statusCode).json({
     status: "error",
-    message: statusCode === 500 ? "Something went wrong" : message,
+    message,
   });
 });
 
