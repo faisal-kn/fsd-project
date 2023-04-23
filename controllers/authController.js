@@ -15,6 +15,8 @@ exports.signup = async (req, res, next) => {
     const cookieOptions = {
       expires: new Date(Date.now() + process.env.AUTH_COOKIE_EXPIRES_IN),
       httpOnly: true,
+      secure: true,
+      sameSite: "None",
     };
     res.cookie("auth", token, cookieOptions);
     res.status(200).json({
@@ -75,6 +77,8 @@ exports.login = async (req, res, next) => {
     const cookieOptions = {
       expires: new Date(Date.now() + process.env.AUTH_COOKIE_EXPIRES_IN),
       httpOnly: true,
+      secure: true,
+      sameSite: "None",
     };
 
     res.cookie("auth", token, cookieOptions);
