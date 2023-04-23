@@ -37,6 +37,7 @@ router.get(
   userController.getUserByUsername
 );
 
+
 router.patch(
   "/add-joined-event/:joinedEvents",
   authController.protect,
