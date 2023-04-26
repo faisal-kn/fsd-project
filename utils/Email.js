@@ -19,7 +19,7 @@ exports.sendEmail = async (user, token) => {
     }
     html =
       "<h2>Please click the link below to verify your email</h2>" +
-      '<a href="http://localhost:3000/verify/' +
+      '<a href="https://incredible-boba-34c3a6.netlify.app/verify/' +
       token +
       '">Verify Here</a>';
     const mailOptions = {
