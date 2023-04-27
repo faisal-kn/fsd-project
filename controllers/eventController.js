@@ -41,7 +41,6 @@ exports.uploadEventPhoto = upload.single("photo");
 
 exports.createEvent = async (req, res, next) => {
   try {
-    console.log(req.body);
     let news = req.body.location.split(",");
     news[0] = parseFloat(news[0]);
     news[1] = parseFloat(news[1]);
